@@ -25,4 +25,12 @@ struct Queue<T> {
     public mutating func dequeue() -> T? {
         return isEmpty ? nil : queue.removeFirst()
     }
+    
+    public mutating func clearAll() {
+        queue = []
+    }
+    
+    public mutating func clearLast() {
+        queue.removeLast()
+    }
 }
