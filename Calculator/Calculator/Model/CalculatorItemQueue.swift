@@ -7,28 +7,30 @@
 
 import Foundation
 
-class CalculatorItemQueue: CalculateItem {
-    private var inputNumberQueue = Queue<Int>()
-    private var operatorQueue = Queue<String>()
+class CalculatorItemQueue<T>: CalculateItem {
+    private var queue: [T] = []
     
-    func plus(leftNumer: Int, rightNumber: Int) -> Int {
-        return leftNumer + rightNumber
+    public var count: Int {
+        return queue.count
     }
     
-    func minus(leftNumer: Int, rightNumber: Int) -> Int {
-        return leftNumer + rightNumber
+    public var isEmpty: Bool {
+        return queue.isEmpty
     }
     
-    func multiply(leftNumer: Int, rightNumber: Int) -> Int {
-        return leftNumer * rightNumber
+    public func enqueue(_ element: T) {
+        queue.append(element)
     }
     
-    func division(leftNumer: Int, rightNumber: Int) -> Int {
-        return leftNumer / rightNumber
+    public func dequeue() -> T? {
+        return isEmpty ? nil : queue.removeFirst()
     }
     
-    func clearAll() {
-        inputNumberQueue.clearAll()
-        operatorQueue.clearAll()
+    public func clearAll() {
+        queue = []
+    }
+    
+    public func clearLast() {
+        queue.removeLast()
     }
 }
