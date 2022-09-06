@@ -7,6 +7,47 @@
 
 import XCTest
 
+enum ValueError : Error {
+    case noValue
+}
+
+class Queue<T> {
+    var list: [T]
+    var count: Int {
+        get {
+            return list.count
+        }
+    }
+    
+    func enqueue(_ item: T) {
+        list.append(item)
+    }
+    
+    func dequeue() -> T {
+        return list.removeFirst()
+    }
+    
+    func peak() throws -> T {
+        if let item = list.first {
+            return item
+        } else {
+            throw ValueError.noValue
+        }
+    }
+    
+    func clear() {
+        list.removeAll()
+    }
+    
+    func isEmpty() -> Bool {
+        return self.count == 0
+    }
+    
+    init(_ list: [T] = []) {
+        self.list = list
+    }
+}
+
 class CalculatorTests: XCTestCase {
 
     override func setUpWithError() throws {
