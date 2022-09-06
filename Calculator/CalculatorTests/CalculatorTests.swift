@@ -7,6 +7,10 @@
 
 import XCTest
 
+protocol CalculateItem {
+    
+}
+
 enum ValueError : Error {
     case noValue
 }
@@ -53,7 +57,7 @@ class Queue<T> {
     }
 }
 
-class CalculatorItemQueue : Queue<CalculatorItem> {
+class CalculatorItemQueue : Queue<CalculatorItem>, CalculateItem {
     private var result: Double = 0.0
     
     func getResult() -> Double {
