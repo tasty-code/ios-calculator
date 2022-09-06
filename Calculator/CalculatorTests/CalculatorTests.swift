@@ -11,6 +11,11 @@ enum ValueError : Error {
     case noValue
 }
 
+struct CalculatorItem {
+    var sign: String
+    var number: Double
+}
+
 class Queue<T> {
     var list: [T]
     var count: Int {
@@ -45,6 +50,18 @@ class Queue<T> {
     
     init(_ list: [T] = []) {
         self.list = list
+    }
+}
+
+class CalculatorItemQueue : Queue<CalculatorItem> {
+    private var result: Double = 0.0
+    
+    func getResult() -> Double {
+        return result
+    }
+    
+    func setResult(in value: Double) {
+        result = value
     }
 }
 
