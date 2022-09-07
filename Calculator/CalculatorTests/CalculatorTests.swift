@@ -11,7 +11,7 @@ protocol CalculateItem {
     
 }
 
-enum ValueError : Error {
+enum CalculatorError : Error {
     case noValue
 }
 
@@ -40,7 +40,7 @@ class Queue<T> {
         if let item = list.first {
             return item
         } else {
-            throw ValueError.noValue
+            throw CalculatorError.noValue
         }
     }
     
