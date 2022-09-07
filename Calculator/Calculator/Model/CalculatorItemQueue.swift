@@ -30,7 +30,7 @@ class CalculatorItemQueue<T>: CalculateItem {
         return isEmpty ? nil : data.removeFirst()
     }
     
-    public func clearAll() {
+    public func removeAll() {
         data.removeAll()
     }
 
