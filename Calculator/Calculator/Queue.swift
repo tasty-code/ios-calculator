@@ -8,17 +8,17 @@
 import Foundation
 
 class Queue<T> {
-    var list: [T] = []
+    public var list: [T] = []
     
-    func removeAll() {
+    public func removeAll() {
         list = []
     }
     
-    func enqueue(_ item: T) {
+    public func enqueue(_ item: T) {
         list.append(item)
     }
     
-    func dequeue() {
+    public func dequeue() {
         list.removeLast()
     }
 }

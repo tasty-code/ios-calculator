@@ -8,10 +8,10 @@
 import Foundation
 
 class CalculatorItemQueue: CalculatorItem {
-    var numbers: Queue<Double> = Queue<Double>()
-    var operators: Queue<Character> = Queue<Character>()
+    public var numbers: Queue<Double> = Queue<Double>()
+    public var operators: Queue<Character> = Queue<Character>()
     
-    func getCalculatorItems() -> (Queue<Double>, Queue<Character>) {
+    public func getCalculatorItems() -> (Queue<Double>, Queue<Character>) {
         return (numbers, operators)
     }
 }
