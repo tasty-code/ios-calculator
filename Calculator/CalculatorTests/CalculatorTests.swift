@@ -22,11 +22,6 @@ struct CalculatorItem {
 
 class Queue<T> {
     var list: [T]
-    var count: Int {
-        get {
-            return list.count
-        }
-    }
     
     func enqueue(_ item: T) {
         list.append(item)
@@ -42,6 +37,10 @@ class Queue<T> {
         } else {
             throw CalculatorError.noValue
         }
+    }
+    
+    func count() -> Int {
+        return list.count
     }
     
     func clear() {
