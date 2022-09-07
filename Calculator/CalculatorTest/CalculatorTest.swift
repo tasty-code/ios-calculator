@@ -1,12 +1,11 @@
 //
 //  CalculatorTest.swift
-//  Calculator
+//  CalculatorTest
 //
 //  Created by 이은호 on 2022/09/07.
 //
 
 import XCTest
-@testable import UnitTestSample
 
 class CalculatorTest: XCTestCase {
 
@@ -34,4 +33,3 @@ class CalculatorTest: XCTestCase {
     }
 
 }
-
