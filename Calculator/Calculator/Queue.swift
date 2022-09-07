@@ -1,24 +1,29 @@
-//
-//  Queue.swift
-//  Calculator
-//
-//  Created by Lim Chae Yoon on 2022/09/06.
-//
-
 import Foundation
 
-class Queue<T> {
-    public var list: [T] = []
+class Queue<Element> {
+    private var list: [Element] = []
     
-    public func removeAll() {
-        list = []
+    func getListItem() -> [Element] {
+        return list
+    }
+        
+    func removeAll() {
+        list.removeAll()
     }
     
-    public func enqueue(_ item: T) {
+    func enqueue(_ item: Element) {
         list.append(item)
     }
     
-    public func dequeue() {
+    func dequeue() {
         list.removeLast()
+    }
+    
+    func isEmpty() -> Bool {
+        return list.isEmpty
+    }
+    
+    func getListCount() -> Int {
+        return list.count
     }
 }
