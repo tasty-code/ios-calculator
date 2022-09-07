@@ -3,6 +3,10 @@ import Foundation
 class Queue<Element> {
     private var list: [Element] = []
     
+    var count: Int {
+        return list.count
+    }
+    
     func getListItem() -> [Element] {
         return list
     }
@@ -21,9 +25,5 @@ class Queue<Element> {
     
     func isEmpty() -> Bool {
         return list.isEmpty
-    }
-    
-    func getListCount() -> Int {
-        return list.count
     }
 }
