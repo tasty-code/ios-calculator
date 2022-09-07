@@ -7,17 +7,25 @@
 
 import Foundation
 
-//protocol CalculateItem {
-//}
+protocol CalculateItem {
+}
 
-class CalculatorItemQueue {
-    var itemStorage: [String] = []
+struct CalculatorItemQueue: CalculateItem {
+    private var itemStorage: [String] = []
     
-    func enqueue(_ item: String) {
+    mutating func enqueue(_ item: String) {
         itemStorage.append(item)
     }
     
-    func dequeue() -> String {
+    mutating func dequeue() -> String {
         return itemStorage.removeFirst()
+    }
+    
+    func isEmpty() -> Bool {
+        if itemStorage.isEmpty {
+            return true
+        }
+        
+        return false
     }
 }

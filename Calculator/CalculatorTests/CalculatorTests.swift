@@ -2,26 +2,47 @@
 //  CalculatorTests.swift
 //  CalculatorTests
 //
-//  Created by Schro on 2022/09/06.
+//  Created by Schro on 2022/09/07.
 //
 
 import XCTest
+@testable import Calculator
 
 class CalculatorTests: XCTestCase {
-    var test: CalculatorItemQueue!
+    
+    var sut: CalculatorItemQueue!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        test = CalculatorItemQueue()
+        sut = CalculatorItemQueue()
     }
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
-        test = nil
+        sut = nil
     }
     
-    func enqueue_and_dequeue_test() {
-        test.enqueue("1")
-        XCTAssertEqual(test.dequeue(), "1")
+    func test() {
+        sut.enqueue("test")
+        XCTAssertEqual(sut.dequeue(), "test")
     }
+    
+    func enqueue_and_dequeue_test_성공() {
+        sut.enqueue("test")
+        XCTAssertEqual(sut.dequeue(), "test")
+    }
+
+    func enqueue_and_dequeue_test_실패() {
+        sut.enqueue("no")
+        XCTAssertEqual(sut.dequeue(), "yes")
+    }
+
+    func queue_isEmpty_method_test_성공() {
+        XCTAssertEqual(sut.isEmpty(), true)
+    }
+
+    func queue_isEmpty_method_test_실패() {
+        XCTAssertEqual(sut.isEmpty(), false)
+    }
+    
 }
