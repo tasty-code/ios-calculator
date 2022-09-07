@@ -9,13 +9,14 @@ import Foundation
 
 class CalculatorItemQueue<Number>: CalculateItem {
     private var queue: [Number] = []
+    private var idx: Int = 0
     
     public var count: Int {
         return queue.count
     }
     
     public var isEmpty: Bool {
-        return queue.isEmpty
+        return !(queue.count > idx)
     }
     
     public func getQueue() -> [Number] {
@@ -26,8 +27,11 @@ class CalculatorItemQueue<Number>: CalculateItem {
         queue.append(element)
     }
     
-    public func dequeue() -> Number? {
-        return isEmpty ? nil : queue.removeFirst()
+    public func dequeue() -> Number {
+        defer {
+            idx += 1
+        }
+        return queue[idx]
     }
     
     public func clearAll() {
