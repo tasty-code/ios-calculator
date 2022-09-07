@@ -1,13 +1,6 @@
-//
-//  AppTests.swift
-//  AppTests
-//
-//  Created by 김유진 on 2022/09/06.
-//
-
 import XCTest
 
-class AppTests: XCTestCase {
+class CalculatorItemQueueTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,10 +1,3 @@
-//
-//  Queue.swift
-//  Calculator
-//
-//  Created by Lim Chae Yoon on 2022/09/06.
-//
-
 import Foundation
 
 class Queue<T> {
