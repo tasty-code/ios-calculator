@@ -18,6 +18,10 @@ class CalculatorItemQueue<Number>: CalculateItem {
         return queue.isEmpty
     }
     
+    public func getQueue() -> [Number] {
+        return queue
+    }
+    
     public func enqueue(_ element: Number) {
         queue.append(element)
     }
