@@ -49,7 +49,7 @@ class Queue<T> {
     }
     
     func isEmpty() -> Bool {
-        return self.count == 0
+        return list.isEmpty
     }
     
     init(_ list: [T] = []) {
