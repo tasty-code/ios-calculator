@@ -7,30 +7,38 @@
 
 import Foundation
 
-class CalculatorItemQueue<T>: CalculateItem {
-    private var queue: [T] = []
+class CalculatorItemQueue<Number>: CalculateItem {
+    private var queue: [Number] = []
+    private var idx: Int = 0
     
     public var count: Int {
         return queue.count
     }
     
     public var isEmpty: Bool {
-        return queue.isEmpty
+        return !(queue.count > idx)
     }
     
-    public func enqueue(_ element: T) {
+    public func getQueue() -> [Number] {
+        return queue
+    }
+    
+    public func enqueue(_ element: Number) {
         queue.append(element)
     }
     
-    public func dequeue() -> T? {
-        return isEmpty ? nil : queue.removeFirst()
+    public func dequeue() -> Number {
+        defer {
+            idx += 1
+        }
+        return queue[idx]
     }
     
     public func clearAll() {
-        queue = []
+        queue.removeAll()
     }
     
-    public func clearLast() {
+    public func removeLast() {
         queue.removeLast()
     }
 }

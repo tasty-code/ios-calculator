@@ -6,17 +6,63 @@
 //
 
 import XCTest
+@testable import Calculator
 
-class CalculatorTests: XCTestCase {
+class CalculatorItemQueueTests: XCTestCase {
+    var sut: CalculatorItemQueue<Int>!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        sut = CalculatorItemQueue<Int>()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+        sut = nil
+    }
+    
+    func test_queue에_수가_추가되는지() {
+        let input = 10
+        
+        sut.enqueue(input)
+        let empty = sut.isEmpty
+        
+        XCTAssertFalse(empty)
+    }
+    
+    func test_queue에서_첫번째값이_반환되는지확인하는함수() {
+        let input = 12
+            
+        sut.enqueue(input)
+        let expectation = sut.dequeue()
+            
+        XCTAssertEqual(expectation, 12)
     }
 
+    func test_queue의_값이_모두지워지는지() {
+        let input1 = 15
+        let input2 = 16
+        
+        sut.enqueue(input1)
+        sut.enqueue(input2)
+        sut.clearAll()
+        let empty = sut.isEmpty
+        
+        XCTAssertTrue(empty)
+    }
+    
+    func test_queue의_마지막값이_지워지는지() {
+        let input1 = 1
+        let input2 = 7
+        
+        sut.enqueue(input1)
+        sut.enqueue(input2)
+        sut.removeLast()
+        let result = sut.getQueue()
+        
+        XCTAssertEqual(result, [1])
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -31,5 +77,4 @@ class CalculatorTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

@@ -17,4 +17,3 @@ enum Operator: String {
         return self.rawValue
     }
 }
-
