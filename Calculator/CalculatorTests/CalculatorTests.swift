@@ -16,7 +16,7 @@ enum CalculatorError : Error {
 }
 
 class CalculatorItemQueue<T>: CalculateItem {
-    var list: [T]
+    var list: [T] = []
     
     func enqueue(_ item: T) {
         list.append(item)
@@ -44,10 +44,6 @@ class CalculatorItemQueue<T>: CalculateItem {
     
     func isEmpty() -> Bool {
         return list.isEmpty
-    }
-    
-    init(_ list: [T] = []) {
-        self.list = list
     }
 }
 
