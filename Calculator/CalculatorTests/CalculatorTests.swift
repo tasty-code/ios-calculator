@@ -15,7 +15,7 @@ enum CalculatorError : Error {
     case noValue
 }
 
-class CalculatorItemQueue<T>: CalculateItem {
+struct CalculatorItemQueue<T>: CalculateItem {
     var list: [T] = []
     
     func enqueue(_ item: T) {
