@@ -13,6 +13,22 @@ class CalculatorItemQueueTests: XCTestCase {
        try super.tearDownWithError()
         sut = nil
     }
+    
+    func test_getListItem() {
+        sut.enqueue(3)
+        
+        let result = sut.getListItem()
+        
+        XCTAssertEqual(result, [3])
+    }
+    
+    func test_isEmpty() {
+        sut.enqueue(3)
+        
+        let result = sut.isEmpty()
+        
+        XCTAssertEqual(result, false)
+    }
 
     func test_enqueue() {
         let input = 12.5
