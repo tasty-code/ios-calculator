@@ -18,12 +18,16 @@ enum CalculatorError : Error {
 struct CalculatorItemQueue<T>: CalculateItem {
     var list: [T] = []
     
-    func enqueue(_ item: T) {
+    mutating func enqueue(_ item: T) {
         list.append(item)
     }
     
-    func dequeue() -> T {
+    mutating func dequeue() -> T {
         return list.removeFirst()
+    }
+    
+    mutating func clear() {
+        list.removeAll()
     }
     
     func peak() throws -> T {
@@ -36,10 +40,6 @@ struct CalculatorItemQueue<T>: CalculateItem {
     
     func count() -> Int {
         return list.count
-    }
-    
-    func clear() {
-        list.removeAll()
     }
     
     func isEmpty() -> Bool {
