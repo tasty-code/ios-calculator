@@ -1,25 +1,29 @@
 import Foundation
 
 class Queue<Element> {
-    public var list: [Element] = []
+    private var list: [Element] = []
     
-    public func removeAll() {
-        list = []
+    func getListItem() -> [Element] {
+        return list
+    }
+        
+    func removeAll() {
+        list.removeAll()
     }
     
-    public func enqueue(_ item: Element) {
+    func enqueue(_ item: Element) {
         list.append(item)
     }
     
-    public func dequeue() {
+    func dequeue() {
         list.removeLast()
     }
     
-    public func isEmpty() -> Bool {
+    func isEmpty() -> Bool {
         return list.isEmpty
     }
     
-    public func getListCount() -> Int {
+    func getListCount() -> Int {
         return list.count
     }
 }
