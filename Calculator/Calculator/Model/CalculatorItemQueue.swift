@@ -13,6 +13,9 @@ protocol CalculateItem {
 
 struct CalculatorItemQueue<T>: CalculateItem {
     var list: [T] = []
+    var isEmpty: Bool {
+        return list.isEmpty
+    }
     
     mutating func enqueue(_ item: T) {
         list.append(item)
@@ -38,7 +41,4 @@ struct CalculatorItemQueue<T>: CalculateItem {
         return list.count
     }
     
-    func isEmpty() -> Bool {
-        return list.isEmpty
-    }
 }
