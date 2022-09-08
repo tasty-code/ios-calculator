@@ -7,8 +7,8 @@
 
 import Foundation
 
-class CalculatorItemQueue<Number>: CalculateItem {
-    private var queue: [Number] = []
+struct CalculatorItemQueue<T>: CalculateItem {
+    private var queue: [T] = []
     private var idx: Int = 0
     
     public var count: Int {
@@ -16,29 +16,29 @@ class CalculatorItemQueue<Number>: CalculateItem {
     }
     
     public var isEmpty: Bool {
-        return !(queue.count > idx)
+        return queue.isEmpty
     }
     
-    public func getQueue() -> [Number] {
+    public func getQueue() -> [T] {
         return queue
     }
     
-    public func enqueue(_ element: Number) {
+    public mutating func enqueue(_ element: T) {
         queue.append(element)
     }
     
-    public func dequeue() -> Number {
+    public mutating func dequeue() -> T {
         defer {
             idx += 1
         }
         return queue[idx]
     }
     
-    public func clearAll() {
+    public mutating func clearAll() {
         queue.removeAll()
     }
     
-    public func removeLast() {
+    public mutating func removeLast() {
         queue.removeLast()
     }
 }
