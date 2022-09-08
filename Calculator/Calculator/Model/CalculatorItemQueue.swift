@@ -12,7 +12,7 @@ protocol CalculateItem {
 }
 
 class CalculatorItemQueue<T>: CalculateItem {
-    private var data: [T?] = []
+    public var data: [T?] = []
     
     public var count: Int {
         return data.count
