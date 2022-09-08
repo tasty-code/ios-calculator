@@ -24,7 +24,10 @@ struct CalculatorItemQueue<T>: CalculateItem {
         list.append(item)
     }
     
-    mutating func dequeue() -> T {
+    mutating func dequeue() throws -> T {
+        guard list.isEmpty else {
+            throw CalculatorError.noValue
+        }
         return list.removeFirst()
     }
     
