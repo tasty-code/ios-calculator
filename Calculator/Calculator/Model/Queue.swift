@@ -20,7 +20,9 @@ struct Queue<Element> {
     }
     
     mutating func dequeue() {
-        list.removeLast()
+        if !list.isEmpty {
+            list.removeFirst()
+        }
     }
     
     func isEmpty() -> Bool {
