@@ -21,23 +21,22 @@ struct CalculatorItemQueue<T>: CalculateItem {
         list.append(item)
     }
     
-    mutating func dequeue() throws -> T {
+    mutating func dequeue() -> T? {
         guard list.isEmpty else {
             return list.removeFirst()
         }
-        throw CalculatorError.noValue
+        return nil
     }
     
     mutating func clear() {
         list.removeAll()
     }
     
-    func peek() throws -> T {
-        if let item = list.first {
-            return item
-        } else {
-            throw CalculatorError.noValue
+    func peek() -> T? {
+        guard let item = list.first else {
+            return nil
         }
+        return item
     }
     
 }
