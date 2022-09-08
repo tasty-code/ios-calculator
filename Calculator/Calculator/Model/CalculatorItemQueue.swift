@@ -15,7 +15,7 @@ struct CalculatorItemQueue<T>: CalculateItem {
     }
     
     mutating func dequeue() -> T? {
-        if itemStorage.isEmpty {
+        if isEmpty() {
             return nil
         }
         
@@ -23,7 +23,9 @@ struct CalculatorItemQueue<T>: CalculateItem {
     }
     
     mutating func removeLast() {
-        itemStorage.removeLast()
+        if isEmpty() {
+            itemStorage.removeLast()
+        }
     }
     
     func isEmpty() -> Bool {
