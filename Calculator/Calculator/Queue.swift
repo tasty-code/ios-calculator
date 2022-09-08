@@ -7,7 +7,7 @@ struct Queue<Element> {
         return list.count
     }
     
-    func getListItem() -> [Element] {
+    var getListItem: [Element] {
         return list
     }
         
