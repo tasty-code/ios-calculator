@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol CalculateItem {
-    
-}
 
 struct CalculatorItemQueue<T>: CalculateItem {
     var list: [T] = []
