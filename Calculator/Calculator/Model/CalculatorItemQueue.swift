@@ -7,19 +7,25 @@
 
 import Foundation
 
-struct CalculatorItemQueue: CalculateItem {
-    private var itemStorage: [Any] = []
+struct CalculatorItemQueue<T>: CalculateItem {
+    private var itemStorage: [T] = []
     
-    mutating func enqueue(_ item: Any) {
+    mutating func enqueue(_ item: T) {
         itemStorage.append(item)
     }
     
-    mutating func dequeue() -> Any {
-        itemStorage.removeFirst()
+    mutating func dequeue() -> T? {
+        if isEmpty() {
+            return nil
+        }
+        
+        return itemStorage.removeFirst()
     }
     
     mutating func removeLast() {
-        itemStorage.removeLast()
+        if isEmpty() {
+            itemStorage.removeLast()
+        }
     }
     
     func isEmpty() -> Bool {
