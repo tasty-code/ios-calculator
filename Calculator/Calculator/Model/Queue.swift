@@ -10,6 +10,10 @@ struct Queue<Element> {
     var getListItem: [Element] {
         return list
     }
+    
+    var isEmpty: Bool {
+        return list.isEmpty
+    }
         
     mutating func removeAll() {
         list.removeAll()
@@ -23,9 +27,5 @@ struct Queue<Element> {
         if !list.isEmpty {
             list.removeFirst()
         }
-    }
-    
-    func isEmpty() -> Bool {
-        return list.isEmpty
     }
 }

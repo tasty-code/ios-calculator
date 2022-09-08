@@ -43,7 +43,7 @@ class CalculatorItemQueueTests: XCTestCase {
     func test_Queue의_list요소가_비어있는지() {
         sut.enqueue(3)
         
-        let result = sut.isEmpty()
+        let result = sut.isEmpty
         
         XCTAssertEqual(result, false)
     }
