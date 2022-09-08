@@ -17,7 +17,7 @@ class CalculatorItemQueueTests: XCTestCase {
     func test_getListItem() {
         sut.enqueue(3)
         
-        let result = sut.getListItem()
+        let result = sut.getListItem
         
         XCTAssertEqual(result, [3])
     }
@@ -35,7 +35,7 @@ class CalculatorItemQueueTests: XCTestCase {
         
         sut.enqueue(input)
         
-        let result = sut.getListItem()
+        let result = sut.getListItem
         
         XCTAssertEqual(result, [12.5])
     }
@@ -46,7 +46,7 @@ class CalculatorItemQueueTests: XCTestCase {
         
         sut.removeAll()
         
-        let result = sut.getListItem()
+        let result = sut.getListItem
         
         XCTAssertEqual(result, [])
     }
@@ -57,7 +57,7 @@ class CalculatorItemQueueTests: XCTestCase {
         
         sut.dequeue()
         
-        let result = sut.getListItem()
+        let result = sut.getListItem
         
         XCTAssertEqual(result, [12.5])
     }
