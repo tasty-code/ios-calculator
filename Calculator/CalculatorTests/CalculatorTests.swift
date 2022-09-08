@@ -56,14 +56,14 @@ class CalculatorTests: XCTestCase {
         XCTAssertEqual(queue.list, [1, 2])
     }
     
-    func testQueue에많은원소가추가되어도peek가잘된다() {
+    func testQueue에많은원소가추가되어도peek가된다() {
         queue.enqueue(1)
         queue.enqueue(2)
         
         XCTAssertEqual(queue.peek(), 1)
     }
     
-    func testQueue에많은원소가추가되어도dequque가잘된다() {
+    func testQueue에많은원소가추가되어도dequque가된다() {
         queue.enqueue(1)
         queue.enqueue(2)
         
