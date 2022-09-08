@@ -37,6 +37,7 @@ class CalculatorItemQueue<T>: CalculateItem {
     public func removeLast() {
         data.removeLast()
     }
+    
 }
 
 
