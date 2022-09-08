@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Calculator
 
 class CalculatorTests: XCTestCase {
 
@@ -16,7 +17,29 @@ class CalculatorTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testCalculatorItemQueue() {
+        var queue = CalculatorItemQueue<Int>()
+        
+        queue.enqueue(1)
+        
+        XCTAssertFalse(queue.isEmpty)
+        
+        XCTAssertEqual(try? queue.peek(), 1)
+        
+        XCTAssertEqual(queue.count, 1)
+        
+        XCTAssertEqual(try? queue.dequeue(), 1)
+        
+        XCTAssertEqual(queue.count, 0)
 
+        XCTAssertNil(try? queue.peek())
+
+        XCTAssertNil(try? queue.dequeue())
+
+        XCTAssertTrue(queue.isEmpty)
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
