@@ -9,6 +9,7 @@ import XCTest
 @testable import Calculator
 
 class CalculatorTests: XCTestCase {
+    var queue = CalculatorItemQueue<Int>()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -18,38 +19,63 @@ class CalculatorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testCalculatorItemQueue() {
-        var queue = CalculatorItemQueue<Int>()
+    func testEnqueue() {
+        queue.enqueue(1)
         
+        XCTAssertEqual(queue.list, [1])
+    }
+    
+    func testEnqueue후queue가isEmpty하지않는다() {
         queue.enqueue(1)
         
         XCTAssertFalse(queue.isEmpty)
-        
-        XCTAssertEqual(try? queue.peek(), 1)
+    }
+    
+    func testQuque가isEmpty할때peak가nil이다() {
+        XCTAssertNil(queue.peek())
+    }
+    
+    func testQuque가isEmpty할때dequeue가nil이다() {
+        XCTAssertNil(queue.dequeue())
+    }
+    
+    func testQueue가enqueue되면count가늘어난다() {
+        queue.enqueue(1)
         
         XCTAssertEqual(queue.count, 1)
-        
-        XCTAssertEqual(try? queue.dequeue(), 1)
-        
-        XCTAssertEqual(queue.count, 0)
-
-        XCTAssertNil(try? queue.peek())
-
-        XCTAssertNil(try? queue.dequeue())
-
+    }
+    
+    func testQueue가비어있을때isEmpty한다() {
         XCTAssertTrue(queue.isEmpty)
     }
     
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testQueue에많은원소가enqueue된다() {
+        queue.enqueue(1)
+        queue.enqueue(2)
+        
+        XCTAssertEqual(queue.list, [1, 2])
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testQueue에많은원소가추가되어도peek가잘된다() {
+        queue.enqueue(1)
+        queue.enqueue(2)
+        
+        XCTAssertEqual(queue.peek(), 1)
+    }
+    
+    func testQueue에많은원소가추가되어도dequque가잘된다() {
+        queue.enqueue(1)
+        queue.enqueue(2)
+        
+        XCTAssertEqual(queue.dequeue(), 1)
+    }
+    
+    func testQueue가clear된다() {
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.clear()
+        
+        XCTAssertTrue(queue.isEmpty)
     }
 
 }
