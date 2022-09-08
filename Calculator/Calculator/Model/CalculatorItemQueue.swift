@@ -16,6 +16,9 @@ struct CalculatorItemQueue<T>: CalculateItem {
     var isEmpty: Bool {
         return list.isEmpty
     }
+    var count: Int {
+        return list.count
+    }
     
     mutating func enqueue(_ item: T) {
         list.append(item)
@@ -35,10 +38,6 @@ struct CalculatorItemQueue<T>: CalculateItem {
         } else {
             throw CalculatorError.noValue
         }
-    }
-    
-    func count() -> Int {
-        return list.count
     }
     
 }
