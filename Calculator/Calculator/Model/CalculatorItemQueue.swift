@@ -32,7 +32,7 @@ struct CalculatorItemQueue<T>: CalculateItem {
         list.removeAll()
     }
     
-    func peak() throws -> T {
+    func peek() throws -> T {
         if let item = list.first {
             return item
         } else {
