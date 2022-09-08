@@ -22,27 +22,38 @@ class CalculatorTests: XCTestCase {
         sut = nil
     }
     
-    func test() {
-        sut.enqueue("test")
-        XCTAssertEqual(sut.dequeue(), "test")
-    }
-    
-    func enqueue_and_dequeue_test_성공() {
-        sut.enqueue("test")
-        XCTAssertEqual(sut.dequeue(), "test")
+    func test_enqueue_and_dequeue_성공() {
+        let input = "test"
+        
+        sut.enqueue(input)
+        
+        XCTAssertEqual(String(sut.dequeue()), "test")
     }
 
-    func enqueue_and_dequeue_test_실패() {
-        sut.enqueue("no")
+    func test_enqueue_and_dequeue_실패() {
+        let input = "no"
+        
+        sut.enqueue(input)
+        
         XCTAssertEqual(sut.dequeue(), "yes")
     }
 
-    func queue_isEmpty_method_test_성공() {
-        XCTAssertEqual(sut.isEmpty(), true)
+    func test_queue_isEmpty_method_성공() {
+        while !sut.isEmpty() {
+            _ = sut.dequeue()
+        }
+        
+        let result = sut.isEmpty()
+        
+        XCTAssertTrue(result)
     }
 
-    func queue_isEmpty_method_test_실패() {
-        XCTAssertEqual(sut.isEmpty(), false)
+    func test_queue_isEmpty_method_실패() {
+        sut.enqueue("test")
+        
+        let result = sut.isEmpty()
+        
+        XCTAssertFalse(result)
     }
     
 }
