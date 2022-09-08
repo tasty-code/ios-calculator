@@ -18,12 +18,12 @@ struct CalculatorItemQueue: CalculateItem {
         itemStorage.removeFirst()
     }
     
-    func isEmpty() -> Bool {
-        itemStorage.isEmpty
+    mutating func removeLast() {
+        itemStorage.removeLast()
     }
     
-    func removeLast() {
-        itemStorage.removeLast()
+    func isEmpty() -> Bool {
+        itemStorage.isEmpty
     }
     
     func count() -> Int {
