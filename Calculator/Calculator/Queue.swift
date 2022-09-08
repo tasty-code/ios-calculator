@@ -1,6 +1,6 @@
 import Foundation
 
-class Queue<Element> {
+struct Queue<Element> {
     private var list: [Element] = []
     
     var count: Int {
@@ -11,15 +11,15 @@ class Queue<Element> {
         return list
     }
         
-    func removeAll() {
+    mutating func removeAll() {
         list.removeAll()
     }
     
-    func enqueue(_ item: Element) {
+    mutating func enqueue(_ item: Element) {
         list.append(item)
     }
     
-    func dequeue() {
+    mutating func dequeue() {
         list.removeLast()
     }
     
