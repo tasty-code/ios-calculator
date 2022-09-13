@@ -19,18 +19,14 @@ class CalculatorItemQueue<Element>: CalculatorItem {
         list.removeAll()
     }
     
-    func enqueue(_ item: Element) {
-        list.append(item)
+    func enqueue(_ items: [Element]) {
+        list += items
     }
     
     func dequeue() {
         if !list.isEmpty {
             list.removeFirst()
         }
-    }
-    
-    public func getCalculatorItems() -> [Element] {
-        return list
     }
 }
 
