@@ -18,14 +18,28 @@ enum Operator: Character, CalculateItem, CaseIterable {
         case .add:
             return add(lhs: lhs, rhs: rhs)
         case .minus:
-            return lhs - rhs
+            return minus(lhs: lhs, rhs: rhs)
         case .divide:
-            return lhs / rhs
+            return divide(lhs: lhs, rhs: rhs)
         case .multiply:
-            return lhs * rhs
+            return multiply(lhs: lhs, rhs: rhs)
         }
     }
+    
     func add(lhs: Double, rhs: Double) -> Double {
         return lhs + rhs
     }
+    
+    func minus(lhs: Double, rhs: Double) -> Double {
+        return lhs - rhs
+    }
+    
+    func divide(lhs: Double, rhs: Double) -> Double {
+        return lhs / rhs
+    }
+    
+    func multiply(lhs: Double, rhs: Double) -> Double {
+        return lhs * rhs
+    }
+    
 }
