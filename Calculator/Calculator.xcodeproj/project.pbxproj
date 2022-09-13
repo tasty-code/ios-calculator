@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3D4B7728D04110008EFBD5 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3D4B7628D04110008EFBD5 /* Operator.swift */; };
 		2BC9680028C744550012A99F /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC967FF28C744550012A99F /* CalculatorItemQueue.swift */; };
 		2BC9680228C744B50012A99F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9680128C744B50012A99F /* Queue.swift */; };
 		2BE675A128C85D7500BD4187 /* CalculatorItemQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE675A028C85D7500BD4187 /* CalculatorItemQueueTests.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B3D4B7628D04110008EFBD5 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		2BC967FF28C744550012A99F /* CalculatorItemQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorItemQueue.swift; sourceTree = "<group>"; };
 		2BC9680128C744B50012A99F /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		2BE6759E28C85D7500BD4187 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 			children = (
 				2BC967FF28C744550012A99F /* CalculatorItemQueue.swift */,
 				2BC9680128C744B50012A99F /* Queue.swift */,
+				2B3D4B7628D04110008EFBD5 /* Operator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BC9680228C744B50012A99F /* Queue.swift in Sources */,
+				2B3D4B7728D04110008EFBD5 /* Operator.swift in Sources */,
 				C713D9462570E5EB001C3AFC /* ViewController.swift in Sources */,
 				C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */,
 				2BC9680028C744550012A99F /* CalculatorItemQueue.swift in Sources */,
