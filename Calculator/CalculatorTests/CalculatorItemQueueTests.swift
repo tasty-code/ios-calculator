@@ -44,29 +44,19 @@ class CalculatorItemQueueTests: XCTestCase {
         XCTAssertEqual(result, [3])
     }
     
-    func test_Queue의_list요소가_비어있는지() {
+    func test_빈큐에_3을_인큐하고_큐가_비어있는지_확인했을_때_false를_반환한다() {
         sut.enqueue(3)
         
         let result = sut.isEmpty
         
         XCTAssertEqual(result, false)
     }
-
-    func test_Queue의_Enqueue가_작동하는지() {
-        let input = 12.5
-        
-        sut.enqueue(input)
-        
-        let result = sut.getListItem
-        
-        XCTAssertEqual(result, [12.5])
-    }
     
-    func test_Queue의_List요소가_모두_제거되는지() {
-        sut.enqueue(12.5)
-        sut.enqueue(17.5)
+    func test_빈큐에_3과5를_인큐하고_큐를_클리어했을_때_큐가_비어있다() {
+        sut.enqueue(3)
+        sut.enqueue(5)
         
-        sut.removeAll()
+        sut.clear()
         
         let result = sut.getListItem
         
