@@ -22,26 +22,30 @@ class CalculatorTest: XCTestCase {
     }
 
     // Queue에 수가 잘 들어가는지 확인하는 함수 (아직은 주석을 쓰다가 정확히 이해하면 지울것)
-    func testQueue에_숫자1을enqueue하고_isEmpty로확인해보면_결과는True() {
+    func testQueue에_숫자1을인큐하고_isEmpty를호출했을때_배열은비어있지않다() {
+        //given
         let input = 1
-        
+       
+        //when
         sut.enqueue(input)
-        
         let empty = sut.isEmpty
         
+        //then
         XCTAssertFalse(empty)
         
     }
     
     // Queue에 들어간 첫번째수가 잘 지워지는지 확인하는 함수
-    func testQueue에_숫자1을enqueue하고_dequeue한값을상수에넣어_숫자1과비교해보면_결과는True() {
+    func testQueue에_숫자1을인큐하고_디큐했을때_디큐한값은1과같다() {
+        //given
         let input = 1
-
-        sut.enqueue(input)
-        
-        let expectation = sut.dequeue()
         let result = 1
-
+        
+        //when
+        sut.enqueue(input)
+        let expectation = sut.dequeue()
+        
+        //then
         XCTAssertEqual(result, expectation as! Int)
         
         }
