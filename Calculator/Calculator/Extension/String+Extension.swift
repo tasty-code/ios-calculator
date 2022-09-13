@@ -8,7 +8,6 @@
 import Foundation
 
 extension String {
-    func split(with: Character) -> [String] {
-        
+    func split(with target: Character) -> [String] {
     }
 }
