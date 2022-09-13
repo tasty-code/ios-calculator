@@ -21,7 +21,8 @@ class CalculatorTest: XCTestCase {
         sut = nil
     }
 
-    func testExample_수가_잘_들어가는지_확인하는_함수() {
+    // Queue에 수가 잘 들어가는지 확인하는 함수 (아직은 주석을 쓰다가 정확히 이해하면 지울것)
+    func testQueue에_숫자1을enqueue하고_isEmpty로확인해보면_결과는True() {
         let input = 1
         
         sut.enqueue(input)
@@ -32,7 +33,8 @@ class CalculatorTest: XCTestCase {
         
     }
     
-    func testqueue에서첫번째값이_반환되는지확인하는함수() {
+    // Queue에 들어간 첫번째수가 잘 지워지는지 확인하는 함수
+    func testQueue에_숫자1을enqueue하고_dequeue한값을상수에넣어_숫자1과비교해보면_결과는True() {
         let input = 1
 
         sut.enqueue(input)
