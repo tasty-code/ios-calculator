@@ -7,13 +7,22 @@
 
 import Foundation
 
-enum Operator: String {
+enum Operator: Character, CalculateItem, CaseIterable {
     case add = "+"
     case minus = "-"
-    case multiple = "*"
-    case divison = "/"
+    case divide = "/"
+    case multiply = "*"
     
-    var value: String {
-        return self.rawValue
+    func calculate(lhs: Double, rhs: Double) -> Double {
+        switch self {
+        case .add:
+            return lhs + rhs
+        case .minus:
+            return lhs - rhs
+        case .divide:
+            return lhs / rhs
+        case .multiply:
+            return lhs * rhs
+        }
     }
 }
