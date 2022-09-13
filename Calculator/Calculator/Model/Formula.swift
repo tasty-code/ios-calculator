@@ -1,10 +1,3 @@
-//
-//  Formula.swift
-//  Calculator
-//
-//  Created by 김유진 on 2022/09/13.
-//
-
 import Foundation
 
 struct Formula {
@@ -12,6 +5,11 @@ struct Formula {
     var operators: CalculatorItemQueue<Character>
     
     func result() -> Double {
-        return Double()
+        guard let lhs = operands.dequeue(), let rhs = operands.dequeue(), let _operator = operators.dequeue(),
+              let result = Operator(rawValue: _operator)?.calculate(lhs: lhs, rhs: rhs) else {
+            return 0
+        }
+        
+        return result
     }
 }

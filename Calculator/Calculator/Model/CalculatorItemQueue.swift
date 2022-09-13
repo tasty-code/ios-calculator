@@ -23,10 +23,12 @@ class CalculatorItemQueue<Element>: CalculatorItem {
         list += items
     }
     
-    func dequeue() {
+    func dequeue() -> Element? {
         if !list.isEmpty {
-            list.removeFirst()
+            return list.removeFirst()
         }
+        
+        return nil
     }
 }
 
