@@ -15,7 +15,7 @@ struct Queue<Element> {
         return list.isEmpty
     }
         
-    mutating func removeAll() {
+    mutating func clear() {
         list.removeAll()
     }
     
