@@ -12,3 +12,14 @@ class CalculatorItemQueue: CalculatorItem {
 protocol CalculatorItem {
     
 }
+
+
+extension Double: CalculatorItem {
+    
+}
+
+extension String {
+    func split(with target: Character) -> [String] {
+        return self.split(separator: target).map{ String($0) }
+    }
+}
