@@ -14,25 +14,29 @@ class CalculatorItemQueueTests: XCTestCase {
         sut = nil
     }
     
-    func test_Queue의_Dequeue가_작동하는지() {
+    func test_빈큐에_3을_인큐하고_디큐했을_때_큐는_비어있다() {
         sut.enqueue(3)
         
         sut.dequeue()
         
         let result = sut.getListItem
         
-        XCTAssertEqual(result, [])
+        let emptyList: [Double] = []
+        
+        XCTAssertEqual(result, emptyList)
     }
     
-    func test_Queue가_비었을_때_Dequeue가_작동하는지() {
+    func test_빈큐에_디큐했을_때_오류가_발생하지_않는다() {
         sut.dequeue()
         
         let result = sut.getListItem
         
-        XCTAssertEqual(result, [])
+        let emptyList: [Double] = []
+        
+        XCTAssertEqual(result, emptyList)
     }
     
-    func test_Queue의_list값이_가져와지는지() {
+    func test_빈큐에_3을_인큐하고_큐리스트의_아이템을_가져온다() {
         sut.enqueue(3)
         
         let result = sut.getListItem
