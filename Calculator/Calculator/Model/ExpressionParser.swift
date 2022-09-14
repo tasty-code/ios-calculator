@@ -9,10 +9,9 @@ import Foundation
 
 enum ExpressionParser {
     func parse(from input: String) -> Formula {
-        return Formula
     }
     
-    func componentsByOperator(from input: Character) -> [String] {
+    private func componentsByOperator(from input: Character) -> [String] {
         return [String]
     }
 }

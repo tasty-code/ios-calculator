@@ -26,19 +26,19 @@ enum Operator: Character, CalculateItem, CaseIterable {
         }
     }
     
-    func add(lhs: Double, rhs: Double) -> Double {
+    private func add(lhs: Double, rhs: Double) -> Double {
         return lhs + rhs
     }
     
-    func minus(lhs: Double, rhs: Double) -> Double {
+    private func minus(lhs: Double, rhs: Double) -> Double {
         return lhs - rhs
     }
     
-    func divide(lhs: Double, rhs: Double) -> Double {
+    private func divide(lhs: Double, rhs: Double) -> Double {
         return lhs / rhs
     }
     
-    func multiply(lhs: Double, rhs: Double) -> Double {
+    private func multiply(lhs: Double, rhs: Double) -> Double {
         return lhs * rhs
     }
     
