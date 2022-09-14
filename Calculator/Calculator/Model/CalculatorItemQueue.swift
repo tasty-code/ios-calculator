@@ -19,8 +19,8 @@ struct CalculatorItemQueue<Element>: CalculatorItem {
         list.removeAll()
     }
     
-    mutating func enqueue(_ items: [Element]) {
-        list += items
+    mutating func enqueue(_ items: Element) {
+        list.append(items)
     }
     
     mutating func dequeue() -> Element? {
