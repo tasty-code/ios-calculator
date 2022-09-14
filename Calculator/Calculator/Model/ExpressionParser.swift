@@ -8,7 +8,7 @@
 import Foundation
 
 enum ExpressionParser {
-    func parse(from input: String) -> Formula {
+    static func parse(from input: String) -> Formula {
         let splitedInput = input.split(with: " ")
         
         var operands = CalculatorItemQueue<Double>()
@@ -21,7 +21,7 @@ enum ExpressionParser {
     }
     
     // 어디에서 쓰이는 함수인지 잘 모르겠음
-    private func componentsByOperators(from input: String) -> [String] {
+    static private func componentsByOperators(from input: String) -> [String] {
         return [String]()
     }
 }
