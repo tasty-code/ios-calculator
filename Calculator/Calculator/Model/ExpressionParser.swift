@@ -21,7 +21,6 @@ enum ExpressionParser {
         return Formula(operands: operandsQueue, operators: operatorsQueue)
     }
     
-    // 어디에서 쓰이는 함수인지 잘 모르겠음
     static private func componentsByOperators(from input: String) -> [String] {
         let splitedInput = input.split(with: " ")
         
