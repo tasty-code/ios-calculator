@@ -13,5 +13,12 @@ enum ExpressionParser {
     }
     
     private func componentsByOperator(from input: String) -> [String] {
+        var operators: [String] = []
+        for value in input {
+            if !value.isNumber {
+                operators.append(String(value))
+            }
+        }
+        return operators
     }
 }
