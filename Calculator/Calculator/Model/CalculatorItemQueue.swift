@@ -1,6 +1,6 @@
 import Foundation
 
-class CalculatorItemQueue<Element>: CalculatorItem {
+struct CalculatorItemQueue<Element>: CalculatorItem {
     private var list: [Element] = []
     
     var count: Int {
@@ -15,34 +15,19 @@ class CalculatorItemQueue<Element>: CalculatorItem {
         return list.isEmpty
     }
         
-    func clear() {
+    mutating func clear() {
         list.removeAll()
     }
     
-    func enqueue(_ items: [Element]) {
-        list += items
+    mutating func enqueue(_ items: Element) {
+        list.append(items)
     }
     
-    func dequeue() -> Element? {
+    mutating func dequeue() -> Element? {
         if !list.isEmpty {
             return list.removeFirst()
         }
         
         return nil
-    }
-}
-
-protocol CalculatorItem {
-    
-}
-
-
-extension Double: CalculatorItem {
-    
-}
-
-extension String {
-    func split(with target: Character) -> [String] {
-        return self.split(separator: target).map{ String($0) }
     }
 }

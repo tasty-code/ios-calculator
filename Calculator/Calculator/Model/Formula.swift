@@ -2,12 +2,20 @@ import Foundation
 
 struct Formula {
     var operands: CalculatorItemQueue<Double>
-    var operators: CalculatorItemQueue<Character>
+    var operators: CalculatorItemQueue<Operator>
     
-    func result() -> Double {
-        guard let lhs = operands.dequeue(), let rhs = operands.dequeue(), let _operator = operators.dequeue(),
-              let result = Operator(rawValue: _operator)?.calculate(lhs: lhs, rhs: rhs) else {
-            return 0
+    mutating func result() throws -> Double {
+        guard var result = operands.dequeue() else {
+            throw CalculateError.emptyQueue
+        }
+
+        while operands.isEmpty == false || operators.isEmpty == false {
+            if let rhs = operands.dequeue(), let `operator` = operators.dequeue()?.rawValue,
+               let calculatedValue = try Operator(rawValue: `operator`)?.calculate(lhs: result, rhs: rhs)  {
+                result = calculatedValue
+            } else {
+                throw CalculateError.impossibleCalculate
+            }
         }
         
         return result

@@ -2,11 +2,11 @@ import XCTest
 @testable import Calculator
 
 class CalculatorItemQueueTests: XCTestCase {
-    var sut: Queue<Double>!
+    var sut: CalculatorItemQueue<Double>!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = Queue<Double>()
+        sut = CalculatorItemQueue<Double>()
     }
 
     override func tearDownWithError() throws {
@@ -61,5 +61,14 @@ class CalculatorItemQueueTests: XCTestCase {
         let result = sut.getListItem
         
         XCTAssertEqual(result, [])
+    }
+    
+    func test_빈큐에_3과5를_인큐하고_큐의_카운트를_불러왔을_때_2를_반환한다() {
+        sut.enqueue(3)
+        sut.enqueue(3)
+        
+        let result = sut.count
+        
+        XCTAssertEqual(result, 2)
     }
 }
