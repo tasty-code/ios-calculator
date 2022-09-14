@@ -11,10 +11,10 @@ enum ExpressionParser {
     func parse(from input: String) -> Formula {
         let splitedInput = input.split(with: " ")
         
-        let operands = CalculatorItemQueue<Double>()
+        var operands = CalculatorItemQueue<Double>()
         operands.enqueue([splitedInput[0], splitedInput[2]].map{ Double($0) ?? 0 })
         
-        let operators = CalculatorItemQueue<Character>()
+        var operators = CalculatorItemQueue<Character>()
         operators.enqueue([splitedInput[1]].map{ Character($0) })
         
         return Formula(operands: operands, operators: operators)
