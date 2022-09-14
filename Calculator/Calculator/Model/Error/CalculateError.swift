@@ -1,6 +1,6 @@
 import Foundation
 
-enum FormulaError: Error {
+enum CalculateError: Error {
     case emptyQueue
     case impossibleCalculate
 }

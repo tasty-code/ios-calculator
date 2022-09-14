@@ -6,18 +6,18 @@ struct Formula {
     
     mutating func result() throws -> Double {
         guard var result = operands.dequeue() else {
-            throw FormulaError.emptyQueue
+            throw CalculateError.emptyQueue
         }
 
         while operands.isEmpty == false || operators.isEmpty == false {
             if let rhs = operands.dequeue(), let `operator` = operators.dequeue()?.rawValue,
-               let calculatedValue = Operator(rawValue: `operator`)?.calculate(lhs: result, rhs: rhs)  {
-                print(rhs, `operator`)
+               let calculatedValue = try Operator(rawValue: `operator`)?.calculate(lhs: result, rhs: rhs)  {
                 result = calculatedValue
             } else {
-                throw FormulaError.impossibleCalculate
+                throw CalculateError.impossibleCalculate
             }
         }
+        
         return result
     }
 }
