@@ -27,7 +27,7 @@ struct CalculatorItemQueue<T>: CalculateItem {
         queue.append(element)
     }
     
-    public mutating func dequeue() -> T {
+    public mutating func dequeue() -> T? {
         defer {
             idx += 1
         }
