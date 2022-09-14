@@ -1,10 +1,3 @@
-//
-//  ExpressionParser.swift
-//  Calculator
-//
-//  Created by 김유진 on 2022/09/13.
-//
-
 import Foundation
 
 enum ExpressionParser {
@@ -12,10 +5,13 @@ enum ExpressionParser {
         let splitedInput = input.split(with: " ")
         
         var operands = CalculatorItemQueue<Double>()
-        operands.enqueue([splitedInput[0], splitedInput[2]].map{ Double($0) ?? 0 })
+        var operators = CalculatorItemQueue<Operator>()
         
-        var operators = CalculatorItemQueue<Character>()
-        operators.enqueue([splitedInput[1]].map{ Character($0) })
+        if let lhs = Double(splitedInput[0]), let rhs = Double(splitedInput[2]),
+              let `operator` = Operator(rawValue: Character(splitedInput[1])) {
+            operands.enqueue([lhs, rhs])
+            operators.enqueue([`operator`])
+        }
         
         return Formula(operands: operands, operators: operators)
     }
