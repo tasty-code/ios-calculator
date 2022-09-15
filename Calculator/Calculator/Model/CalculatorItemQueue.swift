@@ -1,14 +1,33 @@
 import Foundation
 
-class CalculatorItemQueue: CalculatorItem {
-    public var numbers: Queue<Double> = Queue<Double>()
-    public var operators: Queue<Character> = Queue<Character>()
+struct CalculatorItemQueue<Element>: CalculatorItem {
+    private var list: [Element] = []
     
-    public func getCalculatorItems() -> (Queue<Double>, Queue<Character>) {
-        return (numbers, operators)
+    var count: Int {
+        return list.count
     }
-}
-
-protocol CalculatorItem {
     
+    var getListItem: [Element] {
+        return list
+    }
+    
+    var isEmpty: Bool {
+        return list.isEmpty
+    }
+        
+    mutating func clear() {
+        list.removeAll()
+    }
+    
+    mutating func enqueue(_ items: Element) {
+        list.append(items)
+    }
+    
+    mutating func dequeue() -> Element? {
+        if !list.isEmpty {
+            return list.removeFirst()
+        }
+        
+        return nil
+    }
 }
