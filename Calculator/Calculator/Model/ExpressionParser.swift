@@ -18,7 +18,6 @@ enum ExpressionParser {
             if let doubleValue = Double(value) {
                 operands.enqueue(doubleValue)
             } else {
-                print(CalculatorError.typeConversionFailure.errorDescription)
                 operators.enqueue(Character(value))
             }
         }

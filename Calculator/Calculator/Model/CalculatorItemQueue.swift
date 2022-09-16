@@ -9,7 +9,6 @@ import Foundation
 
 struct CalculatorItemQueue<T> {
     private var queue: [T] = []
-    private var idx: Int = 0
     
     public var count: Int {
         return queue.count
@@ -28,10 +27,7 @@ struct CalculatorItemQueue<T> {
     }
     
     public mutating func dequeue() -> T? {
-        defer {
-            idx += 1
-        }
-        return queue[idx]
+        queue.removeFirst()
     }
     
     public mutating func clearAll() {
