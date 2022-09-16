@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalculatorItemQueue<T>: CalculateItem {
+struct CalculatorItemQueue<T> {
     private var queue: [T] = []
     private var idx: Int = 0
     
