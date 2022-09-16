@@ -6,49 +6,28 @@
 //
 
 import Foundation
+import UIKit
 
 enum ExpressionParser {
     func parse(from input: String) throws -> Formula {
         let formula = componentsByOperator(from: input)
         var operands = CalculatorItemQueue<Double>()
-        var operators = CalculatorItemQueue<Character>()
+        var operators = CalculatorItemQueue<Operator.RawValue>()
         
-        for i in 0..<formula.count {
-            if i == 0 || i % 2 == 0 {
-                guard let doubleValue = Double(formula[i]) else {
-                    throw TypeConversionError.typeConversionFailure
-                }
+        for value in formula {
+            if let doubleValue = Double(value) {
                 operands.enqueue(doubleValue)
             } else {
-                operators.enqueue(Character(formula[i]))
+                operators.enqueue(Character(value))
             }
         }
+        
         return Formula(operands: operands, operators: operators)
     }
     
     private func componentsByOperator(from input: String) -> [String] {
-            let operands: [String] = input.components(separatedBy: ["+", "-", "/", "*"])
-            var operators: [String] = []
-            var result: [String] = []
-            var j = 0
-            var h = 0
+        let splitedInput = input.split(with: " ")
         
-            for val in input {
-                if !val.isNumber {
-                    operators.append(String(val))
-                }
-            }
-
-            for i in 0..<operands.count+operators.count {
-                if i == 0 || i % 2 == 0 {
-                    result.append(operands[h])
-                    h += 1
-                } else {
-                    result.append(operators[j])
-                    j += 1
-                }
-            }
-        
-            return result
+        return splitedInput
     }
 }

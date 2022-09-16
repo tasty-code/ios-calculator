@@ -12,3 +12,4 @@ extension String {
         return self.split(separator: target).map{ String($0) }
     }
 }
+
