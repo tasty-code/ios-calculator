@@ -7,6 +7,13 @@
 
 import Foundation
 
-enum TypeConversionError: Error {
+enum CalculatorError: Error, LocalizedError {
     case typeConversionFailure
+     
+    var errorDescription: String {
+        switch self {
+        case .typeConversionFailure:
+            return "형 변환 실패"
+        }
+    }
 }

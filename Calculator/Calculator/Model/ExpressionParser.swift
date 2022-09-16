@@ -17,8 +17,10 @@ enum ExpressionParser {
         for value in formula {
             if let doubleValue = Double(value) {
                 operands.enqueue(doubleValue)
+            } else {
+                print(CalculatorError.typeConversionFailure.errorDescription)
+                operators.enqueue(Character(value))
             }
-            operators.enqueue(Character(value))
         }
         
         return Formula(operands: operands, operators: operators)
