@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 enum ExpressionParser {
     func parse(from input: String) throws -> Formula {
         let formula = componentsByOperator(from: input)
         var operands = CalculatorItemQueue<Double>()
-        var operators = CalculatorItemQueue<Character>()
+        var operators = CalculatorItemQueue<Operator.RawValue>()
         
         for i in 0..<formula.count {
             if i == 0 || i % 2 == 0 {
