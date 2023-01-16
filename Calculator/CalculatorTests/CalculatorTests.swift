@@ -6,14 +6,17 @@
 //
 
 import XCTest
+@testable import Calculator
 
 final class CalculatorTests: XCTestCase {
 
+    var sut: Node!
     override func setUpWithError() throws {
-        
+        try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
-        
+        try super.tearDownWithError()
+        sut = nil
     }
 }
