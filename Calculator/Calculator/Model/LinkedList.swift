@@ -11,8 +11,12 @@ class LinkedList<Value> {
     var head: Node<Value>? = nil
     var tail: Node<Value>? = nil
     
-    func removeFirst() -> Node<Value>? {
+    func removeFirst() -> Value? {
         return nil
+    }
+    
+    func append(_ value: Value) {
+        
     }
 }
 
