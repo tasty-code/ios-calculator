@@ -1,0 +1,36 @@
+//
+//  CalculatorItemQueue.swift
+//  Calculator
+//
+//  Created by devxsby on 2023/01/16.
+//
+
+import Foundation
+
+protocol CalculateItem { }
+
+struct CalculatorItemQueue<T>: CalculateItem {
+    
+    private var data = [T]()
+    public init() {}
+    
+    public var count: Int {
+        return data.count
+    }
+    
+    public var isEmpty: Bool {
+        return data.isEmpty
+    }
+    
+    public mutating func enqueue(_ element: T) {
+        data.append(element)
+    }
+    
+    public mutating func dequeue() -> T? {
+        return data.removeFirst()
+    }
+    
+    public mutating func clear() {
+        data.removeAll()
+    }
+}
