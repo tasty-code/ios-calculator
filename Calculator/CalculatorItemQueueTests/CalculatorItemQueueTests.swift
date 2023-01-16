@@ -50,4 +50,9 @@ final class CalculatorItemQueueTests: XCTestCase {
     func test_빈_Queue일때_isEmpty가_true를_반환하는지() {
         XCTAssertTrue(sut.isEmpty)
     }
+    
+    func test_isEmpty일때_dequeue시_nil을_반환하는지() {
+        XCTAssertEqual(sut.dequeue(), nil)
+    }
+    
 }
