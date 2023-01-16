@@ -37,7 +37,8 @@ final class LinkedListTest: XCTestCase {
         sut.append(input)
         guard let headValue = sut.head?.value as? String,
               let tailValue = sut.tail?.value as? String else {
-            return XCTFail()
+            XCTFail()
+            return
         }
         
         // then
@@ -54,11 +55,30 @@ final class LinkedListTest: XCTestCase {
             sut.append($0)
         }
         guard let tailValue = sut.tail?.value as? Int else {
-            return XCTFail()
+            XCTFail()
+            return
         }
         
         // then
         XCTAssertEqual(inputs.last, tailValue)
+    }
+    
+    func test_removeFirst메서드_실행시_처음넣은_요소를_제거하고_리턴한다() {
+        // given
+        let inputs = [1, 2, 3, 4, 5]
         
+        inputs.forEach {
+            sut.append($0)
+        }
+        
+        // when
+        guard let result = sut.removeFirst() as? Int else {
+            XCTFail()
+            return
+        }
+        let expectation = inputs.first
+        
+        // then
+        XCTAssertEqual(result, expectation)
     }
 }
