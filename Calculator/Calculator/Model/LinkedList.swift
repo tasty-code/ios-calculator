@@ -16,7 +16,16 @@ class LinkedList<Value> {
     }
     
     func append(_ value: Value) {
+        let node = Node(value: value)
         
+        guard head != nil else {
+            head = node
+            tail = head
+            return
+        }
+        
+        tail?.next = node
+        tail = node
     }
 }
 
