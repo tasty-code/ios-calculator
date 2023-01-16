@@ -7,6 +7,15 @@
 
 import Foundation
 
+class Node<Value> {
+    var value: Value
+    var next: Node<Value>? = nil
+    
+    init(value: Value) {
+        self.value = value
+    }
+}
+
 class LinkedList<Value> {
     var head: Node<Value>? = nil
     var tail: Node<Value>? = nil
@@ -32,15 +41,5 @@ class LinkedList<Value> {
         
         tail?.next = node
         tail = node
-    }
-}
-
-class Node<Value> {
-    var value: Value
-    var next: Node<Value>?
-    
-    init(value: Value, next: Node<Value>? = nil) {
-        self.value = value
-        self.next = next
     }
 }
