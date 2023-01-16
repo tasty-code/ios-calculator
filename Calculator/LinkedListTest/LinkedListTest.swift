@@ -44,4 +44,21 @@ final class LinkedListTest: XCTestCase {
         XCTAssertEqual(input, headValue)
         XCTAssertEqual(input, tailValue)
     }
+    
+    func test_여러요소를_append했을때_마지막으로_넣은_요소가_tail이다() {
+        // given
+        let inputs = [1, 2, 3, 4, 5]
+        
+        // when
+        inputs.forEach {
+            sut.append($0)
+        }
+        guard let tailValue = sut.tail?.value as? Int else {
+            return XCTFail()
+        }
+        
+        // then
+        XCTAssertEqual(inputs.last, tailValue)
+        
+    }
 }
