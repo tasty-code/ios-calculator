@@ -22,7 +22,10 @@ struct CalculatorItemQueue: CalculateItem {
         itemArray.append(item)
     }
     
-    mutating func dequeue() {
+    mutating func dequeue() throws {
+        guard !itemArray.isEmpty else {
+            throw CalculatorError.noElementToDelete
+        }
         itemArray.removeLast()
     }
 }
