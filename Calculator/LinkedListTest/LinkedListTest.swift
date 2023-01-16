@@ -81,4 +81,23 @@ final class LinkedListTest: XCTestCase {
         // then
         XCTAssertEqual(result, expectation)
     }
+    
+    func test_여러요소를_append했을때_첫번째가_head이고_마지막이_tail이다() {
+        // given
+        let inputs = [1, 2, 3, 4, 5]
+        
+        // when
+        inputs.forEach {
+            sut.append($0)
+        }
+        guard let tailValue = sut.tail?.value as? Int,
+              let headValue = sut.head?.value as? Int else {
+                  XCTFail()
+                  return
+              }
+        
+        // then
+        XCTAssertEqual(inputs.last, tailValue)
+        XCTAssertEqual(inputs.first, headValue)
+    }
 }
