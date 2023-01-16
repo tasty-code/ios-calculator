@@ -10,7 +10,7 @@ import XCTest
 
 final class LinkedListTest: XCTestCase {
     
-    var sut: LinkedList!
+    var sut: LinkedList<Any>!
 
     override func setUpWithError() throws {
         sut = LinkedList()
