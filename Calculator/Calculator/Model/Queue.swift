@@ -7,6 +7,22 @@
 
 import Foundation
 
-struct Queue<T> {
+protocol CalculateItem {
+
+}
+
+struct CalculateItemQueue<T>: CalculateItem {
     var queue: Array<T> = []
+
+    mutating func enqueue(_ data: T) {
+        queue.append(data)
+    }
+
+    @discardableResult
+    mutating func dequeue() -> T? {
+        guard queue.isEmpty == false else {
+            return nil
+        }
+        return queue.removeFirst()
+    }
 }
