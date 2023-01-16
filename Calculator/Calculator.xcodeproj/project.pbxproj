@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B805F082975388800EB0189 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B805F072975388800EB0189 /* CalculatorTests.swift */; };
+		5B805F1429753BF000EB0189 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B805F1329753BF000EB0189 /* Node.swift */; };
 		C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9412570E5EB001C3AFC /* AppDelegate.swift */; };
 		C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9432570E5EB001C3AFC /* SceneDelegate.swift */; };
 		C713D9462570E5EB001C3AFC /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9452570E5EB001C3AFC /* CalculatorVC.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		5B805F052975388700EB0189 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B805F072975388800EB0189 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		5B805F1329753BF000EB0189 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C713D93E2570E5EB001C3AFC /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C713D9412570E5EB001C3AFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C713D9432570E5EB001C3AFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 			path = CalculatorTests;
 			sourceTree = "<group>";
 		};
+		5B805F1229753BDD00EB0189 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B805F1329753BF000EB0189 /* Node.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C713D9352570E5EB001C3AFC = {
 			isa = PBXGroup;
 			children = (
@@ -88,20 +98,13 @@
 		C713D9402570E5EB001C3AFC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				F14295652974DBD700CAB66C /* Model */,
+				5B805F1229753BDD00EB0189 /* Model */,
 				F14295662974DBEC00CAB66C /* View */,
 				F14295672974DBFE00CAB66C /* Controller */,
 				F14295682974EC1900CAB66C /* Protocol */,
 				C713D94F2570E5ED001C3AFC /* Info.plist */,
 			);
 			path = Calculator;
-			sourceTree = "<group>";
-		};
-		F14295652974DBD700CAB66C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F14295662974DBEC00CAB66C /* View */ = {
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F142956A2974EC4A00CAB66C /* CalculatorItem.swift in Sources */,
+				5B805F1429753BF000EB0189 /* Node.swift in Sources */,
 				C713D9462570E5EB001C3AFC /* CalculatorVC.swift in Sources */,
 				C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */,
 				C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */,
