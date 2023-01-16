@@ -35,5 +35,16 @@ final class CalculatorItemQueueTests: XCTestCase {
         XCTAssertEqual(actualCountNumber, givenCountNumber)
     }
     
+    func test_dequeue시_첫번째element가_삭제되는지() {
+        //given
+        let setData = [3]
+        sut.data = setData
+        
+        //when
+        let dequeuedData = sut.dequeue()
+        
+        //then
+        XCTAssertEqual(3, dequeuedData)
+    }
     
 }

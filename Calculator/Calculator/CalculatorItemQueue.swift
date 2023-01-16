@@ -11,7 +11,7 @@ protocol CalculateItem { }
 
 struct CalculatorItemQueue<T>: CalculateItem {
     
-    private var data = [T]()
+    var data = [T]()
     public init() {}
     
     public var count: Int {
