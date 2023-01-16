@@ -8,7 +8,7 @@
 import Foundation
 
 struct CalculatorItemQueue: CalculateItem {
-    private var itemArray = [String]()
+    private(set) var itemArray = [String]()
     
     func isEmpty() -> Bool {
         itemArray.isEmpty
@@ -26,6 +26,6 @@ struct CalculatorItemQueue: CalculateItem {
         guard !itemArray.isEmpty else {
             throw CalculatorError.noElementToDelete
         }
-        itemArray.removeLast()
+        itemArray.removeFirst()
     }
 }
