@@ -120,4 +120,23 @@ final class LinkedListTest: XCTestCase {
         // then
         XCTAssertEqual(headValue, expectation)
     }
+    
+    func test_여러요소를_append_했을때_각_노드가_next로_연결되어있다() {
+        // given
+        let inputs = [1, 2, 3, 4, 5]
+        
+        // when
+        inputs.forEach {
+            sut.append($0)
+        }
+        
+        let firstNode = sut.head
+        let secondNode = firstNode?.next
+        let thirdNode = secondNode?.next
+        let fourthNode = thirdNode?.next
+        let fifthNode = fourthNode?.next
+        
+        // then
+        XCTAssertIdentical(sut.tail, fifthNode)
+    }
 }
