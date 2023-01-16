@@ -20,8 +20,12 @@ final class LinkedListTest: XCTestCase {
         sut = nil
     }
     
-    func test_아무작업도_안했을때_head와_tail이_nil이다() {
+    func test_빈리스트의_head와_tail이_nil이다() {
         XCTAssertNil(sut.head)
         XCTAssertNil(sut.tail)
+    }
+    
+    func test_비어있는_리스트에_removeFirst메서드_실행시_nil을_반환() {
+        XCTAssertNil(sut.removeFirst())
     }
 }
