@@ -8,10 +8,18 @@
 import Foundation
 
 protocol CalculateItem {
-    
+    var value: Double { get set }
+    var toggle: Toggle { get set }
+    var `operator`: Operator { get set }
 }
 
-struct CalculateItemQueue<T>: CalculateItem {
+struct Item: CalculateItem, Equatable {
+    var value: Double
+    var toggle: Toggle
+    var `operator`: Operator
+}
+
+struct CalculateItemQueue<T: CalculateItem> {
     var queue: Array<T> = []
     
     mutating func enqueue(_ data: T) {

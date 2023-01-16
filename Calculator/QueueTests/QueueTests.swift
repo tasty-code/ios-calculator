@@ -8,41 +8,51 @@
 import XCTest
 
 final class QueueTests: XCTestCase {
-    var sut: CalculateItemQueue<Int>!
+    var sut: CalculateItemQueue<Item>!
     
     override func setUpWithError() throws {
-        sut = CalculateItemQueue<Int>()
+        sut = CalculateItemQueue<Item>()
     }
 
     override func tearDownWithError() throws {
         sut = nil
     }
 
-    func test_enqueue를_확인() {
-        let input: Int = 123
+    func test_enqueue로_item이_들어갔는지_확인() {
+        let input: Item = Item(value: 13.0, toggle: .positive, operator: .addition)
         sut.enqueue(input)
-        XCTAssertEqual(sut.queue, [123])
+        XCTAssertEqual(sut.queue, [input])
     }
 
-    func test_dequeue의_반환값이_123인지_확인() {
-        sut.enqueue(123)
-        XCTAssertEqual(sut.dequeue(), 123)
+    func test_dequeue의_반환값이_item인지_확인() {
+        let input: Item = Item(value: 13.0, toggle: .positive, operator: .addition)
+        sut.enqueue(input)
+        XCTAssertEqual(sut.dequeue(), input)
+    }
+    
+    func test_dequeue의_반환item의_value가_같은지_확인() {
+        let input: Item = Item(value: 13.0, toggle: .positive, operator: .addition)
+        sut.enqueue(input)
+        XCTAssertEqual(sut.dequeue()?.value, input.value)
     }
     
     func test_dequeue의_반환값이_nil인지_확인() {
         XCTAssertNil(sut.dequeue())
     }
-    
+
     func test_dequeue가_제대로_되었는지_확인() {
-        sut.enqueue(123)
-        sut.enqueue(456)
-        sut.enqueue(789)
+        let input: Item = Item(value: 123, toggle: .positive, operator: .addition)
+        let input1: Item = Item(value: 456, toggle: .positive, operator: .addition)
+        let input2: Item = Item(value: 789, toggle: .positive, operator: .addition)
+        sut.enqueue(input)
+        sut.enqueue(input1)
+        sut.enqueue(input2)
         sut.dequeue()
-        XCTAssertEqual(sut.queue, [456, 789])
+        XCTAssertEqual(sut.queue, [input1, input2])
     }
-    
+
     func test_allClear를_확인() {
-        let input: Int = 123
+        let input: Item = Item(value: 123, toggle: .positive, operator: .addition)
         sut.enqueue(input)
         sut.enqueue(input)
         sut.enqueue(input)
