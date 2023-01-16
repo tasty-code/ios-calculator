@@ -8,5 +8,21 @@
 import Foundation
 
 struct CalculatorItemQueue: CalculateItem {
+    private var itemArray = [String]()
     
+    func isEmpty() -> Bool {
+        itemArray.isEmpty
+    }
+    
+    func count() -> Int {
+        itemArray.count
+    }
+    
+    mutating func enqueue(item: String) {
+        itemArray.append(item)
+    }
+    
+    mutating func dequeue() {
+        itemArray.removeLast()
+    }
 }
