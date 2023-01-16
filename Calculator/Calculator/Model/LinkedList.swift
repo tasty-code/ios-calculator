@@ -10,9 +10,15 @@ import Foundation
 class LinkedList<Value> {
     var head: Node<Value>? = nil
     var tail: Node<Value>? = nil
-    
+
     func removeFirst() -> Value? {
-        return nil
+        let removedValue = head?.value
+        
+        let newHead = head?.next
+        head = nil
+        head = newHead
+        
+        return removedValue
     }
     
     func append(_ value: Value) {
