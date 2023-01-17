@@ -23,7 +23,7 @@ struct CalculatorItemQueue<T>: CalculateItem {
     }
     
     public mutating func enqueue(_ element: T) {
-        data.append(element)
+        return data.append(element)
     }
     
     public mutating func dequeue() -> T? {
@@ -31,6 +31,6 @@ struct CalculatorItemQueue<T>: CalculateItem {
     }
     
     public mutating func clear() {
-        data.removeAll()
+        return data.removeAll()
     }
 }
