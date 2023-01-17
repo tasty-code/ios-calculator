@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalculatorItemQueue<Element> {
+struct CalculatorItemQueue<Element>: CalculateItem {
     var elements = LinkedList<Element>()
     
     var head: Element? {
