@@ -1,6 +1,6 @@
 //
-//  CalculateItemQueueTest.swift
-//  CalculateItemQueueTest
+//  CalculatorItemQueueTest.swift
+//  CalculatorItemQueueTest
 //
 //  Created by Mason Kim on 2023/01/17.
 //
@@ -8,12 +8,12 @@
 import XCTest
 @testable import Calculator
 
-final class CalculateItemQueueTest: XCTestCase {
+final class CalculatorItemQueueTest: XCTestCase {
     
-    var sut: CalculateItemQueue<Any>!
+    var sut: CalculatorItemQueue<Any>!
 
     override func setUpWithError() throws {
-        sut = CalculateItemQueue()
+        sut = CalculatorItemQueue()
     }
 
     override func tearDownWithError() throws {

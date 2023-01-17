@@ -1,5 +1,5 @@
 //
-//  CalculateItemQueue.swift
+//  CalculatorItemQueue.swift
 //  Calculator
 //
 //  Created by Mason Kim on 2023/01/17.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalculateItemQueue<Element> {
+struct CalculatorItemQueue<Element> {
     var elements = LinkedList<Element>()
     
     var head: Element? {

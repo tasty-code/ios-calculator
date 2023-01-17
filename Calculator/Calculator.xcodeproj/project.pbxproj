@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B41A64E1297635A7007AC373 /* CalculateItemQueueTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45702702976339F005D1B9D /* CalculateItemQueueTest.swift */; };
+		B41A64E1297635A7007AC373 /* CalculatorItemQueueTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45702702976339F005D1B9D /* CalculatorItemQueueTest.swift */; };
 		B41A64E2297635A9007AC373 /* LinkedListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF7EA429751AE7003C6CB3 /* LinkedListTest.swift */; };
-		B41A64E3297635C9007AC373 /* CalculateItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4570268297631B0005D1B9D /* CalculateItemQueue.swift */; };
+		B41A64E3297635C9007AC373 /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4570268297631B0005D1B9D /* CalculatorItemQueue.swift */; };
 		B4DF7EAC29751B0C003C6CB3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF7EAB29751B0C003C6CB3 /* LinkedList.swift */; };
 		C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9412570E5EB001C3AFC /* AppDelegate.swift */; };
 		C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9432570E5EB001C3AFC /* SceneDelegate.swift */; };
@@ -37,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B4570268297631B0005D1B9D /* CalculateItemQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateItemQueue.swift; sourceTree = "<group>"; };
+		B4570268297631B0005D1B9D /* CalculatorItemQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorItemQueue.swift; sourceTree = "<group>"; };
 		B457026E2976339F005D1B9D /* CalculateItemQueueTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculateItemQueueTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B45702702976339F005D1B9D /* CalculateItemQueueTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateItemQueueTest.swift; sourceTree = "<group>"; };
+		B45702702976339F005D1B9D /* CalculatorItemQueueTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorItemQueueTest.swift; sourceTree = "<group>"; };
 		B4DF7EA229751AE7003C6CB3 /* LinkedListTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinkedListTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4DF7EA429751AE7003C6CB3 /* LinkedListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTest.swift; sourceTree = "<group>"; };
 		B4DF7EAB29751B0C003C6CB3 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		B457026F2976339F005D1B9D /* CalculateItemQueueTest */ = {
 			isa = PBXGroup;
 			children = (
-				B45702702976339F005D1B9D /* CalculateItemQueueTest.swift */,
+				B45702702976339F005D1B9D /* CalculatorItemQueueTest.swift */,
 			);
 			path = CalculateItemQueueTest;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				B4DF7EAB29751B0C003C6CB3 /* LinkedList.swift */,
-				B4570268297631B0005D1B9D /* CalculateItemQueue.swift */,
+				B4570268297631B0005D1B9D /* CalculatorItemQueue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B41A64E1297635A7007AC373 /* CalculateItemQueueTest.swift in Sources */,
+				B41A64E1297635A7007AC373 /* CalculatorItemQueueTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B41A64E3297635C9007AC373 /* CalculateItemQueue.swift in Sources */,
+				B41A64E3297635C9007AC373 /* CalculatorItemQueue.swift in Sources */,
 				C713D9462570E5EB001C3AFC /* ViewController.swift in Sources */,
 				C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */,
 				B4DF7EAC29751B0C003C6CB3 /* LinkedList.swift in Sources */,
