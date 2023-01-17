@@ -20,6 +20,7 @@ struct LinkedList<Value> {
     var head: Node<Value>? = nil
     var tail: Node<Value>? = nil
 
+    @discardableResult
     mutating func removeFirst() -> Value? {
         let removedValue = head?.value
         
