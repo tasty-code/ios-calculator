@@ -8,10 +8,10 @@
 import XCTest
 
 final class QueueTests: XCTestCase {
-    var sut: CalculateItemQueue<Item>!
+    var sut: CalculateItemQueue<Double>!
     
     override func setUpWithError() throws {
-        sut = CalculateItemQueue<Item>()
+        sut = CalculateItemQueue<Double>()
     }
 
     override func tearDownWithError() throws {
@@ -19,21 +19,15 @@ final class QueueTests: XCTestCase {
     }
 
     func test_enqueue로_item이_들어갔는지_확인() {
-        let input: Item = Item(value: 13.0, toggle: .positive, operator: .addition)
+        let input: Double = 13.0
         sut.enqueue(input)
         XCTAssertEqual(sut.queue, [input])
     }
 
     func test_dequeue의_반환값이_item인지_확인() {
-        let input: Item = Item(value: 13.0, toggle: .positive, operator: .addition)
+        let input: Double = 13.0
         sut.enqueue(input)
         XCTAssertEqual(sut.dequeue(), input)
-    }
-    
-    func test_dequeue의_반환item의_value가_같은지_확인() {
-        let input: Item = Item(value: 13.0, toggle: .positive, operator: .addition)
-        sut.enqueue(input)
-        XCTAssertEqual(sut.dequeue()?.value, input.value)
     }
     
     func test_dequeue의_반환값이_nil인지_확인() {
@@ -41,9 +35,9 @@ final class QueueTests: XCTestCase {
     }
 
     func test_dequeue가_제대로_되었는지_확인() {
-        let input: Item = Item(value: 123, toggle: .positive, operator: .addition)
-        let input1: Item = Item(value: 456, toggle: .positive, operator: .addition)
-        let input2: Item = Item(value: 789, toggle: .positive, operator: .addition)
+        let input: Double = 123
+        let input1: Double = 456
+        let input2: Double = 789
         sut.enqueue(input)
         sut.enqueue(input1)
         sut.enqueue(input2)
@@ -52,7 +46,7 @@ final class QueueTests: XCTestCase {
     }
 
     func test_allClear를_확인() {
-        let input: Item = Item(value: 123, toggle: .positive, operator: .addition)
+        let input: Double = 123
         sut.enqueue(input)
         sut.enqueue(input)
         sut.enqueue(input)

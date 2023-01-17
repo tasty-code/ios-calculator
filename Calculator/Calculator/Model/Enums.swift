@@ -7,14 +7,9 @@
 
 import Foundation
 
-enum Toggle {
-    case positive
-    case negative
-}
-
-enum Operator {
-    case addition
-    case subtraction
-    case multiplication
-    case division
+enum Operator: Character, CalculateItem, CaseIterable {
+    case add = "+"
+    case subtract = "-"
+    case divide = "/"
+    case multiply = "*"
 }
