@@ -23,6 +23,12 @@ struct LinkedList {
             head = data
             return
         }
+        
+        var node = head
+        while node?.next == nil {
+            node = node?.next
+        }
+        node?.next = Node(data: data.data)
     }
     
     func dequeue() {

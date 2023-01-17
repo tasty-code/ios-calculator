@@ -49,6 +49,7 @@ final class CalculatorTests: XCTestCase {
         sut.inqueue(data: input)
         //when
         sut.inqueue(data: newinput)
+        input.next = newinput
         
         //than
         XCTAssertNotNil(input.next)
