@@ -7,13 +7,20 @@
 
 import Foundation
 
-class Node {
-    var number: Int?
+class Node: Equatable {
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        if lhs.number == rhs.number {
+            return true
+        }
+        return false
+    }
+    
+    var number: Double?
     var next: Node?
     var operation: Operation?
     var isPostive: Bool = true
 
-    init(number: Int, next: Node? = nil, operation: Operation) {
+    init(number: Double, next: Node? = nil, operation: Operation) {
         self.number = number
         self.next = next
         self.operation = operation
