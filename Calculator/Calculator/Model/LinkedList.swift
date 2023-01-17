@@ -22,19 +22,17 @@ struct LinkedList<Value> {
 
     @discardableResult
     mutating func removeFirst() -> Value? {
-        let removedValue = head?.value
+        defer {
+            head = head?.next
+        }
         
-        let newHead = head?.next
-        head = nil
-        head = newHead
-        
-        return removedValue
+        return head?.value
     }
     
     mutating func append(_ value: Value) {
         let node = Node(value: value)
         
-        guard head != nil else {
+        if head == nil {
             head = node
             tail = head
             return
