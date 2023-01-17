@@ -28,4 +28,16 @@ final class CalculatorTests: XCTestCase {
         //than
         XCTAssertTrue(result)
     }
+    
+    func test_LinkedList의_Head가_첫번째_Node로_추가되는지확인() {
+        // given
+        let input = Node(next: nil, data: 0.0, operators: nil)
+        
+        // when
+        let _ = sut.inqueue(data: input)
+        let result = sut.isHeadEmpty()
+        
+        // then
+        XCTAssertTrue(result)
+    }
 }
