@@ -8,14 +8,17 @@
 import Foundation
 
 struct LinkedList {
-    private  var head: Node?
+    private var head: Node?
     
     func isHeadEmpty() -> Bool {
         return head == nil
     }
     
-    func inqueue(data: Node){
-        let userInput = data
+    mutating func inqueue(data: Node) {
+        if head == nil {
+            head = data
+            return
+        }
     }
     
     func dequeue() {

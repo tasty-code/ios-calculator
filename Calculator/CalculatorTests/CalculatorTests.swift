@@ -38,6 +38,6 @@ final class CalculatorTests: XCTestCase {
         let result = sut.isHeadEmpty()
         
         // then
-        XCTAssertTrue(result)
+        XCTAssertFalse(result)
     }
 }
