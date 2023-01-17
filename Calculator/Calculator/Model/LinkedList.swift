@@ -14,6 +14,10 @@ struct LinkedList {
         return head == nil
     }
     
+    func getHead() -> Node? {
+        return head
+    }
+    
     mutating func inqueue(data: Node) {
         if head == nil {
             head = data

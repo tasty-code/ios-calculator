@@ -29,7 +29,7 @@ final class CalculatorTests: XCTestCase {
         XCTAssertTrue(result)
     }
     
-    func test_LinkedList의_Head가_첫번째_Node로_추가되는지확인() {
+    func test_LinkedList의_inqueue가_Node의_Head로_추가되는지확인() {
         // given
         let input = Node(next: nil, data: 0.0, operators: nil)
         
@@ -39,5 +39,18 @@ final class CalculatorTests: XCTestCase {
         
         // then
         XCTAssertFalse(result)
+    }
+    
+    func test_LinkedList의_inqueue가_Head의_다음Node를_연결하는지() {
+        //given
+        let input = Node(next: nil, data: 0.0, operators: nil)
+        let newinput = Node(next: nil, data: 0.0, operators: nil)
+        
+        sut.inqueue(data: input)
+        //when
+        sut.inqueue(data: newinput)
+        
+        //than
+        XCTAssertNotNil(input.next)
     }
 }
