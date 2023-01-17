@@ -34,7 +34,7 @@ final class CalculatorTests: XCTestCase {
         let input = Node(next: nil, data: 0.0, operators: nil)
         
         // when
-        let _ = sut.inqueue(data: input)
+        let _ = sut.append(data: input)
         let result = sut.isHeadEmpty()
         
         // then
@@ -46,9 +46,9 @@ final class CalculatorTests: XCTestCase {
         let input = Node(next: nil, data: 0.0, operators: nil)
         let newinput = Node(next: nil, data: 0.0, operators: nil)
         
-        sut.inqueue(data: input)
+        sut.append(data: input)
         //when
-        sut.inqueue(data: newinput)
+        sut.append(data: newinput)
         input.next = newinput
         
         //than

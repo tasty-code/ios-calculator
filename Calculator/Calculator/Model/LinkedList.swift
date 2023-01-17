@@ -18,21 +18,16 @@ struct LinkedList {
         return head
     }
     
-    mutating func inqueue(data: Node) {
+    mutating func append(data: Node) {
         if head == nil {
             head = data
             return
+        }else {
+            var node = head
+            while node?.next != nil {
+                node = node?.next
+            }
+            node?.next = data
         }
-        
-        var node = head
-        while node?.next == nil {
-            node = node?.next
-        }
-        node?.next = Node(data: data.data)
     }
-    
-    func dequeue() {
-        
-    }
-    
 }
