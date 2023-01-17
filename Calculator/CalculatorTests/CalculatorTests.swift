@@ -21,14 +21,11 @@ final class CalculatorTests: XCTestCase {
         sut = nil
     }
     
-    func test_원하는_데이터가_들어오는가() {
-        // given
-        let wishData = 0.0
-        
-        // when
-        let result = sut.inqueue(data: wishData)
-        
-        // then
-        XCTAssertEqual(wishData, false)
+    func test_LinkedList의_Head가_없을때_isEmptyHead가_True를_반환하는지() {
+        //given
+        //when
+        let result = sut.linkedList.isHeadEmpty()
+        //than
+        XCTAssertTrue(result)
     }
 }

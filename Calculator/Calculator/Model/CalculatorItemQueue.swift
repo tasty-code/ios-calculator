@@ -8,14 +8,8 @@
 import Foundation
 
 struct CalculatorItemQueue {
-//    let linkedList: LinkedList
+    let linkedList =  LinkedList()
 //    let calculator: Calculator
     
-    func inqueue(data: Node){
-        
-    }
     
-    func dequeue() {
-        
-    }
 }
