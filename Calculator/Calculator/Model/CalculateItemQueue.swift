@@ -18,8 +18,8 @@ struct CalculateItemQueue<Element> {
         elements.tail?.value
     }
     
-    func enqueue(_ element: Element) {
-        
+    mutating func enqueue(_ element: Element) {
+        elements.append(element)
     }
     
     @discardableResult
