@@ -10,7 +10,7 @@ import XCTest
 
 final class CalculatorItemQueueTest: XCTestCase {
     
-    var sut: CalculatorItemQueue<Any>!
+    var sut: CalculatorItemQueue<Double>!
 
     override func setUpWithError() throws {
         sut = CalculatorItemQueue()
@@ -27,11 +27,11 @@ final class CalculatorItemQueueTest: XCTestCase {
     
     func test_enqueue를_하면_해당값이_tail이_된다() {
         // given
-        let input = "AAA"
+        let input = 1.0
         
         // when
         sut.enqueue(input)
-        guard let tail = sut.tail as? String else {
+        guard let tail = sut.tail else {
             XCTFail()
             return
         }
@@ -42,21 +42,21 @@ final class CalculatorItemQueueTest: XCTestCase {
     
     func test_dequeue를_하면_head값이_변경된다() {
         // given
-        let inputs = ["mason", "blue"]
+        let inputs = [2.1, 1.5]
 
         inputs.forEach {
             sut.enqueue($0)
         }
         
         // when
-        guard let beforeHead = sut.head as? String else {
+        guard let beforeHead = sut.head else {
             XCTFail()
             return
         }
         
         sut.dequeue()
         
-        guard let afterHead = sut.head as? String else {
+        guard let afterHead = sut.head else {
             XCTFail()
             return
         }
