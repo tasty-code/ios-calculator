@@ -24,6 +24,9 @@ struct LinkedList<Value> {
     mutating func removeFirst() -> Value? {
         defer {
             head = head?.next
+            if head == nil {
+                tail = nil
+            }
         }
         
         return head?.value

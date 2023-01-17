@@ -139,4 +139,12 @@ final class LinkedListTest: XCTestCase {
         // then
         XCTAssertIdentical(sut.tail, fifthNode)
     }
+    
+    func test_append실행후_removeFirst를_실행하면_head와_tail이_모두_nil이다() {
+        sut.append("mason")
+        sut.removeFirst()
+        
+        XCTAssertNil(sut.head)
+        XCTAssertNil(sut.tail)
+    }
 }
