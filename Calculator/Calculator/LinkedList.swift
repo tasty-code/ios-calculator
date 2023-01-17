@@ -8,6 +8,9 @@
 import Foundation
 
 final class LinkedList {
+    static var shared = LinkedList()
+    private init() {}
+    
     private var head: ItemNode?
     
     func append(data: Value) {
