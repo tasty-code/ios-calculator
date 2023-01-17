@@ -10,10 +10,10 @@ import XCTest
 
 final class CalculatorTests: XCTestCase {
 
-    var sut: CalculatorItemQueue!
+    var sut: LinkedList!
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = CalculatorItemQueue()
+        sut = LinkedList()
     }
 
     override func tearDownWithError() throws {
@@ -24,7 +24,7 @@ final class CalculatorTests: XCTestCase {
     func test_LinkedList의_Head가_없을때_isEmptyHead가_True를_반환하는지() {
         //given
         //when
-        let result = sut.linkedList.isHeadEmpty()
+        let result = sut.isHeadEmpty()
         //than
         XCTAssertTrue(result)
     }
