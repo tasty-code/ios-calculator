@@ -30,3 +30,12 @@ struct CalculateItemQueue<T: CalculateItem> {
         queue.removeAll()
     }
 }
+
+struct Formula {
+    var operands: CalculateItemQueue<Double>
+    var operators: CalculateItemQueue<Operator>
+
+    func result() -> Double {
+        return Double()
+    }
+}

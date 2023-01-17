@@ -13,3 +13,9 @@ enum Operator: Character, CalculateItem, CaseIterable {
     case divide = "/"
     case multiply = "*"
 }
+
+enum ExpressionParser {
+    func parse(from input: String) -> Formula {
+        return Formula(operands: CalculateItemQueue(), operators: CalculateItemQueue())
+    }
+}
