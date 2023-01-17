@@ -23,7 +23,7 @@ struct CalculateItemQueue<Element> {
     }
     
     @discardableResult
-    func dequeue() -> Element? {
-        return nil
+    mutating func dequeue() -> Element? {
+        return elements.removeFirst()
     }
 }

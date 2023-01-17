@@ -26,24 +26,29 @@ final class CalculateItemQueueTest: XCTestCase {
     }
     
     func test_enqueue를_하면_해당값이_tail이_된다() {
+        // given
         let input = "AAA"
         
+        // when
         sut.enqueue(input)
         guard let tail = sut.tail as? String else {
             XCTFail()
             return
         }
         
+        // then
         XCTAssertEqual(input, tail)
     }
     
     func test_dequeue를_하면_head값이_변경된다() {
+        // given
         let inputs = ["mason", "blue"]
 
         inputs.forEach {
             sut.enqueue($0)
         }
         
+        // when
         guard let beforeHead = sut.head as? String else {
             XCTFail()
             return
@@ -56,6 +61,7 @@ final class CalculateItemQueueTest: XCTestCase {
             return
         }
         
+        // then
         XCTAssertNotEqual(beforeHead, afterHead)
         XCTAssertEqual(afterHead, inputs.last)
     }
