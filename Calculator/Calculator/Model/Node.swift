@@ -10,9 +10,9 @@ import Foundation
 final class  Node {
     var next: Node?
     var data: Double
-    var operators: Operators?
+    var operators: Operator?
     
-    init(next: Node? = nil, data: Double, operators: Operators? = nil) {
+    init(next: Node? = nil, data: Double, operators: Operator? = nil) {
         self.next = next
         self.data = data
         self.operators = operators
