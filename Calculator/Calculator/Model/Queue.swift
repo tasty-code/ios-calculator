@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CalculateItem {
-    
+
 }
 
 struct CalculateItemQueue<T: CalculateItem> {

@@ -1,6 +1,6 @@
 //
 //  QueueDoubleTypeTests.swift
-//  QueueDoubleTypeTests
+//  QueueTests
 //
 //  Created by 이상윤 on 2023/01/16.
 //
