@@ -10,13 +10,12 @@ import Foundation
 class Node {
     var number: Int?
     var next: Node?
-    var operater: String?
-    var isPostive: Bool?
+    var operation: Operation?
+    var isPostive: Bool = true
 
-    init(number: Int, next: Node? = nil, operater: String, isPostive: Bool) {
+    init(number: Int, next: Node? = nil, operation: Operation) {
         self.number = number
         self.next = next
-        self.operater = operater
-        self.isPostive = isPostive
+        self.operation = operation
     }
 }

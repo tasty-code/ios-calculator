@@ -8,17 +8,25 @@
 import Foundation
 
 class CalculatorItemQueue {
-    private var head: Node
-
+    private var head: Node?
     
-    func append(number: Int, isPostive: Bool) {
+    
+    func append(number: Int, operation: Operation) {
         if head == nil {
-            head = Node
+            head = Node(number: number, operation: operation)
             return
         }
         var node = head
         while node?.next != nil {
             node = node?.next
         }
-        node?.next = Node(number: number, operater: oprater, isPostive: isPostive)
+        
+        node?.next = Node(number: number, operation: operation)
+    }
+    
+    
+    
+    
 }
+
+
