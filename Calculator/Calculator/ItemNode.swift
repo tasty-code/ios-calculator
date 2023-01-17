@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ItemNode {
+final class ItemNode {
     var data: Value
     var next: ItemNode?
     
@@ -16,7 +16,6 @@ class ItemNode {
         self.next = next
     }
 }
-
 
 struct Value {
     var operators: Operator?
