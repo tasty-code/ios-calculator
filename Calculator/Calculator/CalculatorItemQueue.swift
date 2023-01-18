@@ -5,11 +5,13 @@
 //  Created by devxsby on 2023/01/16.
 //
 
-import Foundation
+import UIKit
 
 protocol CalculateItem { }
 
-struct CalculatorItemQueue<ElementType>: CalculateItem {
+extension Double: CalculateItem { }
+
+struct CalculatorItemQueue<ElementType: CalculateItem> {
     
     var elements = [ElementType]()
     

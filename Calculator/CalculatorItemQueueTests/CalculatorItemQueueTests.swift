@@ -10,7 +10,7 @@ import XCTest
 
 final class CalculatorItemQueueTests: XCTestCase {
     
-    var sut: CalculatorItemQueue<Int>!
+    var sut: CalculatorItemQueue<Double>!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -27,8 +27,8 @@ final class CalculatorItemQueueTests: XCTestCase {
         let givenCountNumber = 2
         
         //when
-        sut.enqueue(3)
-        sut.enqueue(4)
+        sut.enqueue(3.0)
+        sut.enqueue(4.0)
         let actualCountNumber = sut.count
         
         //then
@@ -37,8 +37,8 @@ final class CalculatorItemQueueTests: XCTestCase {
     
     func test_dequeue시_첫번째element가_삭제되는지() {
         //given
-        let expectedValue = 3
-        let inputElements = [3]
+        let expectedValue = 3.0
+        let inputElements = [3.0]
         sut.elements = inputElements
         
         //when
@@ -58,7 +58,7 @@ final class CalculatorItemQueueTests: XCTestCase {
     
     func test_clear메소드를_활용후_isEmpty가_true가_되는지() {
         //given
-        let inputElements = [1, 2]
+        let inputElements = [1.0, 2.0]
         sut.elements = inputElements
         
         //when
