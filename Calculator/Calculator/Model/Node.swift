@@ -8,13 +8,6 @@
 import Foundation
 
 class Node: Equatable {
-    static func == (lhs: Node, rhs: Node) -> Bool {
-        if lhs.number == rhs.number {
-            return true
-        }
-        return false
-    }
-    
     var number: Double?
     var next: Node?
     var operation: Operation?

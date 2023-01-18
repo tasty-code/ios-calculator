@@ -16,25 +16,20 @@ enum Operation: String, CalculateItem {
     case multiply = "×"
     case calculate = "="
 
-    func calculate(previousData: Double, nextData: Double) -> Double {
-        return previousData + nextData
-    }
-    
     func add(previousData: Double, nextData: Double) -> Double {
         return previousData + nextData
     }
-    
     func substract(previousData: Double, nextData: Double) -> Double {
         return previousData - nextData
     }
-    
     func divide(previousData: Double, nextData: Double) -> Double {
         return previousData / nextData
     }
-    
     func mulitiply(previousData: Double, nextData: Double) -> Double {
         return previousData * nextData
     }
-    
+    func calculate(previousData: Double, nextData: Double) -> Double {
+        return previousData + nextData
+    }
 }
 

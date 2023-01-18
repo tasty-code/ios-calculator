@@ -15,14 +15,10 @@ class LinkedList {
             head = Node(number: number, operation: operation)
             return
         }
-        
         var node = head
-        
         while node?.next != nil {
             node = node?.next
         }
-        
         node?.next = Node(number: number, operation: operation)
     }
-    
 }
