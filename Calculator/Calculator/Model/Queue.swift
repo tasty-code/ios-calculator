@@ -8,13 +8,7 @@
 import Foundation
 
 protocol CalculateItem {
-    var value: Double { get set }
-    var `operator`: Operator { get set }
-}
-
-struct Item: CalculateItem, Equatable {
-    var value: Double
-    var `operator`: Operator
+    
 }
 
 struct CalculateItemQueue<T: CalculateItem> {
