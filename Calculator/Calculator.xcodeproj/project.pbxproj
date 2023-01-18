@@ -16,6 +16,7 @@
 		5B805F332976334100EB0189 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142957129754AC500CAB66C /* LinkedList.swift */; };
 		5B805F342976334300EB0189 /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142957329754BC100CAB66C /* CalculatorItemQueue.swift */; };
 		5BE1A5352977BE51006C7B8F /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1A5342977BE51006C7B8F /* ExtensionString.swift */; };
+		5BE1A5372977C2FA006C7B8F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B289C0329777A10003C89B7 /* String.swift */; };
 		C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9412570E5EB001C3AFC /* AppDelegate.swift */; };
 		C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9432570E5EB001C3AFC /* SceneDelegate.swift */; };
 		C713D9462570E5EB001C3AFC /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9452570E5EB001C3AFC /* CalculatorVC.swift */; };
@@ -28,7 +29,6 @@
 		F142957229754AC500CAB66C /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142957129754AC500CAB66C /* LinkedList.swift */; };
 		F142957429754BC100CAB66C /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142957329754BC100CAB66C /* CalculatorItemQueue.swift */; };
 		F1C3BCE12977851F00B78A1A /* CalculatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14295692974EC4A00CAB66C /* CalculatorItem.swift */; };
-		F1C3BCE32977853200B78A1A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B289C0329777A10003C89B7 /* String.swift */; };
 		F1C3BCE42977853F00B78A1A /* CalculatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14295692974EC4A00CAB66C /* CalculatorItem.swift */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +319,7 @@
 				5B805F342976334300EB0189 /* CalculatorItemQueue.swift in Sources */,
 				5B805F082975388800EB0189 /* CalculatorTests.swift in Sources */,
 				5B805F322976333E00EB0189 /* Operator.swift in Sources */,
+				5BE1A5372977C2FA006C7B8F /* String.swift in Sources */,
 				5B805F332976334100EB0189 /* LinkedList.swift in Sources */,
 				5BE1A5352977BE51006C7B8F /* ExtensionString.swift in Sources */,
 				5B805F302976331A00EB0189 /* Node.swift in Sources */,
@@ -349,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C3BCE42977853F00B78A1A /* CalculatorItem.swift in Sources */,
-				F1C3BCE32977853200B78A1A /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
