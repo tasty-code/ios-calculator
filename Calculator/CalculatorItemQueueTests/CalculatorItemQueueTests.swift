@@ -38,8 +38,8 @@ final class CalculatorItemQueueTests: XCTestCase {
     func test_dequeue시_첫번째element가_삭제되는지() {
         //given
         let expectedValue = 3
-        let setData = [3]
-        sut.data = setData
+        let inputElements = [3]
+        sut.elements = inputElements
         
         //when
         let dequeuedData = sut.dequeue()
@@ -58,8 +58,8 @@ final class CalculatorItemQueueTests: XCTestCase {
     
     func test_clear메소드를_활용후_isEmpty가_true가_되는지() {
         //given
-        let setData = [1, 2]
-        sut.data = setData
+        let inputElements = [1, 2]
+        sut.elements = inputElements
         
         //when
         sut.clear()
