@@ -64,7 +64,6 @@ final class CalculatorTests: XCTestCase {
         let head = sut.getHead()
         
         sut.append(data: node2)
-        head?.next == node2
         
         //when
         sut.removeLast()
