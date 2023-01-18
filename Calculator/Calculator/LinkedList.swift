@@ -14,6 +14,7 @@ final class LinkedList {
     private var head: ItemNode?
     
     func append(data: Value) {
+        
     }
     
     func remove() {

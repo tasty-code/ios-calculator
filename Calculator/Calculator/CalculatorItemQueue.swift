@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct CalculatorItemQueue {
+protocol CalculateItem {
+}
+
+struct CalculatorItemQueue: CalculateItem {
     var queue = LinkedList.shared
     
     func enqueue(data: Value) {
