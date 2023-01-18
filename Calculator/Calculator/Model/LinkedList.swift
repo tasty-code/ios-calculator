@@ -30,4 +30,8 @@ struct LinkedList {
             node?.next = data
         }
     }
+    
+    func removeLast() {
+        
+    }
 }
