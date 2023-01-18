@@ -10,8 +10,10 @@ import Foundation
 extension String {
     public func split(with target: Character) -> [String] {
         var receivedString = self
-        
-        
-        return [receivedString]
+        var splitedString = receivedString.split(separator: target).map { substring in
+            let convertToString = String(substring)
+            return convertToString
+        }
+        return splitedString
     }
 }
