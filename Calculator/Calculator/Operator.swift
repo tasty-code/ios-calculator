@@ -13,5 +13,3 @@ enum Operator {
     case divide
     case multiply
 }
-
-
