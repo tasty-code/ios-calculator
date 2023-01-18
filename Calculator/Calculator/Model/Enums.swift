@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum Toggle {
-    case positive
-    case negative
-}
-
 enum Operator {
     case addition
     case subtraction
