@@ -26,7 +26,6 @@
 		F142957029753D8900CAB66C /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142956F29753D8900CAB66C /* Operator.swift */; };
 		F142957229754AC500CAB66C /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142957129754AC500CAB66C /* LinkedList.swift */; };
 		F142957429754BC100CAB66C /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142957329754BC100CAB66C /* CalculatorItemQueue.swift */; };
-		F1C3BCDA2977830E00B78A1A /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3BCD92977830E00B78A1A /* StringExtensionTests.swift */; };
 		F1C3BCE12977851F00B78A1A /* CalculatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14295692974EC4A00CAB66C /* CalculatorItem.swift */; };
 		F1C3BCE32977853200B78A1A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B289C0329777A10003C89B7 /* String.swift */; };
 		F1C3BCE42977853F00B78A1A /* CalculatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14295692974EC4A00CAB66C /* CalculatorItem.swift */; };
@@ -68,7 +67,6 @@
 		F142957129754AC500CAB66C /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		F142957329754BC100CAB66C /* CalculatorItemQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorItemQueue.swift; sourceTree = "<group>"; };
 		F1C3BCD72977830E00B78A1A /* StringExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StringExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1C3BCD92977830E00B78A1A /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +128,6 @@
 			children = (
 				C713D9402570E5EB001C3AFC /* Calculator */,
 				5B805F062975388800EB0189 /* CalculatorTests */,
-				F1C3BCD82977830E00B78A1A /* StringExtensionTests */,
 				C713D93F2570E5EB001C3AFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -184,14 +181,6 @@
 			);
 			name = Protocol;
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		F1C3BCD82977830E00B78A1A /* StringExtensionTests */ = {
-			isa = PBXGroup;
-			children = (
-				F1C3BCD92977830E00B78A1A /* StringExtensionTests.swift */,
-			);
-			path = StringExtensionTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +346,6 @@
 			files = (
 				F1C3BCE42977853F00B78A1A /* CalculatorItem.swift in Sources */,
 				F1C3BCE32977853200B78A1A /* String.swift in Sources */,
-				F1C3BCDA2977830E00B78A1A /* StringExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
