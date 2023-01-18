@@ -8,8 +8,5 @@
 import Foundation
 
 struct CalculatorItemQueue {
-    let linkedList =  LinkedList()
-//    let calculator: Calculator
-    
     
 }
