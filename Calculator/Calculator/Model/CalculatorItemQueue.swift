@@ -10,11 +10,11 @@ import Foundation
 struct CalculatorItemQueue<Element: CalculateItem> {
     var elements = LinkedList<Element>()
     
-    var head: Element? {
+    var front: Element? {
         elements.head?.value
     }
     
-    var tail: Element? {
+    var rear: Element? {
         elements.tail?.value
     }
     
