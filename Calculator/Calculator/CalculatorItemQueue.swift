@@ -12,25 +12,24 @@ protocol CalculateItem { }
 struct CalculatorItemQueue<T>: CalculateItem {
     
     var data = [T]()
-    public init() {}
     
-    public var count: Int {
+    var count: Int {
         return data.count
     }
     
-    public var isEmpty: Bool {
+    var isEmpty: Bool {
         return data.isEmpty
     }
     
-    public mutating func enqueue(_ element: T) {
+    mutating func enqueue(_ element: T) {
         return data.append(element)
     }
     
-    public mutating func dequeue() -> T? {
+    mutating func dequeue() -> T? {
         return isEmpty ? nil : data.removeFirst()
     }
     
-    public mutating func clear() {
+    mutating func clear() {
         return data.removeAll()
     }
 }
