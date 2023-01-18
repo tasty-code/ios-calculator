@@ -21,6 +21,7 @@
 		D94FF8492974DA5E00F7A551 /* CalculateItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94FF8362974D9B100F7A551 /* CalculateItemQueue.swift */; };
 		D94FF84B29751BD500F7A551 /* CalculateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94FF84A29751BD500F7A551 /* CalculateItem.swift */; };
 		D94FF84C2975376F00F7A551 /* CalculateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94FF84A29751BD500F7A551 /* CalculateItem.swift */; };
+		D965B6A22977C35400953606 /* ComponentsByOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D965B6A12977C35400953606 /* ComponentsByOperatorsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D94FF8402974DA2B00F7A551 /* QueueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QueueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94FF8422974DA2B00F7A551 /* QueueDoubleTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueDoubleTypeTests.swift; sourceTree = "<group>"; };
 		D94FF84A29751BD500F7A551 /* CalculateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateItem.swift; sourceTree = "<group>"; };
+		D965B6A12977C35400953606 /* ComponentsByOperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsByOperatorsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				D94FF8422974DA2B00F7A551 /* QueueDoubleTypeTests.swift */,
 				D94BC7B8297675F300186B6A /* QueueOperatorTypeTests.swift */,
+				D965B6A12977C35400953606 /* ComponentsByOperatorsTests.swift */,
 			);
 			path = QueueTests;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D965B6A22977C35400953606 /* ComponentsByOperatorsTests.swift in Sources */,
 				D94BC7B9297675F300186B6A /* QueueOperatorTypeTests.swift in Sources */,
 				D94FF8432974DA2B00F7A551 /* QueueDoubleTypeTests.swift in Sources */,
 				D94FF84C2975376F00F7A551 /* CalculateItem.swift in Sources */,
