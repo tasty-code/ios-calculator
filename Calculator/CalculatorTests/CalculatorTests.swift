@@ -54,4 +54,24 @@ final class CalculatorTests: XCTestCase {
         //than
         XCTAssertNotNil(input.next)
     }
+    
+    func test_LinkedList의_removeLast가_Node를_삭제하는지() {
+        //given
+        let node1 = Node(data: 1.0)
+        let node2 = Node(data: 2.0)
+        
+        sut.append(data: node1)
+        let head = sut.getHead()
+        
+        sut.append(data: node2)
+        head?.next == node2
+        
+        //when
+        sut.removeLast()
+        
+        //then
+        let result = head?.next
+        
+        XCTAssertNil(result)
+    }
 }
