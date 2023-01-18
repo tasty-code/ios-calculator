@@ -1,11 +1,15 @@
 //
-//  Enums.swift
+//  CalculateItem.swift
 //  Calculator
 //
 //  Created by 이상윤 on 2023/01/16.
 //
 
 import Foundation
+
+protocol CalculateItem {
+
+}
 
 enum Operator: Character, CalculateItem, CaseIterable {
     case add = "+"
@@ -46,8 +50,6 @@ enum Operator: Character, CalculateItem, CaseIterable {
     }
 }
 
-enum ExpressionParser {
-    func parse(from input: String) -> Formula {
-        return Formula(operands: CalculateItemQueue(), operators: CalculateItemQueue())
-    }
+extension Double: CalculateItem {
+
 }

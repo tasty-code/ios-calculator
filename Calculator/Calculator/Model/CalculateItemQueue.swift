@@ -1,15 +1,11 @@
 //
-//  Queue.swift
+//  CalculateItemQueue.swift
 //  Calculator
 //
 //  Created by 이상윤 on 2023/01/16.
 //
 
 import Foundation
-
-protocol CalculateItem {
-
-}
 
 struct CalculateItemQueue<T: CalculateItem> {
     var queue: Array<T> = []
@@ -28,14 +24,5 @@ struct CalculateItemQueue<T: CalculateItem> {
     
     mutating func allClear() {
         queue.removeAll()
-    }
-}
-
-struct Formula {
-    var operands: CalculateItemQueue<Double>
-    var operators: CalculateItemQueue<Operator>
-
-    func result() -> Double {
-        return Double()
     }
 }
