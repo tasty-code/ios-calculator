@@ -9,27 +9,27 @@ import Foundation
 
 protocol CalculateItem { }
 
-struct CalculatorItemQueue<T>: CalculateItem {
+struct CalculatorItemQueue<ElementType>: CalculateItem {
     
-    var data = [T]()
+    var elements = [ElementType]()
     
     var count: Int {
-        return data.count
+        return elements.count
     }
     
     var isEmpty: Bool {
-        return data.isEmpty
+        return elements.isEmpty
     }
     
-    mutating func enqueue(_ element: T) {
-        return data.append(element)
+    mutating func enqueue(_ element: ElementType) {
+        return elements.append(element)
     }
     
-    mutating func dequeue() -> T? {
-        return isEmpty ? nil : data.removeFirst()
+    mutating func dequeue() -> ElementType? {
+        return isEmpty ? nil : elements.removeFirst()
     }
     
     mutating func clear() {
-        return data.removeAll()
+        return elements.removeAll()
     }
 }
