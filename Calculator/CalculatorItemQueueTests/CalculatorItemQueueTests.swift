@@ -55,4 +55,16 @@ final class CalculatorItemQueueTests: XCTestCase {
         XCTAssertEqual(sut.dequeue(), nil)
     }
     
+    func test_clear메소드를_활용후_isEmpty가_true가_되는지() {
+        //given
+        let setData = [1, 2]
+        sut.data = setData
+        
+        //when
+        sut.clear()
+        
+        //then
+        XCTAssertTrue(sut.isEmpty)
+    }
+    
 }
