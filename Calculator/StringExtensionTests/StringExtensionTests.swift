@@ -19,9 +19,14 @@ final class CalculatorTests: XCTestCase {
     }
     
     func test_StringExtension의_split에_String이_String배열로_나오는지() {
+        // given
         var input = "StringTest"
-        let result = input.split(with: "s")
+        
+        // when
         let expectation = ["StringTest"]
+        
+        // then
+        let result = input.split(with: "s")
         XCTAssertEqual(result, expectation)
     }
 }
