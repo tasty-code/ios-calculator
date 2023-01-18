@@ -5,32 +5,33 @@
 //  Created by devxsby on 2023/01/16.
 //
 
-import Foundation
+import UIKit
 
 protocol CalculateItem { }
 
-struct CalculatorItemQueue<T>: CalculateItem {
+extension Double: CalculateItem { }
+
+struct CalculatorItemQueue<Element: CalculateItem> {
     
-    var data = [T]()
-    public init() {}
+    var elements = [Element]()
     
-    public var count: Int {
-        return data.count
+    var count: Int {
+        return elements.count
     }
     
-    public var isEmpty: Bool {
-        return data.isEmpty
+    var isEmpty: Bool {
+        return elements.isEmpty
     }
     
-    public mutating func enqueue(_ element: T) {
-        return data.append(element)
+    mutating func enqueue(_ element: Element) {
+        return elements.append(element)
     }
     
-    public mutating func dequeue() -> T? {
-        return isEmpty ? nil : data.removeFirst()
+    mutating func dequeue() -> Element? {
+        return isEmpty ? nil : elements.removeFirst()
     }
     
-    public mutating func clear() {
-        return data.removeAll()
+    mutating func clear() {
+        return elements.removeAll()
     }
 }
