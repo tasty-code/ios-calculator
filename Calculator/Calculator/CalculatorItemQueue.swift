@@ -11,9 +11,9 @@ protocol CalculateItem { }
 
 extension Double: CalculateItem { }
 
-struct CalculatorItemQueue<ElementType: CalculateItem> {
+struct CalculatorItemQueue<Element: CalculateItem> {
     
-    var elements = [ElementType]()
+    var elements = [Element]()
     
     var count: Int {
         return elements.count
@@ -23,11 +23,11 @@ struct CalculatorItemQueue<ElementType: CalculateItem> {
         return elements.isEmpty
     }
     
-    mutating func enqueue(_ element: ElementType) {
+    mutating func enqueue(_ element: Element) {
         return elements.append(element)
     }
     
-    mutating func dequeue() -> ElementType? {
+    mutating func dequeue() -> Element? {
         return isEmpty ? nil : elements.removeFirst()
     }
     
