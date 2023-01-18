@@ -17,7 +17,7 @@ final class ComponentsByOperatorsTests: XCTestCase {
 
     func test_extractOperators의_반환값이_정확한지_확인() {
         let input = "1+22-10*3/2+3"
-        let result = ExpressionParser.getOperators(from: input)
+        let result = ExpressionParser.extractOperators(from: input)
         let expected: [Operator] = [.add, .subtract, .multiply, .divide, .add]
         XCTAssertEqual(result, expected)
     }
