@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Node: Equatable {
+class Node {
     var number: Double?
     var next: Node?
     var operation: Operation?
