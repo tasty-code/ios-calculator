@@ -5,7 +5,7 @@
 //  Created by devxsby on 2023/01/16.
 //
 
-import UIKit
+import Foundation
 
 protocol CalculateItem { }
 
