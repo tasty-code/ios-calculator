@@ -9,27 +9,27 @@ import Foundation
 
 
 enum Operation: String, CalculateItem {
-
+    case calculate = "="
     case add = "+"
     case subtract = "-"
     case divide = "÷"
     case multiply = "×"
-    case calculate = "="
 
-    func add(previousData: Double, nextData: Double) -> Double {
+    public func calculate(previousData: Double, nextData: Double) -> Double {
         return previousData + nextData
     }
-    func substract(previousData: Double, nextData: Double) -> Double {
+    private func add(previousData: Double, nextData: Double) -> Double {
+        return previousData + nextData
+    }
+    private func substract(previousData: Double, nextData: Double) -> Double {
         return previousData - nextData
     }
-    func divide(previousData: Double, nextData: Double) -> Double {
+    private func divide(previousData: Double, nextData: Double) -> Double {
         return previousData / nextData
     }
-    func mulitiply(previousData: Double, nextData: Double) -> Double {
+    private func mulitiply(previousData: Double, nextData: Double) -> Double {
         return previousData * nextData
     }
-    func calculate(previousData: Double, nextData: Double) -> Double {
-        return previousData + nextData
-    }
+
 }
 

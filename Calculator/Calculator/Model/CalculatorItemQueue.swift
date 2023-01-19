@@ -7,8 +7,6 @@
 
 import Foundation
 
-class CalculatorItemQueue {
+struct CalculatorItemQueue {
     var linkedList = LinkedList()
 }
-
-
