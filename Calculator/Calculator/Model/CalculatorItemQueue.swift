@@ -22,6 +22,12 @@ struct CalculatorItemQueue<Element: CalculateItem> {
         elements.count
     }
 
+    init(elements: [Element] = []) {
+        elements.forEach {
+            self.elements.append($0)
+        }
+    }
+
     mutating func enqueue(_ element: Element) {
         elements.append(element)
     }
