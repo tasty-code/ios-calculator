@@ -8,24 +8,24 @@
 import Foundation
 
 struct CalculatorItemQueue: CalculateItem {
-    private(set) var itemArray = [String]()
+    private(set) var items = [String]()
     
     func isEmpty() -> Bool {
-        itemArray.isEmpty
+        items.isEmpty
     }
     
     func count() -> Int {
-        itemArray.count
+        items.count
     }
     
     mutating func enqueue(item: String) {
-        itemArray.append(item)
+        items.append(item)
     }
     
-    mutating func dequeue() throws {
-        guard !itemArray.isEmpty else {
+    mutating func dequeue() throws -> String {
+        guard !items.isEmpty else {
             throw CalculatorError.noElementToDelete
         }
-        itemArray.removeFirst()
+        return items.removeFirst()
     }
 }

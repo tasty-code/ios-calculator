@@ -43,7 +43,7 @@ final class CalculatorTests: XCTestCase {
     func test_배열에_추가한_순서대로_저장된다() {
         sut.enqueue(item: "a")
         sut.enqueue(item: "b")
-        let result = sut.itemArray
+        let result = sut.items
         XCTAssertEqual(result, ["a", "b"])
     }
 
@@ -52,7 +52,7 @@ final class CalculatorTests: XCTestCase {
         sut.enqueue(item: "b")
         do {
             try sut.dequeue()
-            let result = sut.itemArray
+            let result = sut.items
             XCTAssertEqual(result, ["b"])
         } catch {
 
