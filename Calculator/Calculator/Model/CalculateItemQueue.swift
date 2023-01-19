@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol CalculateItem {
-    
-}
-
 struct CalculateItemQueue<T: CalculateItem> {
-    var queue: Array<T> = []
-    
+    var queue: Array<T>
+
+    init(queue: Array<T> = []) {
+        self.queue = queue
+    }
+
     mutating func enqueue(_ data: T) {
         queue.append(data)
     }
