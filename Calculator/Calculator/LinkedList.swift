@@ -8,14 +8,13 @@
 import Foundation
 
 final class LinkedList {
-    static var shared = LinkedList()
-    private init() {}
-    
     private var head: ItemNode?
+    private var tail: ItemNode?
     
     func append(data: Value) {
         if head == nil {
             head = ItemNode(data: data)
+            tail = head
             return
         }
         
@@ -25,18 +24,23 @@ final class LinkedList {
         }
         
         node?.next = ItemNode(data: data)
+        tail = node?.next
     }
     
     @discardableResult
     func remove() -> Value? {
-        let result: Value?
-        
         guard head != nil else {
             return nil
         }
         
+        let result: Value?
+        
         result = head?.data
         head = head?.next
+        
+        if head == nil {
+            tail = nil
+        }
         
         return result
     }

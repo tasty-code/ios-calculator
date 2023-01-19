@@ -8,7 +8,7 @@
 import Foundation
 
 final class ItemNode {
-    var data: Value
+    let data: Value
     var next: ItemNode?
     
     init(data: Value, next: ItemNode? = nil) {
@@ -18,6 +18,6 @@ final class ItemNode {
 }
 
 struct Value {
-    var operators: Operator?
-    var number: Double
+    let operators: Operator?
+    let number: Double
 }

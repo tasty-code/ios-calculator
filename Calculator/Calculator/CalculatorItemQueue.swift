@@ -11,7 +11,7 @@ protocol CalculateItem {
 }
 
 struct CalculatorItemQueue: CalculateItem {
-    var queue = LinkedList.shared
+    private let queue: LinkedList = LinkedList()
     
     func enqueue(data: Value) {
         queue.append(data: data)
