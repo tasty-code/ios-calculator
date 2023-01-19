@@ -26,18 +26,22 @@ final class FormulaTests: XCTestCase {
     func test_연산식을_enqueue한_후_result메서드_실행시_예상한_결과값을_반환한다() {
         // given 연산식: 5 + 9 * 20 / 8 - 7
         let expectation = 28.0
+        var operators = CalculatorItemQueue<Operator>()
+        var operands = CalculatorItemQueue<Double>()
 
         // when
-        sut.operators.enqueue(.add)
-        sut.operators.enqueue(.multiply)
-        sut.operators.enqueue(.divide)
-        sut.operators.enqueue(.subtract)
+        operators.enqueue(.add)
+        operators.enqueue(.multiply)
+        operators.enqueue(.divide)
+        operators.enqueue(.subtract)
 
-        sut.operands.enqueue(5.0)
-        sut.operands.enqueue(9.0)
-        sut.operands.enqueue(20.0)
-        sut.operands.enqueue(8.0)
-        sut.operands.enqueue(7.0)
+        operands.enqueue(5.0)
+        operands.enqueue(9.0)
+        operands.enqueue(20.0)
+        operands.enqueue(8.0)
+        operands.enqueue(7.0)
+
+        sut = Formula(operands: operands, operators: operators)
 
         let result = sut.result()
 
