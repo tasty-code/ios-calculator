@@ -43,8 +43,12 @@ struct Formula {
     var operands: CalculateItemQueue<Double>
     var operators: CalculateItemQueue<Operator>
 
-    func result() -> Double {
-        return Double()
+    mutating func result() -> Double {
+        var result: Double = 0
+        while let operand = operands.dequeue(), let `operator` = operators.dequeue() {
+            result = `operator`.calculate(lhs: result, rhs: operand)
+        }
+        return result
     }
 }
 
