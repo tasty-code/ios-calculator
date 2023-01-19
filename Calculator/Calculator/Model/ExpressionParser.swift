@@ -21,6 +21,16 @@ enum ExpressionParser {
     static func extractOperators(from input: String) -> [Operator] {
         return input.compactMap { Operator(rawValue: $0) }
     }
+
+    static func makeQueue<T>(from elements: Array<T>) -> CalculateItemQueue<T> {
+        var newQueue = CalculateItemQueue<T>()
+
+        elements.forEach { element in
+            newQueue.enqueue(element)
+        }
+
+        return newQueue
+    }
 }
 
 struct Formula {
