@@ -25,6 +25,7 @@ final class ComponentsByOperatorsTests: XCTestCase {
     func test_makeQueue의_input값이_잘들어갔는지_dequeue로_확인() {
         let input: [Double] = [1.0, 22.0, 10.0, 3.0, 2.0, 3.0]
         var result = ExpressionParser.makeQueue(from: input)
+
         for expected in input {
             let queueElement = result.dequeue()
             XCTAssertEqual(queueElement, expected)
