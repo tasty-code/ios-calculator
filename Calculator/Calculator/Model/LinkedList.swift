@@ -10,7 +10,7 @@ import Foundation
 class Node<Value> {
     var value: Value
     var next: Node<Value>? = nil
-    
+
     init(value: Value) {
         self.value = value
     }
@@ -28,19 +28,19 @@ struct LinkedList<Value> {
                 tail = nil
             }
         }
-        
+
         return head?.value
     }
-    
+
     mutating func append(_ value: Value) {
         let node = Node(value: value)
-        
+
         if head == nil {
             head = node
             tail = head
             return
         }
-        
+
         tail?.next = node
         tail = node
     }
