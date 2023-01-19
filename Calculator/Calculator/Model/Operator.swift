@@ -19,10 +19,10 @@ enum Operator: Character, CalculatorItem, CaseIterable {
             return add(lhs: lhs, rhs: rhs)
         case .subtract:
             return subtract(lhs: lhs, rhs: rhs)
-        case .divide:
-            return divide(lhs: lhs, rhs: rhs)
         case .multiply:
             return multiply(lhs: lhs, rhs: rhs)
+        case .divide:
+            return divide(lhs: lhs, rhs: rhs)
         }
     }
     
@@ -32,10 +32,10 @@ enum Operator: Character, CalculatorItem, CaseIterable {
     private func subtract(lhs: Double, rhs: Double) -> Double {
         return lhs - rhs
     }
-    private func divide(lhs: Double, rhs: Double) -> Double {
-        return Double()
-    }
     private func multiply(lhs: Double, rhs: Double) -> Double {
+        return lhs * rhs
+    }
+    private func divide(lhs: Double, rhs: Double) -> Double {
         return Double()
     }
 }
