@@ -37,12 +37,24 @@ final class OperatorTests: XCTestCase {
         let inputLhs = 1.0
         let inputRhs = 2.0
         
-        
         // when
         let expectation = -1.0
         
         // then
         let result = Operator.subtract.calculate(lhs: inputLhs, rhs: inputRhs)
+        XCTAssertEqual(expectation, result)
+    }
+    
+    func test_Operator의_곱셈메서드를통해_결과값으로_곱셈값을_반환하는지() {
+        // given
+        let inputLhs = 1.0
+        let inputRhs = 2.0
+        
+        // when
+        let expectation = 2.0
+        
+        // then
+        let result = Operator.multiply.calculate(lhs: inputLhs, rhs: inputRhs)
         XCTAssertEqual(expectation, result)
     }
 }
