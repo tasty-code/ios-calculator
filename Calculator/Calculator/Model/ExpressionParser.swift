@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum ExpressionParser<Element: CalculateItem> {
-    func parse(from input: String) -> Formula<Element> {
-        return Formula(operands: CalculatorItemQueue(), operators: CalculatorItemQueue())
+enum ExpressionParser {
+    func parse(from input: String) -> Formula {
+        return Formula(operands: CalculatorItemQueue<Double>(), operators: CalculatorItemQueue<Operator>())
     }
 
     private func componentsByOperaters(from input: String) -> [String] {

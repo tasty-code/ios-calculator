@@ -7,11 +7,18 @@
 
 import Foundation
 
-struct Formula<Element: CalculateItem> {
-    var operands: CalculatorItemQueue<Element>
-    var operators: CalculatorItemQueue<Element>
+struct Formula {
+    private var operands: CalculatorItemQueue<Double>
+    private var operators: CalculatorItemQueue<Operator>
+
+    init(operands: CalculatorItemQueue<Double>, operators: CalculatorItemQueue<Operator>) {
+        self.operands = operands
+        self.operators = operators
+    }
 
     func result() -> Double {
+        
+
         return 0.0
     }
 }

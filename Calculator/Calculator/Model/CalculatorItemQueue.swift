@@ -18,6 +18,10 @@ struct CalculatorItemQueue<Element: CalculateItem> {
         elements.tail?.value
     }
 
+    var count: Int {
+        elements.count
+    }
+
     mutating func enqueue(_ element: Element) {
         elements.append(element)
     }
