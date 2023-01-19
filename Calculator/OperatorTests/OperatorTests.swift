@@ -57,4 +57,17 @@ final class OperatorTests: XCTestCase {
         let result = Operator.multiply.calculate(lhs: inputLhs, rhs: inputRhs)
         XCTAssertEqual(expectation, result)
     }
+    
+    func test_Operator의_나눗셈_메서드를통해_결과값으로_곱셈값을_반환하는지() {
+        // given
+        let inputLhs = 1.0
+        let inputRhs = 2.0
+        
+        // when
+        let expectation = 0.5
+        
+        // then
+        let result = Operator.divide.calculate(lhs: inputLhs, rhs: inputRhs)
+        XCTAssertEqual(expectation, result)
+    }
 }
