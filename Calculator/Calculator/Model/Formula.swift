@@ -17,7 +17,9 @@ struct Formula {
     }
 
     mutating func result() throws -> Double {
-        guard var result = operands.dequeue() else { return 0 }
+        guard var result = operands.dequeue() else {
+            throw CalculatorError.invalidDequeue
+        }
 
         guard operands.count == operators.count else {
             throw CalculatorError.notMatchingCountOfOperatorsAndOperands
@@ -25,7 +27,9 @@ struct Formula {
 
         for _ in 1...operators.count {
             guard let calculateOperator = operators.dequeue(),
-                  let operand = operands.dequeue() else { return result }
+                  let operand = operands.dequeue() else {
+                throw CalculatorError.invalidDequeue
+            }
 
             if calculateOperator == .divide && operand == 0 {
                 throw CalculatorError.divideByZero

@@ -45,4 +45,15 @@ final class ExpressionParserTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+
+    func test_입력이_없는_경우_에러를_반환한다() {
+        // given
+        let input = ""
+
+        // when
+        var formula = ExpressionParser.parse(from: input)
+
+        // then
+        XCTAssertThrowsError(try formula.result())
+    }
 }
