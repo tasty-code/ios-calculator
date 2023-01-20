@@ -16,7 +16,9 @@ struct Formula {
         result = operands.dequeue() ?? 0.0
         
         while !operators.isEmpty {
-            result = operators.dequeue()?.calculate(lhs: result, rhs: operands.dequeue() ?? 0.0) ?? 0.0
+            guard let dequeuedOperand = operands.dequeue(),
+                  let dequeuedOperator = operators.dequeue() else { return 0.0 }
+            result = dequeuedOperator.calculate(lhs: result, rhs: dequeuedOperand)
         }
         return result
     }
