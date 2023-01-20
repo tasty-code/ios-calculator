@@ -8,10 +8,19 @@
 import Foundation
 
 struct CalculatorItemQueue<Element: CalculatorItem> {
-    var linkedList: LinkedList<Element> = LinkedList()
+    private var linkedList: LinkedList<Element> = LinkedList()
     
     mutating func enQueue(element: Element) {
         linkedList.append(data: element)
+    }
+    
+    func isHeadEmpty() -> Bool {
+        return linkedList.isHeadEmpty()
+    }
+    
+    func getHead() -> Node<Element>? {
+        guard let result = linkedList.getHead() else{ return nil }
+        return result
     }
     
     func deQueue() {

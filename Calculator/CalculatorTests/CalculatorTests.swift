@@ -10,7 +10,7 @@ import XCTest
 
 final class CalculatorTests: XCTestCase {
     
-    var sut: LinkedList!
+    var sut: LinkedList<Any>!
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = LinkedList()
@@ -31,7 +31,7 @@ final class CalculatorTests: XCTestCase {
     
     func test_LinkedList의_inqueue가_Node의_Head로_추가되는지확인() {
         // given
-        let input = Node(next: nil, data: 0.0, operators: nil)
+        let input = Node(next: nil, data: 0.0)
         
         // when
         let _ = sut.append(data: input)
@@ -43,8 +43,8 @@ final class CalculatorTests: XCTestCase {
     
     func test_LinkedList의_inqueue가_Head의_다음Node를_연결하는지() {
         //given
-        let input = Node(next: nil, data: 0.0, operators: nil)
-        let newinput = Node(next: nil, data: 0.0, operators: nil)
+        let input = Node(next: nil, data: 0.0)
+        let newinput = Node(next: nil, data: 0.0)
         
         sut.append(data: input)
         //when
