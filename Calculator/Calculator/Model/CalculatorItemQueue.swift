@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalculatorItemQueue: CalculateItem {
+struct CalculatorItemQueue<Item: CalculateItem> {
     private(set) var items = [String]()
     
     func isEmpty() -> Bool {
