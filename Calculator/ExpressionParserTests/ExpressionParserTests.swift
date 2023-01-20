@@ -10,14 +10,6 @@ import XCTest
 
 final class ExpressionParserTests: XCTestCase {
 
-    override func setUpWithError() throws {
-
-    }
-
-    override func tearDownWithError() throws {
-
-    }
-
     func test_parse메서드에_연산식을_매개변수로_넣고_실행하면_operator에는_연산자만_operands에는_피연산자만_파싱된다() {
         // given
         let input = "1+3-20.3*99.56/23+5.0-9"
