@@ -9,7 +9,6 @@ import Foundation
 
 struct CalculatorItemQueue<T> {
     var queue: [T] = []
-    
     var isEmpty: Bool {
         return queue.isEmpty
     }
@@ -18,7 +17,7 @@ struct CalculatorItemQueue<T> {
         return queue.append(value)
     }
     
-    mutating func dequeue(value: T) -> T? {
-        return isEmpty ? nil : queue.removeFirst()
+    mutating func dequeue() -> T? {
+        isEmpty ? nil : queue.removeFirst()
     }
 }
