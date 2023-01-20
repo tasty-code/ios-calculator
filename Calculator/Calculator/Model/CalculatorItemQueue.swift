@@ -7,6 +7,8 @@
 
 import Foundation
 
+protocol CalculateItem { }
+
 struct CalculatorItemQueue<Element: CalculateItem> {
     var elements = LinkedList<Element>()
 
