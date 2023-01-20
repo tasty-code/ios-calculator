@@ -56,4 +56,44 @@ final class ExpressionParserTests: XCTestCase {
         // then
         XCTAssertThrowsError(try formula.result())
     }
+
+    func test_연산자와_피연산자_갯수가_적절하지_않은경우_에러를_반환한다() {
+        // given
+        let input1 = "1\(addSign)0\(subtractSign)\(subtractSign)10\(multiplySign)5.5"
+        let input2 = "1\(addSign)0\(subtractSign)10\(multiplySign)5.5\(subtractSign)"
+        let input3 = "\(subtractSign)1\(addSign)0\(subtractSign)10\(multiplySign)5.5"
+        let input4 = "1\(addSign)0\(multiplySign)\(multiplySign)\(subtractSign)10\(multiplySign)5.5"
+
+        // when
+        var formula1 = ExpressionParser.parse(from: input1)
+        var formula2 = ExpressionParser.parse(from: input2)
+        var formula3 = ExpressionParser.parse(from: input3)
+        var formula4 = ExpressionParser.parse(from: input4)
+
+        // then
+        XCTAssertThrowsError(try formula1.result())
+        XCTAssertThrowsError(try formula2.result())
+        XCTAssertThrowsError(try formula3.result())
+        XCTAssertThrowsError(try formula4.result())
+    }
+
+    func test_0으로_나눌시_에러를_반환한다() {
+        // given
+        let input1 = "1\(divideSign)0\(subtractSign)10\(multiplySign)5.5"
+        let input2 = "100\(divideSign)0"
+        let input3 = "\(subtractSign)1\(divideSign)0\(subtractSign)10\(multiplySign)5.5"
+        let input4 = "1\(addSign)0\(multiplySign)10\(divideSign)0.0"
+
+        // when
+        var formula1 = ExpressionParser.parse(from: input1)
+        var formula2 = ExpressionParser.parse(from: input2)
+        var formula3 = ExpressionParser.parse(from: input3)
+        var formula4 = ExpressionParser.parse(from: input4)
+
+        // then
+        XCTAssertThrowsError(try formula1.result())
+        XCTAssertThrowsError(try formula2.result())
+        XCTAssertThrowsError(try formula3.result())
+        XCTAssertThrowsError(try formula4.result())
+    }
 }
