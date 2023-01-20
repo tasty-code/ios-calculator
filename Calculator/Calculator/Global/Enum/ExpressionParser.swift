@@ -11,8 +11,8 @@ enum ExpressionParser {
     
     static func parse(from input: String) -> Formula {
         
-        let operators = Operator.allCases.compactMap { String($0.rawValue) }
         let separatedInputs = componentsByOperators(from: input)
+        let operators = Operator.allCases.compactMap { String($0.rawValue) }
         
         let operatorElements = separatedInputs.filter { operators.contains($0) }
         let operandElements = separatedInputs.filter { !operatorElements.contains($0) }
