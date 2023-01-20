@@ -7,18 +7,17 @@
 
 import Foundation
 
-final class  Node: Equatable {
-    static func == (lhs: Node, rhs: Node) -> Bool {
-        return lhs.next == rhs.next
-    }
+final class Node<Element>: Equatable {
     
     var next: Node?
-    var data: Double
-    var operators: Operator?
+    var data: Element
     
-    init(next: Node? = nil, data: Double, operators: Operator? = nil) {
+    init(next: Node? = nil, data: Element, operators: Operator? = nil) {
         self.next = next
         self.data = data
-        self.operators = operators
+    }
+    
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        return lhs.next == rhs.next
     }
 }
