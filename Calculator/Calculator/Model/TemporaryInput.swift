@@ -9,11 +9,11 @@ import Foundation
 
 struct TemporaryInput {
     private var partialOperator: Character = "+"
-    private var partailOperands: [String] = []
+    private var partialOperands: [String] = []
     private var isPositive: Bool = true
 
     func partailOperandsIsEmpty() -> Bool {
-        partailOperands.isEmpty
+        partialOperands.isEmpty
     }
 
     mutating func changeOperator(to newOperator: Character) {
@@ -21,7 +21,7 @@ struct TemporaryInput {
     }
 
     mutating func addOperand(newNumber: String) {
-        partailOperands.append(newNumber)
+        partialOperands.append(newNumber)
     }
 
     mutating func toggleSignValue() {
@@ -30,7 +30,7 @@ struct TemporaryInput {
 
     func makePair() -> String {
         let signValue = isPositive ? "" : "-"
-        let numbers = partailOperands.joined()
+        let numbers = partialOperands.joined()
         return "\(partialOperator)\(signValue)\(numbers)"
     }
 }
