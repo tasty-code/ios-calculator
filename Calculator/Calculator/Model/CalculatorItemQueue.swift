@@ -10,7 +10,7 @@ import Foundation
 struct CalculatorItemQueue<Element: CalculatorItem> {
     var linkedList: LinkedList<Element> = LinkedList()
     
-    mutating func enQueue(element: Node<Element>) {
+    mutating func enQueue(element: Element) {
         linkedList.append(data: element)
     }
     

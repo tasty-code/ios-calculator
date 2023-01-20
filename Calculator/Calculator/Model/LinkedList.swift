@@ -18,25 +18,24 @@ struct LinkedList<Element> {
         return head
     }
     
-    mutating func append(data: Node<Element>) {
+    mutating func append(data: Element) {
         if head == nil {
-            head = data
+            head = Node(data: data)
             return
-        }else {
+        } else {
             var node = head
             while node?.next != nil {
                 node = node?.next
             }
-            node?.next = data
+            node?.next = Node(data: data)
         }
     }
     
     func removeLast() {
         let head = getHead()
-//        guard let head else { return }
-        
         var node = head
         var preNode: Node<Element>?
+        
         while node?.next != nil {
             preNode = node
             node = node?.next
