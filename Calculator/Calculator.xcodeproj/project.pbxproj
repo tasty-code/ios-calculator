@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86C0B3042976312000E6145D /* CalculateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0B3032976312000E6145D /* CalculateItem.swift */; };
-		86C0B3062976321000E6145D /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0B3052976321000E6145D /* Operation.swift */; };
+		86C0B3062976321000E6145D /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0B3052976321000E6145D /* Operator.swift */; };
 		C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9412570E5EB001C3AFC /* AppDelegate.swift */; };
 		C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9432570E5EB001C3AFC /* SceneDelegate.swift */; };
 		C713D9462570E5EB001C3AFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9452570E5EB001C3AFC /* ViewController.swift */; };
@@ -19,7 +19,7 @@
 		EB041C892978D3B0006949AD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB041C882978D3B0006949AD /* String.swift */; };
 		EB041C8B2978D414006949AD /* Formula.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB041C8A2978D414006949AD /* Formula.swift */; };
 		EB041C8D2978D519006949AD /* ExpressionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB041C8C2978D519006949AD /* ExpressionParser.swift */; };
-		EB6CD478297507A4008E6106 /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6CD477297507A4008E6106 /* CalculatorItemQueue.swift */; };
+		EB421E30297A241D00083737 /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB421E2F297A241D00083737 /* CalculatorItemQueue.swift */; };
 		EB6CD47A29752E5C008E6106 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6CD47929752E5C008E6106 /* Node.swift */; };
 		EB6CD47C29769399008E6106 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6CD47B29769399008E6106 /* LinkedList.swift */; };
 		EB6CD484297694BC008E6106 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6CD483297694BC008E6106 /* CalculatorTests.swift */; };
@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		86C0B3032976312000E6145D /* CalculateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateItem.swift; sourceTree = "<group>"; };
-		86C0B3052976321000E6145D /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		86C0B3052976321000E6145D /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		C713D93E2570E5EB001C3AFC /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C713D9412570E5EB001C3AFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C713D9432570E5EB001C3AFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		EB041C882978D3B0006949AD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		EB041C8A2978D414006949AD /* Formula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula.swift; sourceTree = "<group>"; };
 		EB041C8C2978D519006949AD /* ExpressionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionParser.swift; sourceTree = "<group>"; };
-		EB6CD477297507A4008E6106 /* CalculatorItemQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorItemQueue.swift; sourceTree = "<group>"; };
+		EB421E2F297A241D00083737 /* CalculatorItemQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorItemQueue.swift; sourceTree = "<group>"; };
 		EB6CD47929752E5C008E6106 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		EB6CD47B29769399008E6106 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		EB6CD481297694BC008E6106 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,12 +119,12 @@
 		EB6CD48A29769BBA008E6106 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB6CD477297507A4008E6106 /* CalculatorItemQueue.swift */,
-				EB041C8A2978D414006949AD /* Formula.swift */,
 				EB041C8C2978D519006949AD /* ExpressionParser.swift */,
+				EB041C8A2978D414006949AD /* Formula.swift */,
+				EB421E2F297A241D00083737 /* CalculatorItemQueue.swift */,
 				EB6CD47B29769399008E6106 /* LinkedList.swift */,
 				EB6CD47929752E5C008E6106 /* Node.swift */,
-				86C0B3052976321000E6145D /* Operation.swift */,
+				86C0B3052976321000E6145D /* Operator.swift */,
 				86C0B3032976312000E6145D /* CalculateItem.swift */,
 				EB041C862978D395006949AD /* Double.swift */,
 				EB041C882978D3B0006949AD /* String.swift */,
@@ -237,10 +237,10 @@
 				EB041C892978D3B0006949AD /* String.swift in Sources */,
 				EB6CD47A29752E5C008E6106 /* Node.swift in Sources */,
 				C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */,
-				86C0B3062976321000E6145D /* Operation.swift in Sources */,
-				EB6CD478297507A4008E6106 /* CalculatorItemQueue.swift in Sources */,
+				86C0B3062976321000E6145D /* Operator.swift in Sources */,
 				EB041C8B2978D414006949AD /* Formula.swift in Sources */,
 				EB6CD47C29769399008E6106 /* LinkedList.swift in Sources */,
+				EB421E30297A241D00083737 /* CalculatorItemQueue.swift in Sources */,
 				EB041C872978D395006949AD /* Double.swift in Sources */,
 				EB041C8D2978D519006949AD /* ExpressionParser.swift in Sources */,
 				C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */,

@@ -8,9 +8,10 @@
 import Foundation
 
 struct Formula {
-    public var operands: CalculatorItemQueue // 숫자
-    public var operators: CalculatorItemQueue // 연산자
+    var calculatorItemQueue = CalculatorItemQueue()
     
+    public var operands: CalculatorItemQueue // 숫자
+    public var operators: CalculatorItemQueue // 연산자배열2
 //    public func result() -> Double {
 //
 //    }

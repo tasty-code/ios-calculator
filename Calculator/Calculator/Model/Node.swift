@@ -7,15 +7,13 @@
 
 import Foundation
 
-class Node {
-    var number: Double?
+class Node<T> {
+    var value: T
     var next: Node?
-    var operation: Operation?
-    var isPostive: Bool = true
 
-    init(number: Double, next: Node? = nil, operation: Operation) {
-        self.number = number
-        self.next = next
-        self.operation = operation
+    init(value: T, next: Node? = nil) {
+        self.value = value
     }
 }
+
+

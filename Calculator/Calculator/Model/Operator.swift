@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum Operation: String, CalculateItem {
+enum Operator: String, CalculateItem {
     case calculate = "="
     case add = "+"
     case subtract = "-"
@@ -30,6 +30,5 @@ enum Operation: String, CalculateItem {
     private func mulitiply(previousData: Double, nextData: Double) -> Double {
         return previousData * nextData
     }
-
 }
 

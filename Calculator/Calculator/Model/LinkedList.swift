@@ -7,18 +7,20 @@
 
 import Foundation
 
-class LinkedList {
-    var head: Node?
+class LinkedList<T> {
+    var head: Node<T>?
     
-    func enqueue(number: Double, operation: Operation) {
+    func enqueue(value: T) {
         if head == nil {
-            head = Node(number: number, operation: operation)
+            head = Node(value: value)
             return
         }
         var node = head
         while node?.next != nil {
             node = node?.next
         }
-        node?.next = Node(number: number, operation: operation)
+        node?.next = Node(value: value)
     }
 }
+// [node - linkedList - Queue] = 하나의 저장소
+// [node-linkedlist] [node-linkedlist]
