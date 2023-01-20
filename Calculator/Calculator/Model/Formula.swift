@@ -8,9 +8,6 @@
 import Foundation
 
 struct Formula<T> {
-    var operands: CalculatorItemQueue<T> = CalculatorItemQueue() // 숫자
-    var operators: CalculatorItemQueue<T> = CalculatorItemQueue()
-//    public func result() -> Double {
-//
-//    }
+    var operands: CalculatorItemQueue<Double> = CalculatorItemQueue()
+    var operators: CalculatorItemQueue<Operator> = CalculatorItemQueue()
 }

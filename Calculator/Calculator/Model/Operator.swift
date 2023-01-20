@@ -14,21 +14,5 @@ enum Operator: String, CalculateItem {
     case subtract = "-"
     case divide = "÷"
     case multiply = "×"
-
-    public func calculate(previousData: Double, nextData: Double) -> Double {
-        return previousData + nextData
-    }
-    private func add(previousData: Double, nextData: Double) -> Double {
-        return previousData + nextData
-    }
-    private func substract(previousData: Double, nextData: Double) -> Double {
-        return previousData - nextData
-    }
-    private func divide(previousData: Double, nextData: Double) -> Double {
-        return previousData / nextData
-    }
-    private func mulitiply(previousData: Double, nextData: Double) -> Double {
-        return previousData * nextData
-    }
 }
 

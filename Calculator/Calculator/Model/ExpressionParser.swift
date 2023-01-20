@@ -8,10 +8,4 @@
 import Foundation
 
 enum ExpressionParser {
-//    public static func parse(from input: String) -> Formula {
-//
-//    }
-//    private static func componentsByOperators(from input: ) -> [String] {
-//
-//    }
 }
