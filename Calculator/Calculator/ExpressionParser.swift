@@ -8,8 +8,8 @@
 import Foundation
 
 enum ExpressionParser {
-    func parse(from input: String) -> Formula {
-        let operators = Operator.allCases.map { "\($0)" }
+    static func parse(from input: String) -> Formula {
+        let operators = Operator.allCases.compactMap { String($0.rawValue) }
         let separatedInputs = componentsByOperators(from: input)
         
         let operatorElements = separatedInputs.filter { operators.contains($0) }
@@ -24,7 +24,7 @@ enum ExpressionParser {
         return Formula(operands: operandsQueue, operators: operatorsQueue)
     }
     
-    private func componentsByOperators(from input: String) -> [String] {
+    private static func componentsByOperators(from input: String) -> [String] {
         return input.split(with: ",")
     }
 }
