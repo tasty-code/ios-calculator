@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Node<Value> {
+final class Node<Value> {
     var value: Value
     var next: Node<Value>? = nil
 

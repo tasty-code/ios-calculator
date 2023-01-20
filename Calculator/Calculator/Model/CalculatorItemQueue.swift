@@ -10,7 +10,7 @@ import Foundation
 protocol CalculateItem { }
 
 struct CalculatorItemQueue<Element: CalculateItem> {
-    var elements = LinkedList<Element>()
+    private var elements = LinkedList<Element>()
 
     var front: Element? {
         elements.head?.value
