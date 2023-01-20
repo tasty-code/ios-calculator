@@ -7,6 +7,14 @@
 
 import Foundation
 
-struct CalculatorItemQueue {
+struct CalculatorItemQueue<Element: CalculatorItem> {
+    var linkedList: LinkedList<Element> = LinkedList()
     
+    mutating func enQueue(element: Node<Element>) {
+        linkedList.append(data: element)
+    }
+    
+    func deQueue() {
+        linkedList.removeLast()
+    }
 }
