@@ -1,13 +1,13 @@
 //
-//  CalculatorItemQueu.swift
+//  LinkedList.swift
 //  Calculator
 //
-//  Created by 조용현 on 2023/01/20.
+//  Created by 조용현 on 2023/01/17.
 //
 
 import Foundation
 
-struct CalculatorItemQueue<T> {
+struct Queue<T> {
     var queue: [T] = []
     
     var isEmpty: Bool {

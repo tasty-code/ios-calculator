@@ -7,11 +7,9 @@
 
 import Foundation
 
-struct Formula {
-    var calculatorItemQueue = CalculatorItemQueue()
-    
-    public var operands: CalculatorItemQueue // 숫자
-    public var operators: CalculatorItemQueue // 연산자배열2
+struct Formula<T> {
+    var operands: CalculatorItemQueue<T> = CalculatorItemQueue() // 숫자
+    var operators: CalculatorItemQueue<T> = CalculatorItemQueue()
 //    public func result() -> Double {
 //
 //    }
