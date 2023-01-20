@@ -39,7 +39,7 @@ final class CalculatorItemQueueTests: XCTestCase {
         //given
         let expectedValue = 3.0
         let inputElements = [3.0]
-        sut.elements = inputElements
+        sut.dequeueElements = inputElements
         
         //when
         let dequeuedData = sut.dequeue()
@@ -59,7 +59,7 @@ final class CalculatorItemQueueTests: XCTestCase {
     func test_clear메소드를_활용후_isEmpty가_true가_되는지() {
         //given
         let inputElements = [1.0, 2.0]
-        sut.elements = inputElements
+        sut.enqueueElements = inputElements
         
         //when
         sut.clear()

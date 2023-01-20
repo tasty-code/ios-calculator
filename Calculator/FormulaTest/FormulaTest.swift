@@ -29,8 +29,8 @@ final class FormulaTest: XCTestCase {
         let expectedOperators = [Operator.add, Operator.divide, Operator.substract, Operator.multiply, Operator.add]
         
         // when
-        let calculatorItemQueueOperands = sut.operands.elements
-        let calculatorItemQueueOperators = sut.operators.elements
+        let calculatorItemQueueOperands = sut.operands.enqueueElements
+        let calculatorItemQueueOperators = sut.operators.enqueueElements
         
         // then
         XCTAssertEqual(expectedOperands, calculatorItemQueueOperands)

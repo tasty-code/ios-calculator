@@ -9,25 +9,31 @@ import Foundation
 
 struct CalculatorItemQueue<Element: CalculateItem> {
     
-    var elements = [Element]()
+    var enqueueElements = [Element]()
+    var dequeueElements = [Element]()
     
     var count: Int {
-        return elements.count
+        return enqueueElements.count
     }
     
     var isEmpty: Bool {
-        return elements.isEmpty
+        return enqueueElements.isEmpty && dequeueElements.isEmpty
     }
     
     mutating func enqueue(_ element: Element) {
-        return elements.append(element)
+        return enqueueElements.append(element)
     }
     
     mutating func dequeue() -> Element? {
-        return isEmpty ? nil : elements.removeFirst()
+        if dequeueElements.isEmpty {
+            dequeueElements = enqueueElements.reversed()
+            enqueueElements.removeAll()
+        }
+        return dequeueElements.popLast()
     }
     
     mutating func clear() {
-        return elements.removeAll()
+        enqueueElements.removeAll()
+        dequeueElements.removeAll()
     }
 }
