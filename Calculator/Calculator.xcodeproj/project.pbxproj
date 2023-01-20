@@ -134,9 +134,9 @@
 			children = (
 				5B289C02297779FD003C89B7 /* Extension */,
 				5B805F1329753BF000EB0189 /* Node.swift */,
+				F142957129754AC500CAB66C /* LinkedList.swift */,
 				F142956D29753D2B00CAB66C /* Calculator.swift */,
 				F142956F29753D8900CAB66C /* Operator.swift */,
-				F142957129754AC500CAB66C /* LinkedList.swift */,
 				F1CB23682977DB3600D1E0E3 /* ExpressionParser.swift */,
 				F1CB236A2977DB6600D1E0E3 /* Formula.swift */,
 				F142957329754BC100CAB66C /* CalculatorItemQueue.swift */,

@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct LinkedList {
-    private var head: Node?
+struct LinkedList<Element> {
+    private var head: Node<Element>?
     
     func isHeadEmpty() -> Bool {
         return head == nil
     }
     
-    func getHead() -> Node? {
+    func getHead() -> Node<Element>? {
         return head
     }
     
-    mutating func append(data: Node) {
+    mutating func append(data: Node<Element>) {
         if head == nil {
             head = data
             return
@@ -36,7 +36,7 @@ struct LinkedList {
 //        guard let head else { return }
         
         var node = head
-        var preNode: Node?
+        var preNode: Node<Element>?
         while node?.next != nil {
             preNode = node
             node = node?.next
