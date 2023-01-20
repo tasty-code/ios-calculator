@@ -31,15 +31,17 @@ struct LinkedList<Element> {
         }
     }
     
-    func removeLast() {
+    mutating func removeLast() {
+        // 기존 코드
         let head = getHead()
         var node = head
         var preNode: Node<Element>?
-        
+
         while node?.next != nil {
             preNode = node
             node = node?.next
         }
         preNode?.next = nil
+        self.head = nil
     }
 }

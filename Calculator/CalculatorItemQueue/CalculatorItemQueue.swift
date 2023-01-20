@@ -20,20 +20,52 @@ final class CalculatorItemQueueTest: XCTestCase {
     }
     
     func test_enqueue가_Double을_받아서_LinkedList에_넣는지() {
+        // given
         let inputDouble = 0.5
         
-        sut1.enQueue(element: inputDouble)
-        let result = sut1.isHeadEmpty()
+        // when
+        sut1.enqueue(element: inputDouble)
         
+        // then
+        let result = sut1.isHeadEmpty()
         XCTAssertFalse(result)
     }
     
     func test_enqueue가_Operator를_받아서_LinkedList에_넣는지() {
+        // given
         let inputOperator = Operator.add
         
-        sut2.enQueue(element: inputOperator)
-        let result = sut2.isHeadEmpty()
+        // when
+        sut2.enqueue(element: inputOperator)
         
+        // then
+        let result = sut2.isHeadEmpty()
         XCTAssertFalse(result)
+    }
+    
+    func test_dequeue가_Double을_받아서_LinkedList에서_삭제하는지(){
+        // given
+        let inputDouble = 0.5
+        
+        // when
+        sut1.enqueue(element: inputDouble)
+        sut1.dequeue()
+        
+        //then
+        let result = sut1.isHeadEmpty()
+        XCTAssertTrue(result)
+    }
+    
+    func test_dequeue가_Operator의_Case을_받아서_LinkedList에서_삭제하는지() {
+        // given
+        let inputOperator = Operator.multiply
+        
+        // when
+        sut2.enqueue(element: inputOperator)
+        sut2.dequeue()
+        
+        //then
+        let result = sut2.isHeadEmpty()
+        XCTAssertTrue(result)
     }
 }

@@ -10,10 +10,6 @@ import Foundation
 struct CalculatorItemQueue<Element: CalculatorItem> {
     private var linkedList: LinkedList<Element> = LinkedList()
     
-    mutating func enQueue(element: Element) {
-        linkedList.append(data: element)
-    }
-    
     func isHeadEmpty() -> Bool {
         return linkedList.isHeadEmpty()
     }
@@ -23,7 +19,11 @@ struct CalculatorItemQueue<Element: CalculatorItem> {
         return result
     }
     
-    func deQueue() {
+    mutating func enqueue(element: Element) {
+        linkedList.append(data: element)
+    }
+    
+    mutating func dequeue() {
         linkedList.removeLast()
     }
 }
