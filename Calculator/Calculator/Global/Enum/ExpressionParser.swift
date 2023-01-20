@@ -8,7 +8,9 @@
 import Foundation
 
 enum ExpressionParser {
+    
     static func parse(from input: String) -> Formula {
+        
         let operators = Operator.allCases.compactMap { String($0.rawValue) }
         let separatedInputs = componentsByOperators(from: input)
         
