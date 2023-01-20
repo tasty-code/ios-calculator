@@ -20,7 +20,12 @@ final class FormulaTests: XCTestCase {
     }
 
     func test_비어있는_operators와_operands의_result가_0이다() {
-        XCTAssertEqual(sut.result(), 0)
+        do {
+            let result = try sut.result()
+            XCTAssertEqual(result, 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
 
     func test_연산식을_enqueue한_후_result메서드_실행시_예상한_결과값을_반환한다() {
@@ -43,9 +48,12 @@ final class FormulaTests: XCTestCase {
 
         sut = Formula(operands: operands, operators: operators)
 
-        let result = sut.result()
-
-        // then
-        XCTAssertEqual(expectation, result)
+        do {
+            let result = try sut.result()
+            // then
+            XCTAssertEqual(expectation, result)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
 }

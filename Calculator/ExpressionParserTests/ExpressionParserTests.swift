@@ -36,9 +36,13 @@ final class ExpressionParserTests: XCTestCase {
 
         // when
         var formula = ExpressionParser.parse(from: input)
-        let result = formula.result()
 
-        // then
-        XCTAssertEqual(result, expectation)
+        do {
+            let result = try formula.result()
+            // then
+            XCTAssertEqual(result, expectation)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
 }
