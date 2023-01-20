@@ -9,7 +9,6 @@ import Foundation
 
 
 enum Operation: String, CalculateItem {
-
     case add = "+"
     case subtract = "-"
     case divide = "÷"
@@ -19,15 +18,19 @@ enum Operation: String, CalculateItem {
     func add(previousData: Double, nextData: Double) -> Double {
         return previousData + nextData
     }
+    
     func substract(previousData: Double, nextData: Double) -> Double {
         return previousData - nextData
     }
+    
     func divide(previousData: Double, nextData: Double) -> Double {
         return previousData / nextData
     }
+    
     func mulitiply(previousData: Double, nextData: Double) -> Double {
         return previousData * nextData
     }
+    
     func calculate(previousData: Double, nextData: Double) -> Double {
         return previousData + nextData
     }

@@ -20,7 +20,6 @@ final class CalculatorTests: XCTestCase {
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         sut = nil
-
     }
     
     func test_LinkedList_number에_양수값이_담기는가() throws {
