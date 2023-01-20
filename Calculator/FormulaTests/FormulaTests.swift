@@ -1,6 +1,6 @@
 //
-//  FormulaTest.swift
-//  FormulaTest
+//  FormulaTests.swift
+//  FormulaTests
 //
 //  Created by 김용재 on 2023/01/20.
 //
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Calculator
 
-final class FormulaTest: XCTestCase {
+final class FormulaTests: XCTestCase {
     
     var sut: Formula!
 
