@@ -21,14 +21,26 @@ final class FormulaTests: XCTestCase {
         sut = nil
     }
     
-    func test_result메서드를_실행하면_Double을_반환하는지() {
+    func test_입력값이_0일때_result메서드를_실행하면_0을_반환하는지() {
         // given
-        var operands = CalculatorItemQueue<Double>()
-        operands.enqueue(element: 1.0)
-        operands.enqueue(element: 2.0)
+        sut.operands.enqueue(element: 0.0)
+        
         
         // when
-        let expectation = 3.0
+        let expectation = 0.0
+        
+        // then
+        let result = sut.result()
+        XCTAssertEqual(expectation, result)
+    }
+    
+    func test_입력값_하나만넣고_result메서드를_실행하면_해당_입력값을_반환하는지() {
+        // given
+        sut.operands.enqueue(element: 100.0)
+        
+        
+        // when
+        let expectation = 100.0
         
         // then
         let result = sut.result()

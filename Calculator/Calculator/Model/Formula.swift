@@ -8,10 +8,14 @@
 import Foundation
 
 struct Formula {
-    public let operands: CalculatorItemQueue<Double>
-    public let operators: CalculatorItemQueue<Operator>
+    var operands: CalculatorItemQueue<Double>
+    var operators: CalculatorItemQueue<Operator>
     
-    public func result() -> Double {
+    func result() -> Double {
+        guard let head = operands.getHead() else { return 0.0 }
+        if head.next == nil {
+            return head.data
+        }
         return Double()
     }
 }
