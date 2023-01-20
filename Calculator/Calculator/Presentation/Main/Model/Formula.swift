@@ -9,12 +9,20 @@ import Foundation
 
 struct Formula {
     
-    var operands: CalculatorItemQueue<Double>
-    var operators: CalculatorItemQueue<Operator>
+    var operands = CalculatorItemQueue<Double>()
+    var operators = CalculatorItemQueue<Operator>()
+    
+    init(operandsList: [Double], operatorsList: [Operator]) {
+        operandsList.forEach {
+            self.operands.enqueue($0)
+        }
+        operatorsList.forEach {
+            self.operators.enqueue($0)
+        }
+    }
     
     mutating func result() -> Double {
-        var result: Double = 0.0
-        result = operands.dequeue() ?? 0.0
+        guard var result = operands.dequeue() else { return 0.0 }
         
         while !operators.isEmpty {
             guard let dequeuedOperand = operands.dequeue(),

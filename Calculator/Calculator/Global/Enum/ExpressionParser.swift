@@ -17,13 +17,10 @@ enum ExpressionParser {
         let operatorElements = separatedInputs.filter { operators.contains($0) }
         let operandElements = separatedInputs.filter { !operatorElements.contains($0) }
         
-        var operandsQueue = CalculatorItemQueue<Double>()
-        var operatorsQueue = CalculatorItemQueue<Operator>()
+        let operandsList = operandElements.compactMap { Double($0) }
+        let operatorsList = operatorElements.compactMap { Operator(rawValue: Character($0)) }
         
-        operandElements.compactMap { Double($0) }.forEach { operandsQueue.enqueue($0) }
-        operatorElements.compactMap { Operator(rawValue: Character($0)) }.forEach { operatorsQueue.enqueue($0) }
-        
-        return Formula(operands: operandsQueue, operators: operatorsQueue)
+        return Formula(operandsList: operandsList, operatorsList: operatorsList)
     }
     
     private static func componentsByOperators(from input: String) -> [String] {
