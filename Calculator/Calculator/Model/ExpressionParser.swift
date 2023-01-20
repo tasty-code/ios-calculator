@@ -8,7 +8,11 @@
 import Foundation
 
 enum ExpressionParser {
-    static public func parse(from: String) -> Formula {
-        return Formula(operands: CalculatorItemQueue(), operators: CalculatorItemQueue())
+    public static func parse(from: String) -> Formula {
+        return Formula(operands: CalculatorItemQueue(linkedList: Double), operators: CalculatorItemQueue(linkedList: Operator.add))
+    }
+    
+    private static func componentsByOperators(from input: CalculatorItem) -> [String] {
+        return [String]()
     }
 }

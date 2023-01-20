@@ -12,12 +12,12 @@ final class Node<Element>: Equatable {
     var next: Node?
     var data: Element
     
-    init(next: Node? = nil, data: Element, operators: Operator? = nil) {
+    init(next: Node? = nil, data: Element) {
         self.next = next
         self.data = data
     }
     
     static func == (lhs: Node, rhs: Node) -> Bool {
-        return lhs.next == rhs.next
+        return lhs == rhs
     }
 }
