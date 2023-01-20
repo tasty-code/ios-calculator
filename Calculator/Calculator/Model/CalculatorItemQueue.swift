@@ -19,6 +19,10 @@ struct CalculatorItemQueue<Element: CalculatorItem> {
         return result
     }
     
+    mutating func popHead() -> Element? {
+        return linkedList.popHead()
+    }
+    
     mutating func enqueue(element: Element) {
         linkedList.append(data: element)
     }

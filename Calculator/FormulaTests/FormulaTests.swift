@@ -46,4 +46,16 @@ final class FormulaTests: XCTestCase {
         let result = sut.result()
         XCTAssertEqual(expectation, result)
     }
+    
+    func test_result메서드에_값을넣으면_operator에따라_연산하여_반환하는지() {
+        sut.operands.enqueue(element: 6.0)
+        sut.operands.enqueue(element: 2.0)
+        sut.operators.enqueue(element: .add)
+        
+        let expectation = 8.0
+        let result = sut.result()
+        print(result)
+        
+        XCTAssertEqual(result, expectation)
+    }
 }

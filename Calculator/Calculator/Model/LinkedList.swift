@@ -18,6 +18,13 @@ struct LinkedList<Element> {
         return head
     }
     
+    mutating func popHead() -> Element? {
+        let headValue = head?.data
+        self.head = head?.next
+        
+        return headValue
+    }
+    
     mutating func append(data: Element) {
         if head == nil {
             head = Node(data: data)
