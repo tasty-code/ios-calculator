@@ -20,7 +20,9 @@ enum ExpressionParser {
 
     private static func componentsByOperaters(from input: String) -> [String] {
         return Operator.allCases.reduce([input]) { partialResult, calculatorOperator in
-            partialResult.flatMap { $0.split(with: calculatorOperator.rawValue) }
+            partialResult.flatMap {
+                $0.split(with: calculatorOperator.rawValue)
+            }
         }
     }
 }
