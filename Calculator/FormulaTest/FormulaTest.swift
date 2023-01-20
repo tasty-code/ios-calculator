@@ -47,4 +47,17 @@ final class FormulaTest: XCTestCase {
         // then
         XCTAssertEqual(expectedResult, result)
     }
+    
+    func test_0으로_나누었을때_infinity를_return하는지_확인() {
+        // given
+        let expectedResult = Double.infinity
+        let inputString = "1,a,2,d,3,d,0,m,5,a,5"
+        sut = ExpressionParser.parse(from: inputString)
+        
+        // when
+        let result = sut.result()
+        
+        // then
+        XCTAssertEqual(expectedResult, result)
+    }
 }
