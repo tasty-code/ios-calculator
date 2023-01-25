@@ -75,8 +75,9 @@ final class CalculatorItemQueueTest: XCTestCase {
         }
 
         // when
-        sut.dequeue()
-        sut.dequeue()
+        for _ in 1...inputs.count {
+            sut.dequeue()
+        }
 
         // then
         XCTAssertEqual(sut.count, 0)
