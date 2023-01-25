@@ -34,4 +34,21 @@ final class ExpressionParserTests: XCTestCase {
 //        XCTAssert
         XCTAssertEqual(Formula(operands: sut.operands, operators: sut.operators), result)
     }
+    
+    func test_parse메서드를_사용하여_생성한_formula_안에_올바른_값들이_저장됐는지() {
+        let userInputNumber1 = 30.0
+        let userInputOperator = Operator.add
+        let userInputNumber2 = 50.0
+        
+        let userInput: String = String(userInputNumber1) + String(userInputOperator.rawValue) + String(userInputNumber2)
+        
+        var result = ExpressionParser.parse(from: userInput)
+        let operandsExpectation1 = result.operands.popHead()
+        let operandsExpectation2 = result.operands.popHead()
+        let operatorExpectation = result.operators.popHead()
+        
+        XCTAssertEqual(operandsExpectation1, userInputNumber1)
+        XCTAssertEqual(operandsExpectation2, userInputNumber2)
+        XCTAssertEqual(operatorExpectation, userInputOperator)
+    }
 }

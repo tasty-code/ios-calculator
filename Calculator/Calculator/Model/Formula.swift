@@ -29,7 +29,6 @@ struct Formula {
             }
             return result
         }
-        
     }
 }
 
