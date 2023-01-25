@@ -7,13 +7,10 @@
 
 import Foundation
 
-protocol CalculateItem {
-}
-
 struct CalculatorItemQueue: CalculateItem {
     private let queue: LinkedList = LinkedList()
     
-    func enqueue(data: Value) {
+    func enqueue(data: String) {
         queue.append(data: data)
     }
     

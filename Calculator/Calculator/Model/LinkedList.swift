@@ -11,7 +11,7 @@ final class LinkedList {
     private var head: ItemNode?
     private var tail: ItemNode?
     
-    func append(data: Value) {
+    func append(data: String) {
         if head == nil {
             head = ItemNode(data: data)
             tail = head
@@ -28,12 +28,12 @@ final class LinkedList {
     }
     
     @discardableResult
-    func remove() -> Value? {
+    func remove() -> String? {
         guard head != nil else {
             return nil
         }
         
-        let result: Value?
+        let result: String?
         
         result = head?.data
         head = head?.next
