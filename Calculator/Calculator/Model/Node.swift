@@ -18,6 +18,6 @@ final class Node<Element>: Equatable {
     }
     
     static func == (lhs: Node, rhs: Node) -> Bool {
-        return lhs == rhs
+        return type(of: lhs.data) == type(of: rhs.data)
     }
 }
