@@ -13,12 +13,14 @@ struct CalculatorItemQueue<T> {
     var isEmpty: Bool {
         return queue.isEmpty
     }
-    
+    var count: Int {
+        return queue.count
+    }
     mutating func enqueue(value: T) {
         return queue.append(value)
     }
     
-    mutating func dequeue(value: T) -> T? {
+    mutating func dequeue() -> T? {
         return isEmpty ? nil : queue.removeFirst()
     }
 }
