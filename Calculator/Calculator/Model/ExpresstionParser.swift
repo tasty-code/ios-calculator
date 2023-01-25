@@ -9,7 +9,15 @@ import Foundation
 
 enum ExpresstionParser {
     func parse(from input: String) -> Formula {
-        return Formula()
+        let parsedInput = componentsByOperators(from: input)
+        var operands = CalculatorItemQueue()
+        var operators = CalculatorItemQueue()
+        
+        for (index, value) in parsedInput.enumerated() {
+            index % 2 == 0 ? operands.enqueue(data: value) : operators.enqueue(data: value)
+        }
+        
+        return Formula(operands: operands, operators: operators)
     }
     
     private func componentsByOperators(from input: String) -> [String] {
