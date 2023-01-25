@@ -12,7 +12,7 @@ import Foundation
 // 2가 눌리면 ["1", "2"]
 
 extension String {
-//    func split(with target: Character) -> [String] {
-//        return [String]
-//    }
+    func split(with target: Character) -> [String] {
+        return components(separatedBy: String(target))
+    }
 }

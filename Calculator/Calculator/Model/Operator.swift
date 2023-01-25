@@ -8,27 +8,39 @@
 import Foundation
 
 
-enum Operator: String, CalculateItem {
-    case calculate = "="
+enum Operator: String, CalculateItem, CaseIterable {
     case add = "+"
     case subtract = "-"
     case divide = "÷"
     case multiply = "×"
+    
+    func caclulate(lhs: Double, rhs: Double) -> Double {
+        switch self {
+        case .add:
+            return add(lhs: lhs, rhs: rhs)
+        case .subtract:
+            return substract(lhs: lhs, rhs: rhs)
+        case .divide:
+            return divide(lhs: lhs, rhs: rhs)
+        case .multiply:
+            return mulitiply(lhs: lhs, rhs: rhs)
+        }
+    }
 
-    public func calculate(previousData: Double, nextData: Double) -> Double {
-        return previousData + nextData
+    private func add(lhs: Double, rhs: Double) -> Double {
+        return lhs + rhs
     }
-    private func add(previousData: Double, nextData: Double) -> Double {
-        return previousData + nextData
+    
+    private func substract(lhs: Double, rhs: Double) -> Double {
+        return lhs - rhs
     }
-    private func substract(previousData: Double, nextData: Double) -> Double {
-        return previousData - nextData
+    
+    private func divide(lhs: Double, rhs: Double) -> Double {
+        return lhs / rhs
     }
-    private func divide(previousData: Double, nextData: Double) -> Double {
-        return previousData / nextData
-    }
-    private func mulitiply(previousData: Double, nextData: Double) -> Double {
-        return previousData * nextData
+    
+    private func mulitiply(lhs: Double, rhs: Double) -> Double {
+        return lhs * rhs
     }
 }
 
