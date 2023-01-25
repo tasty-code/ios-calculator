@@ -29,7 +29,7 @@ final class ExpressionParserTests: XCTestCase {
         XCTAssertTrue(expectationOperands.allSatisfy { $0 == formula.operands.dequeue() })
     }
 
-    func test_parse메서드로_산출한_Fomula의_result가_일치하는_값이다() {
+    func test_parse메서드로_산출한_Formula의_result가_일치하는_값이다() {
         // given
         let input = "1\(addSign)0\(subtractSign)10\(multiplySign)5.5\(divideSign)5.5\(addSign)21\(subtractSign)1.1"
         let expectation = 10.9
