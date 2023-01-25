@@ -27,19 +27,15 @@ enum Operator: Character, CalculateItem, CaseIterable {
     }
     
     private func add(lhs: Double, rhs: Double) -> Double {
-        print("add 함수 실행")
         return lhs + rhs
     }
     private func substract(lhs: Double, rhs: Double) -> Double {
-        print("substract 함수 실행")
         return lhs - rhs
     }
     private func divide(lhs: Double, rhs: Double) -> Double {
-        print("add 함수 실행")
         return lhs / rhs
     }
     private func multiply(lhs: Double, rhs: Double) -> Double {
-        print("divide 함수 실행")
         return lhs * rhs
     }
 }

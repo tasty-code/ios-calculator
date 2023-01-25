@@ -12,7 +12,14 @@ struct Formula {
     var operators: CalculatorItemQueue
     
     func result() -> Double {
-        
-        return 0
+        guard let firstHead = operands.dequeue(), var middleResult = Double(firstHead) else { return 0.0 }
+
+        (0...operands.count()).forEach { _ in
+            guard let nextNode = operands.dequeue(), let rhs = Double(nextNode) else { return }
+            guard let stringOperator = operators.dequeue(), let eachOperator = Operator(rawValue: stringOperator[stringOperator.startIndex]) else { return }
+
+            middleResult = eachOperator.calculate(lhs: middleResult, rhs: rhs)
+        }
+        return middleResult
     }
 }

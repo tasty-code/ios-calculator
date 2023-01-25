@@ -17,6 +17,10 @@ struct CalculatorItemQueue {
     func dequeue() -> String? {
         return queue.remove()
     }
+    
+    func count() -> Int {
+        return queue.count()
+    }
 }
 
 
