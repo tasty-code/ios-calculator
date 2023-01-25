@@ -20,7 +20,6 @@ final class TemporaryInputTests: XCTestCase {
         sut = nil
     }
     
-    // 비었는지 확인
     func test_피연산자_목록이_비어있지_않으면_false이다() {
         let input = "1"
         
