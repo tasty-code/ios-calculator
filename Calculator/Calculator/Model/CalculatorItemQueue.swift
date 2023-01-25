@@ -7,21 +7,33 @@
 
 import Foundation
 
+protocol CalculateItem { }
+
 struct CalculatorItemQueue<Element: CalculateItem> {
-    var elements = LinkedList<Element>()
-    
+    private var elements = LinkedList<Element>()
+
     var front: Element? {
         elements.head?.value
     }
-    
+
     var rear: Element? {
         elements.tail?.value
     }
-    
+
+    var count: Int {
+        elements.count
+    }
+
+    init(elements: [Element] = []) {
+        elements.forEach {
+            self.elements.append($0)
+        }
+    }
+
     mutating func enqueue(_ element: Element) {
         elements.append(element)
     }
-    
+
     @discardableResult
     mutating func dequeue() -> Element? {
         return elements.removeFirst()
