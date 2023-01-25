@@ -8,7 +8,13 @@
 import Foundation
 
 enum ExpresstionParser {
-    func parse(from input: String) -> Formula {
+    static func parse(from input: String) throws -> Formula? {
+        
+        // 아무런 숫자를 누르지 않고 = 을 입력할 경우,
+        guard !input.isEmpty else {
+            throw CalculateError.nothingInput
+        }
+        
         let parsedInput = componentsByOperators(from: input)
         let operands = CalculatorItemQueue()
         let operators = CalculatorItemQueue()
@@ -18,10 +24,11 @@ enum ExpresstionParser {
         }
         
         let result = Formula(operands: operands, operators: operators)
+        _ = try result.result()
         return result
     }
     
-    private func componentsByOperators(from input: String) -> [String] {
+    static private func componentsByOperators(from input: String) -> [String] {
         var result: [String] = [input]
         
         Operator.allCases.forEach { operatorCase in

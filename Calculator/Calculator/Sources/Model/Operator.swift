@@ -13,14 +13,19 @@ enum Operator: Character, CalculateItem, CaseIterable {
     case divide = "/"
     case multiply = "*"
     
-    func calculate(lhs: Double, rhs: Double) -> Double {
+    func calculate(lhs: Double, rhs: Double) throws -> Double {
         switch self {
         case .add:
             return add(lhs: lhs, rhs: rhs)
         case .substract:
             return substract(lhs: lhs, rhs: rhs)
         case .divide:
-            return divide(lhs: lhs, rhs: rhs)
+            // 계산기 해보면, 0 / 5 = 0. 하지만 5 / 0 = 오류
+            if rhs == 0 {
+                throw CalculateError.zeroDivide
+            } else {
+                return divide(lhs: lhs, rhs: rhs)
+            }
         case .multiply:
             return multiply(lhs: lhs, rhs: rhs)
         }
