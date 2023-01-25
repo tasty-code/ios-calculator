@@ -19,6 +19,25 @@ final class FormulaTests: XCTestCase {
         sut = nil
     }
 
+    // 테스트를 위한 하드 코딩 방식의 계산 로직
+    private func calculate(operands: [Double], operators: [Operator]) -> Double {
+        var result = operands.first ?? 0.0
+        for (index, calculateOperator) in operators.enumerated() {
+            switch calculateOperator {
+            case .add:
+                result += operands[index + 1]
+            case .subtract:
+                result -= operands[index + 1]
+            case .divide:
+                result /= operands[index + 1]
+            case .multiply:
+                result *= operands[index + 1]
+            }
+        }
+        return result
+    }
+
+
     func test_비어있는_operators와_operands의_result가_0이다() {
         do {
             let result = try sut.result()
@@ -34,17 +53,17 @@ final class FormulaTests: XCTestCase {
         var operators = CalculatorItemQueue<Operator>()
         var operands = CalculatorItemQueue<Double>()
 
-        // when
-        operators.enqueue(.add)
-        operators.enqueue(.multiply)
-        operators.enqueue(.divide)
-        operators.enqueue(.subtract)
+        let operatorElements: [Operator] = [.add, .multiply, .divide, .subtract]
+        let operandElements: [Double] = [5, 9, 20, 8, 7]
 
-        operands.enqueue(5.0)
-        operands.enqueue(9.0)
-        operands.enqueue(20.0)
-        operands.enqueue(8.0)
-        operands.enqueue(7.0)
+        // when
+        operatorElements.forEach {
+            operators.enqueue($0)
+        }
+
+        operandElements.forEach {
+            operands.enqueue($0)
+        }
 
         sut = Formula(operands: operands, operators: operators)
 
