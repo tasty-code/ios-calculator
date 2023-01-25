@@ -8,7 +8,7 @@
 import Foundation
 
 struct CalculateItemQueue<T: CalculateItem> {
-    var queue: Array<T>
+    private var queue: Array<T>
 
     init(queue: Array<T> = []) {
         self.queue = queue
@@ -28,5 +28,9 @@ struct CalculateItemQueue<T: CalculateItem> {
     
     mutating func allClear() {
         queue.removeAll()
+    }
+
+    func isEmpty() -> Bool {
+        return queue.isEmpty
     }
 }

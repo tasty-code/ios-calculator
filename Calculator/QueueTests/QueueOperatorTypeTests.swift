@@ -17,40 +17,37 @@ final class QueueOperatorTypeTests: XCTestCase {
     override func tearDownWithError() throws {
         sut = nil
     }
-    
-    func test_enqueue로_item이_들어갔는지_확인() {
-        let input: Operator = .multiply
-        sut.enqueue(input)
-        XCTAssertEqual(sut.queue, [input])
+
+    func test_queue가_만들어지고_내용이_비어있는지_확인() {
+        XCTAssertTrue(sut.isEmpty())
     }
 
-    func test_dequeue의_반환값이_item인지_확인() {
-        let input: Operator = .multiply
-        sut.enqueue(input)
-        XCTAssertEqual(sut.dequeue(), input)
-    }
-    
-    func test_dequeue의_반환값이_nil인지_확인() {
-        XCTAssertNil(sut.dequeue())
+    func test_queue에_enqueue메서드로_요소가_추가되었는지_확인() {
+        let inputValue: Operator = .add
+        sut.enqueue(inputValue)
+        XCTAssertFalse(sut.isEmpty())
     }
 
-    func test_dequeue가_제대로_되었는지_확인() {
-        let input: Operator = .add
-        let input1: Operator = .divide
-        let input2: Operator = .subtract
-        sut.enqueue(input)
-        sut.enqueue(input1)
-        sut.enqueue(input2)
+    func test_queue에_dequeue메서드로_요소가_제거되었는지_확인() {
+        let inputValue: Operator = .divide
+        sut.enqueue(inputValue)
         sut.dequeue()
-        XCTAssertEqual(sut.queue, [input1, input2])
+        XCTAssertTrue(sut.isEmpty())
     }
 
-    func test_allClear를_확인() {
-        let input: Operator = .add
-        sut.enqueue(input)
-        sut.enqueue(input)
-        sut.enqueue(input)
-        sut.allClear()
-        XCTAssertEqual(sut.queue, [])
+    func test_queue에서_dequeue가_제일_앞의_요소를_제거하는지_확인() {
+        let inputValue: Operator = .add
+        let inputValue2: Operator = .divide
+        let inputValue3: Operator = .multiply
+
+        sut.enqueue(inputValue)
+        sut.enqueue(inputValue2)
+        sut.enqueue(inputValue3)
+
+        XCTAssertEqual(sut.dequeue(), inputValue)
+    }
+
+    func test_queue가_비어있을때_dequeue가_nil을_반환하는지_확인() {
+        XCTAssertNil(sut.dequeue())
     }
 }
