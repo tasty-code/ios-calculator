@@ -14,7 +14,7 @@ final class FormulaTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let inputString = "1 a 2 d 3 s -4 m -5 a 0"
+        let inputString = "1 + 2 ÷ 3 – -4 × -5 + 0"
         sut = ExpressionParser.parse(from: inputString)
     }
 
@@ -51,7 +51,7 @@ final class FormulaTests: XCTestCase {
     func test_0으로_나누었을때_infinity를_return하는지_확인() {
         // given
         let expectedResult = Double.infinity
-        let inputString = "1 a 2 d 3 d 0 m 5 a 5"
+        let inputString = "1 + 2 ÷ 3 ÷ 0 × 5 + 5"
         sut = ExpressionParser.parse(from: inputString)
         
         // when
