@@ -33,3 +33,8 @@ struct Formula {
     }
 }
 
+extension Formula: Equatable {
+    static func == (lhs: Formula, rhs: Formula) -> Bool {
+        return lhs.operands == rhs.operands && lhs.operators == rhs.operators
+    }
+}

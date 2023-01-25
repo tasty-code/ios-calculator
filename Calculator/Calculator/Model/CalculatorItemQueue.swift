@@ -31,3 +31,9 @@ struct CalculatorItemQueue<Element: CalculatorItem> {
         linkedList.removeLast()
     }
 }
+
+extension CalculatorItemQueue: Equatable {
+    static func == (lhs: CalculatorItemQueue<Element>, rhs: CalculatorItemQueue<Element>) -> Bool {
+        return type(of: lhs.getHead()?.data) == type(of: rhs.getHead()?.data)
+    }
+}
