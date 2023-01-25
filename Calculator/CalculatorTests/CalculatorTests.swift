@@ -73,4 +73,51 @@ final class CalculatorTests: XCTestCase {
         
         XCTAssertNil(result)
     }
+    
+    func test_LinkedList의_myLinkedListDataMap이_올바르게작동하는지() {
+        let nodes = [
+            Node(data: 1.0),
+            Node(data: 2.0),
+            Node(data: 3.0),
+            Node(data: 4.0),
+            Node(data: 5.0),
+            Node(data: 6.0)
+        ]
+        
+        nodes.forEach {
+            sut.append(data: $0.data)
+        }
+        
+        let expectation = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+        
+        guard let resultArray = sut.myLinkedListDataMap() else { return }
+        let result = resultArray.map{$0 as! Double}
+        XCTAssertEqual(result, expectation)
+    }
+    
+    func test_LinkedList의_myLinkedListFilter가_올바르게작동하는지() {
+        let nodes = [
+            Node(data: 1.0),
+            Node(data: 2.0),
+            Node(data: 3.0),
+            Node(data: 4.0),
+            Node(data: 5.0),
+            Node(data: 6.0)
+        ]
+        
+        nodes.forEach {
+            sut.append(data: $0.data)
+        }
+        
+        let resultArray = sut.myLinkedListFilter { node in
+            node.data as! Double >= 5.0
+        }
+        
+        let expectation = [5.0, 6.0]
+        
+        guard let resultArray else { return }
+        let result = resultArray.map{ $0 as! Double }
+       
+        XCTAssertEqual(result, expectation)
+    }
 }
