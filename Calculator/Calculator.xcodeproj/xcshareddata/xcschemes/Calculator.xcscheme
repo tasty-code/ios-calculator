@@ -46,8 +46,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "874ADC50297A223F00D2E2F7"
-               BuildableName = "ExpressionParserTest.xctest"
-               BlueprintName = "ExpressionParserTest"
+               BuildableName = "FormulaTests.xctest"
+               BlueprintName = "FormulaTests"
                ReferencedContainer = "container:Calculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
