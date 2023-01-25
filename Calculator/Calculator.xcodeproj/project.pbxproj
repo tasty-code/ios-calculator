@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4BC7642980C93400C21130 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4BC7632980C93400C21130 /* OperatorTests.swift */; };
 		3B67C40B297A2E4C00ABCD97 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67C40A297A2E4C00ABCD97 /* Double+.swift */; };
 		3B67C40D297A2EA500ABCD97 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67C40C297A2EA500ABCD97 /* Operator.swift */; };
 		3B67C40F297A329000ABCD97 /* Formula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67C40E297A329000ABCD97 /* Formula.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B4BC7632980C93400C21130 /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
 		3B67C40A297A2E4C00ABCD97 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		3B67C40C297A2EA500ABCD97 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		3B67C40E297A329000ABCD97 /* Formula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		76E791882974E8310082B203 /* CalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				3B4BC7632980C93400C21130 /* OperatorTests.swift */,
 				76E791892974E8310082B203 /* CalculatorItemQueueTests.swift */,
 			);
 			path = CalculatorTests;
@@ -261,6 +264,7 @@
 				76E791902974E92B0082B203 /* CalculatorItemQueue.swift in Sources */,
 				761F74062980C7B500C9719D /* ExperssionParser.swift in Sources */,
 				761F74052980C7B200C9719D /* String+.swift in Sources */,
+				3B4BC7642980C93400C21130 /* OperatorTests.swift in Sources */,
 				766CFECC297508CA00C1EBFF /* CalculateItem.swift in Sources */,
 				76E7918A2974E8310082B203 /* CalculatorItemQueueTests.swift in Sources */,
 				761F74042980C7B000C9719D /* Operator.swift in Sources */,
