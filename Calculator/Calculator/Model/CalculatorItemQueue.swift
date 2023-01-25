@@ -8,7 +8,11 @@
 import Foundation
 
 struct CalculatorItemQueue<Item: CalculateItem> {
-    private(set) var items = [Item]()
+    private var items: [Item] = []
+    private var reversedItems: [Item] {
+        get { items.reversed() }
+        set { items = newValue.reversed() }
+    }
     
     func isEmpty() -> Bool {
         items.isEmpty
@@ -26,6 +30,6 @@ struct CalculatorItemQueue<Item: CalculateItem> {
         guard !items.isEmpty else {
             throw CalculatorError.noElementToDelete
         }
-        return items.removeFirst()
+        return items.removeLast()
     }
 }
