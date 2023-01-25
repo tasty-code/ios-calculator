@@ -7,8 +7,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     var calculationFormula: String = "+"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,8 +18,12 @@ class ViewController: UIViewController {
         guard let number = sender.currentTitle else {
             return
         }
-        print(isOperator())
+        guard !isOperator() || (number != "0" && number != "00") else {
+            return
+        }
+        calculationFormula += number
     }
+
     func isOperator() -> Bool {
         var result = false
         for `operator` in Operator.allCases {
