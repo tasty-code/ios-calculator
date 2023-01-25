@@ -14,7 +14,7 @@ struct CalculatorItemQueue {
         queue.append(data: data)
     }
     
-    func dequeue() {
-        queue.remove()
+    func dequeue() -> String? {
+        return queue.remove()
     }
 }

@@ -10,11 +10,14 @@ import Foundation
 final class LinkedList {
     private var head: ItemNode?
     private var tail: ItemNode?
+    private var numberOfNodes: Int = 0
     
     func append(data: String) {
         if head == nil {
             head = ItemNode(data: data)
             tail = head
+            
+            numberOfNodes += 1
             return
         }
         
@@ -25,9 +28,10 @@ final class LinkedList {
         
         node?.next = ItemNode(data: data)
         tail = node?.next
+        
+        numberOfNodes += 1
     }
     
-    @discardableResult
     func remove() -> String? {
         guard head != nil else {
             return nil
@@ -42,6 +46,11 @@ final class LinkedList {
             tail = nil
         }
         
+        numberOfNodes -= 1
         return result
+    }
+    
+    func count() -> Int {
+        return self.numberOfNodes
     }
 }
