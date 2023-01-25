@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B4BC7642980C93400C21130 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4BC7632980C93400C21130 /* OperatorTests.swift */; };
+		3B4BC7672981038B00C21130 /* TemporaryInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4BC7662981038B00C21130 /* TemporaryInputTests.swift */; };
 		3B67C40B297A2E4C00ABCD97 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67C40A297A2E4C00ABCD97 /* Double+.swift */; };
 		3B67C40D297A2EA500ABCD97 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67C40C297A2EA500ABCD97 /* Operator.swift */; };
 		3B67C40F297A329000ABCD97 /* Formula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B67C40E297A329000ABCD97 /* Formula.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		3B4BC7632980C93400C21130 /* OperatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTests.swift; sourceTree = "<group>"; };
+		3B4BC7662981038B00C21130 /* TemporaryInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryInputTests.swift; sourceTree = "<group>"; };
 		3B67C40A297A2E4C00ABCD97 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		3B67C40C297A2EA500ABCD97 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		3B67C40E297A329000ABCD97 /* Formula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		76E791882974E8310082B203 /* CalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				3B4BC7662981038B00C21130 /* TemporaryInputTests.swift */,
 				761F74082980CD7000C9719D /* FormulaTests.swift */,
 				3B4BC7632980C93400C21130 /* OperatorTests.swift */,
 				76E791892974E8310082B203 /* CalculatorItemQueueTests.swift */,
@@ -274,6 +277,7 @@
 				761F74032980C7AD00C9719D /* Double+.swift in Sources */,
 				761F74072980C7B800C9719D /* Formula.swift in Sources */,
 				761F74092980CD7000C9719D /* FormulaTests.swift in Sources */,
+				3B4BC7672981038B00C21130 /* TemporaryInputTests.swift in Sources */,
 				761F74022980C7AB00C9719D /* TemporaryInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
