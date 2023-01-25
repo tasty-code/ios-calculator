@@ -78,9 +78,9 @@
 		4FA9BFAE2980B60D005BA61E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4F3A22DA29768CFF0041E7B2 /* ItemNode.swift */,
 				E760CF6829768C50003990A6 /* Operator.swift */,
 				4F3A22DC29768F250041E7B2 /* CalculatorItemQueue.swift */,
-				4F3A22DA29768CFF0041E7B2 /* ItemNode.swift */,
 				E760CF6A29768DDB003990A6 /* LinkedList.swift */,
 			);
 			path = Model;
