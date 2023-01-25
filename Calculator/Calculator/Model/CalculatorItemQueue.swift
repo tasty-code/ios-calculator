@@ -8,7 +8,7 @@
 import Foundation
 
 struct CalculatorItemQueue<Item: CalculateItem> {
-    private var items: [Item] = []
+    private(set) var items: [Item] = []
     private var reversedItems: [Item] {
         get { items.reversed() }
         set { items = newValue.reversed() }
