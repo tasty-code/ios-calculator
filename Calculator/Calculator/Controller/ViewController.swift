@@ -24,6 +24,15 @@ class ViewController: UIViewController {
         calculationFormula += number
     }
 
+    @IBAction func addOperator(_ sender: UIButton) {
+        guard let `operator` = sender.currentTitle else {
+            return
+        }
+        guard isNumber() else {
+            return
+        }
+    }
+
     func isOperator() -> Bool {
         var result = false
         for `operator` in Operator.allCases {
@@ -33,6 +42,13 @@ class ViewController: UIViewController {
             result = true
         }
         return result
+    }
+
+    func isNumber() -> Bool {
+        guard let lastElement = calculationFormula.last, lastElement.isNumber else {
+            return false
+        }
+        return true
     }
 }
 
