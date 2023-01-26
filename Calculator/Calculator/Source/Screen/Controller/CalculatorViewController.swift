@@ -22,7 +22,7 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func digitButtonTapped(_ sender: UIButton) {
         let currentTitle = sender.currentTitle!
         
-        if userTyping {
+        if userTyping && displayNumberLabel.text != "0" {
             let currentDisplayNumber = displayNumberLabel.text!
             displayNumberLabel.text = currentDisplayNumber + currentTitle
         } else {
@@ -50,7 +50,7 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func clearButtonTapped(_ sender: UIButton) {
-        print("clearButtonTapped")
+        displayNumberLabel.text = "0"
     }
     
     @IBAction private func allClearButtonTapped(_ sender: UIButton) {
