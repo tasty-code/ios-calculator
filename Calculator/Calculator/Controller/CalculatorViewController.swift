@@ -23,7 +23,6 @@ final class CalculatorViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction private func tappedOperandButton(_ sender: UIButton) {
-        print(formulaString)
         if isCalculated {
             resetHistoryStackView()
             resetLabels()
@@ -53,7 +52,6 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
         guard operandLabel.text?.lowercased() != "nan" else { return }
 
-        print(formulaString)
         if isCalculated {
             resetHistoryStackView()
             isCalculated = false
@@ -73,7 +71,6 @@ final class CalculatorViewController: UIViewController {
 
         operatorLabel.text = sender.titleLabel?.text
         operandLabel.text = "0"
-        print(formulaString)
     }
 
     @IBAction private func tappedACButton(_ sender: UIButton) {
@@ -107,8 +104,6 @@ final class CalculatorViewController: UIViewController {
 
         formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
         addHistoryLabels()
-
-        print(formulaString)
 
         var result = 0.0
 
@@ -152,7 +147,7 @@ final class CalculatorViewController: UIViewController {
 
     private func resetHistoryStackView() {
         historyStackView.arrangedSubviews
-             .forEach { $0.removeFromSuperview() }
+            .forEach { $0.removeFromSuperview() }
     }
 
     private func resetLabels() {
