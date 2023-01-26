@@ -72,9 +72,22 @@ class ViewController: UIViewController {
     }
 
     @IBAction func addOperator(_ sender: UIButton) {
-        guard let `operator` = sender.currentTitle else {
+        guard let `operator` = sender.currentTitle,
+              let enteredOperator = operatorLabel.text,
+              var enteredOperand = operandLabel.text else {
             return
         }
+        guard enteredOperand != "0" else {
+            operatorLabel.text = `operator`
+            return
+        }
+        if enteredOperand.hasSuffix(".") {
+            enteredOperand += "0"
+        }
+        calculationFormula += enteredOperator + enteredOperand
+        operatorLabel.text = `operator`
+        operandLabel.text = "0"
+        isDecimal = false
     }
 }
 
