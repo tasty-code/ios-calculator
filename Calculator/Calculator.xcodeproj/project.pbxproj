@@ -103,17 +103,49 @@
 			path = Calculator;
 			sourceTree = "<group>";
 		};
-		EB6CD48A29769BBA008E6106 /* Model */ = {
+		EB51E8E7298232F9002253ED /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EB041C862978D395006949AD /* Double.swift */,
+				EB041C882978D3B0006949AD /* String.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EB51E8E829823316002253ED /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				86C0B3032976312000E6145D /* CalculateItem.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EB51E8EA29823344002253ED /* Enum */ = {
 			isa = PBXGroup;
 			children = (
 				EB041C8C2978D519006949AD /* ExpressionParser.swift */,
+				86C0B3052976321000E6145D /* Operator.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		EB51E8EB29823380002253ED /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				EBBE6FDA29811F380039BB42 /* CalculateError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		EB6CD48A29769BBA008E6106 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				EB041C8A2978D414006949AD /* Formula.swift */,
 				EB421E2F297A241D00083737 /* CalculatorItemQueue.swift */,
-				86C0B3052976321000E6145D /* Operator.swift */,
-				86C0B3032976312000E6145D /* CalculateItem.swift */,
-				EB041C862978D395006949AD /* Double.swift */,
-				EB041C882978D3B0006949AD /* String.swift */,
-				EBBE6FDA29811F380039BB42 /* CalculateError.swift */,
+				EB51E8EA29823344002253ED /* Enum */,
+				EB51E8E829823316002253ED /* Protocol */,
+				EB51E8E7298232F9002253ED /* Extension */,
+				EB51E8EB29823380002253ED /* Error */,
 			);
 			path = Model;
 			sourceTree = "<group>";
