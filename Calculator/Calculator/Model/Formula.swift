@@ -13,19 +13,20 @@ struct Formula {
     
     mutating func result() -> Double {
         guard let head = operands.getHead() else { return 0.0 }
+        guard let headData = operands.popHead() else { return 0.0 }
         
-        var result = 0.0
+        var result = headData
         
         if head.next == nil {
             guard let data = operands.popHead() else { return 0.0 }
             return data
         } else {
             while operands.getHead() != nil {
-                guard let rhsValue = operands.popHead() else { return 0.0 }
-                guard let lhsValue = operands.popHead() else { return rhsValue }
-                guard let operatorValue = operators.popHead() else { return rhsValue }
+                guard let operatorValue = operators.popHead() else { return result }
+                guard let lhsValue = operands.popHead() else { return result }
                 
-                result = operatorValue.calculate(lhs: rhsValue, rhs: lhsValue)
+                
+                result = operatorValue.calculate(lhs: result, rhs: lhsValue)
             }
             return result
         }

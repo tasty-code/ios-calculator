@@ -41,14 +41,24 @@ final class ExpressionParserTests: XCTestCase {
         let userInputNumber2 = 50.0
         
         let userInput: String = String(userInputNumber1) + String(userInputOperator.rawValue) + String(userInputNumber2)
-        
+        print(userInput)
         var result = ExpressionParser.parse(from: userInput)
         let operandsExpectation1 = result.operands.popHead()
         let operandsExpectation2 = result.operands.popHead()
         let operatorExpectation = result.operators.popHead()
-        
+              
         XCTAssertEqual(operandsExpectation1, userInputNumber1)
         XCTAssertEqual(operandsExpectation2, userInputNumber2)
         XCTAssertEqual(operatorExpectation, userInputOperator)
+    }
+    
+    func test_ExpressionParser의_Formula의_result메서드가_올바른_값을_반환하는지() {
+        let input = "123+456-789*111/555"
+        let expectation = -42.0
+        var formula = ExpressionParser.parse(from: input)
+        
+        let result = formula.result()
+        XCTAssertEqual(expectation, result)
+        
     }
 }
