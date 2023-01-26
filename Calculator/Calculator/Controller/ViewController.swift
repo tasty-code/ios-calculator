@@ -8,6 +8,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var calculationFormula: String = "+"
+    var isDecimal = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +18,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var operatorLabel: UILabel!
     @IBOutlet weak var operandLabel: UILabel!
 
+    @IBAction func addDecimalPoint(_ sender: UIButton) {
+        guard let enteredOperand = operandLabel.text, isDecimal == false else {
+            return
+        }
+        operandLabel.text = enteredOperand + "."
+        isDecimal = true
+    }
 
     @IBAction func addNumber(_ sender: UIButton) {
         guard let number = sender.currentTitle, let enteredOperand = operandLabel.text else {
