@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         operatorLabel.text = ""
         isDecimal = false
         calculationFormula = "+"
+
+        formulaStackViews.removeAllArrangedSubviews()
     }
 
     @IBAction func clearEntry(_ sender: UIButton) {
@@ -109,7 +111,13 @@ class ViewController: UIViewController {
         operatorLabel.text = ""
         isDecimal = false
         var formula = ExpressionParser.parse(from: calculationFormula)
-        operandLabel.text = String(formula.result())
+        var resultValue = String(formula.result())
+        if resultValue.hasSuffix(".0") {
+            resultValue.removeLast()
+            resultValue.removeLast()
+        }
+        operandLabel.text = resultValue
+        addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
 
         calculationFormula = "+"
     }
@@ -132,3 +140,11 @@ class ViewController: UIViewController {
     }
 }
 
+extension UIStackView {
+    func removeAllArrangedSubviews() {
+        arrangedSubviews.forEach {
+            self.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+    }
+}
