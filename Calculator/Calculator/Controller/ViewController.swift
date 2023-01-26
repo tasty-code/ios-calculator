@@ -17,6 +17,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var operatorLabel: UILabel!
     @IBOutlet weak var operandLabel: UILabel!
+    @IBOutlet weak var formulaStackViews: UIStackView!
 
     @IBAction func allClear(_ sender: UIButton) {
         operandLabel.text?.removeAll()
@@ -28,6 +29,9 @@ class ViewController: UIViewController {
 
     @IBAction func clearEntry(_ sender: UIButton) {
         guard var enteredOperand = operandLabel.text, enteredOperand != "0" else {
+            return
+        }
+        guard enteredOperand != String(Double.nan) else {
             return
         }
         if enteredOperand.removeLast() == "." {
@@ -90,6 +94,7 @@ class ViewController: UIViewController {
             enteredOperand += "0"
         }
         calculationFormula += enteredOperator + enteredOperand
+        addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         operatorLabel.text = `operator`
         operandLabel.text = "0"
         isDecimal = false
@@ -109,5 +114,21 @@ class ViewController: UIViewController {
         calculationFormula = "+"
     }
 
+    private func addFormulaStackView(`operator`: String, operand: String) {
+        let formulaStackView = UIStackView()
+        let enteredOperatorLabel = UILabel()
+        let enteredOperandLabel = UILabel()
+
+        enteredOperandLabel.text = operand
+        enteredOperatorLabel.text = `operator`
+        enteredOperandLabel.textColor = .white
+        enteredOperatorLabel.textColor = .white
+        formulaStackView.axis = .horizontal
+        formulaStackView.spacing = 8
+        formulaStackView.addArrangedSubview(enteredOperatorLabel)
+        formulaStackView.addArrangedSubview(enteredOperandLabel)
+
+        formulaStackViews.addArrangedSubview(formulaStackView)
+    }
 }
 
