@@ -13,7 +13,7 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet private weak var operatorLabel: UILabel!
     @IBOutlet private weak var historyStackView: UIStackView!
 
-    private var formulaString = ""
+    private var formulaString = "0"
     private var isCalculated = false
 
     // MARK: - Lifecycle
@@ -23,6 +23,7 @@ final class CalculatorViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction private func tappedOperandButton(_ sender: UIButton) {
+        print(formulaString)
         if isCalculated {
             resetHistoryStackView()
             resetLabels()
@@ -50,6 +51,9 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
+        guard operandLabel.text?.lowercased() != "nan" else { return }
+
+        print(formulaString)
         if isCalculated {
             resetHistoryStackView()
             isCalculated = false
@@ -76,7 +80,7 @@ final class CalculatorViewController: UIViewController {
         resetLabels()
         resetHistoryStackView()
 
-        formulaString = ""
+        formulaString = "0"
     }
 
     @IBAction private func tappedCEButton(_ sender: UIButton) {
@@ -99,22 +103,25 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedResultButton(_ sender: UIButton) {
+        guard isCalculated == false else { return }
+
         formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
         addHistoryLabels()
+
+        print(formulaString)
 
         var result = 0.0
 
         var fomula = ExpressionParser.parse(from: formulaString)
         do {
             result = try fomula.result()
+            operandLabel.text = String(result)
         } catch {
-            print(error.localizedDescription)
+            operandLabel.text = error.localizedDescription
         }
 
-        operandLabel.text = String(result)
         operatorLabel.text = ""
-
-        formulaString = ""
+        formulaString = "0"
 
         isCalculated = true
     }
