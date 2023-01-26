@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var operatorLabel: UILabel!
     @IBOutlet weak var operandLabel: UILabel!
     @IBOutlet weak var formulaStackViews: UIStackView!
@@ -100,11 +101,12 @@ class ViewController: UIViewController {
         operatorLabel.text = `operator`
         operandLabel.text = "0"
         isDecimal = false
+        scrollView.contentOffset.y = scrollView.contentSize.height
     }
 
     @IBAction func calculateResult(_ sender: UIButton) {
         guard let enteredOperator = operatorLabel.text,
-              var enteredOperand = operandLabel.text else {
+              let enteredOperand = operandLabel.text else {
             return
         }
         calculationFormula += enteredOperator + enteredOperand
@@ -120,6 +122,7 @@ class ViewController: UIViewController {
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
 
         calculationFormula = "+"
+        scrollView.contentOffset.y = scrollView.contentSize.height
     }
 
     private func addFormulaStackView(`operator`: String, operand: String) {
