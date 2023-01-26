@@ -43,27 +43,9 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
-        formulaString += (operandLabel.text ?? "") + (operatorLabel.text ?? "")
+        formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
 
-        let stack = UIStackView()
-
-        stack.axis = .horizontal
-        stack.spacing = 8
-
-        let historyOperandLabel = UILabel()
-        historyOperandLabel.text = operandLabel.text
-        historyOperandLabel.font = .preferredFont(forTextStyle: .title3)
-        historyOperandLabel.textColor = .white
-
-        let historyOperatorLabel = UILabel()
-        historyOperatorLabel.text = operatorLabel.text
-        historyOperatorLabel.font = .preferredFont(forTextStyle: .title3)
-        historyOperatorLabel.textColor = .white
-
-        stack.addArrangedSubview(historyOperatorLabel)
-        stack.addArrangedSubview(historyOperandLabel)
-
-        historyStackView.addArrangedSubview(stack)
+        addHistoryLabels()
 
         operatorLabel.text = sender.titleLabel?.text
         operandLabel.text = "0"
@@ -84,10 +66,6 @@ final class CalculatorViewController: UIViewController {
             return
         }
 
-//        if operand == "0" {
-//            return
-//        }
-
         if operand.first == "-" {
             operand.removeFirst()
             operandLabel.text = String(operand)
@@ -100,5 +78,28 @@ final class CalculatorViewController: UIViewController {
 
     }
 
+    // MARK: - Helpers
+    private func addHistoryLabels() {
+        let historyOperatorLabel: UILabel = {
+            let label = UILabel()
+            label.text = operatorLabel.text
+            label.font = .preferredFont(forTextStyle: .title3)
+            label.textColor = .white
+            return label
+        }()
+
+        let historyOperandLabel: UILabel = {
+            let label = UILabel()
+            label.text = operandLabel.text
+            label.font = .preferredFont(forTextStyle: .title3)
+            label.textColor = .white
+            return label
+        }()
+
+        let stack = UIStackView(arrangedSubviews: [historyOperatorLabel, historyOperandLabel])
+        stack.axis = .horizontal
+        stack.spacing = 8
+        historyStackView.addArrangedSubview(stack)
+    }
 
 }
