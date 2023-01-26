@@ -10,8 +10,8 @@ final class CalculatorViewController: UIViewController {
     
     private var userTyping: Bool = false
     
-    @IBOutlet weak private var scrollView: UIScrollView!
-    @IBOutlet weak private var stackView: UIStackView!
+    @IBOutlet weak private var cumulativeCalculationScrollView: UIScrollView!
+    @IBOutlet weak private var cumulativeCalculationStackView: UIStackView!
     @IBOutlet weak private var displayNumberLabel: UILabel!
     @IBOutlet weak private var displayOperatorLabel: UILabel!
     
@@ -32,14 +32,15 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func operatorButtonTapped(_ sender: UIButton) {
-        let label = UILabel()
-        label.textColor = .white
-        label.text = displayOperatorLabel.text! + " " + displayNumberLabel.text!
+        let previousCalculationLabel = UILabel()
+        previousCalculationLabel.textColor = .white
+        previousCalculationLabel.font = UIFont.systemFont(ofSize: 20)
+        previousCalculationLabel.text = displayOperatorLabel.text! + " " + displayNumberLabel.text!
+        cumulativeCalculationStackView.addArrangedSubview(previousCalculationLabel)
+        cumulativeCalculationScrollView.layoutIfNeeded()
+        let bottomOffset = CGPoint(x: 0, y: cumulativeCalculationScrollView.contentSize.height - cumulativeCalculationScrollView.bounds.size.height)
+        cumulativeCalculationScrollView.setContentOffset(bottomOffset, animated: false)
         
-        scrollView.layoutIfNeeded()
-        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height)
-        scrollView.setContentOffset(bottomOffset, animated: false)
-        stackView.addArrangedSubview(label)
         displayNumberLabel.text = ""
         displayOperatorLabel.text = sender.currentTitle!
     }
@@ -55,7 +56,7 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func allClearButtonTapped(_ sender: UIButton) {
         displayNumberLabel.text = "0"
         displayOperatorLabel.text = ""
-        stackView.subviews.forEach({ $0.removeFromSuperview() })
+        cumulativeCalculationStackView.subviews.forEach({ $0.removeFromSuperview() })
     }
     
     @IBAction private func equalButtonTapped(_ sender: UIButton) {

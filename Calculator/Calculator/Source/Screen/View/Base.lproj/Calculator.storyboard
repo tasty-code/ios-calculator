@@ -17,21 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOT-7g-vxv">
-                                <rect key="frame" x="16" y="271.5" width="382" height="1"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOT-7g-vxv">
+                                <rect key="frame" x="16" y="271" width="382" height="1.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XRe-QE-UJf">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="1"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XRe-QE-UJf">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="1.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0B7-IV-QZb">
+                                                <rect key="frame" x="379" y="0.0" width="3" height="1.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XRe-QE-UJf" firstAttribute="height" secondItem="BOT-7g-vxv" secondAttribute="height" priority="100" id="82c-Ko-nh3"/>
-                                    <constraint firstItem="XRe-QE-UJf" firstAttribute="width" secondItem="BOT-7g-vxv" secondAttribute="width" id="9hO-gT-uzB"/>
-                                    <constraint firstItem="XRe-QE-UJf" firstAttribute="height" secondItem="gA2-7M-FxF" secondAttribute="height" priority="1" id="PfX-qG-S4s"/>
                                     <constraint firstItem="XRe-QE-UJf" firstAttribute="leading" secondItem="K6N-nC-kaV" secondAttribute="leading" id="WTo-5t-Xde"/>
                                     <constraint firstItem="XRe-QE-UJf" firstAttribute="trailing" secondItem="K6N-nC-kaV" secondAttribute="trailing" id="bYc-Yd-kw9"/>
                                     <constraint firstItem="XRe-QE-UJf" firstAttribute="bottom" secondItem="K6N-nC-kaV" secondAttribute="bottom" id="dlN-3y-jhh"/>
                                     <constraint firstItem="XRe-QE-UJf" firstAttribute="top" secondItem="K6N-nC-kaV" secondAttribute="top" id="hlo-zV-yFo"/>
+                                    <constraint firstItem="XRe-QE-UJf" firstAttribute="width" secondItem="gA2-7M-FxF" secondAttribute="width" id="kwc-J1-HV1"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="K6N-nC-kaV"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="gA2-7M-FxF"/>
@@ -313,7 +320,6 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DC3-Ia-6L7" secondAttribute="trailing" constant="16" id="4U4-wj-pOs"/>
                             <constraint firstItem="BOT-7g-vxv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="9Pe-KB-bQo"/>
@@ -328,15 +334,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cumulativeCalculationScrollView" destination="BOT-7g-vxv" id="LOl-NA-ggt"/>
+                        <outlet property="cumulativeCalculationStackView" destination="XRe-QE-UJf" id="3rN-IO-cGC"/>
                         <outlet property="displayNumberLabel" destination="Lwz-OF-XHD" id="l7K-uV-y9s"/>
                         <outlet property="displayOperatorLabel" destination="HPC-iy-qdm" id="d3V-VH-tO2"/>
-                        <outlet property="scrollView" destination="BOT-7g-vxv" id="LOl-NA-ggt"/>
-                        <outlet property="stackView" destination="XRe-QE-UJf" id="3rN-IO-cGC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105.79710144927537" y="147.99107142857142"/>
+            <point key="canvasLocation" x="794" y="112"/>
         </scene>
     </scenes>
     <resources>
