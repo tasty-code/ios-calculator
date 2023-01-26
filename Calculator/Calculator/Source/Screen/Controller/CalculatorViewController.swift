@@ -7,9 +7,7 @@
 import UIKit
 
 final class CalculatorViewController: UIViewController {
-    
-    private var userTyping: Bool = false
-    
+        
     @IBOutlet weak private var cumulativeCalculationScrollView: UIScrollView!
     @IBOutlet weak private var cumulativeCalculationStackView: UIStackView!
     @IBOutlet weak private var displayNumberLabel: UILabel!
@@ -20,15 +18,18 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func digitButtonTapped(_ sender: UIButton) {
-        let currentTitle = sender.currentTitle!
-        
-        if userTyping && displayNumberLabel.text != "0" {
-            let currentDisplayNumber = displayNumberLabel.text!
-            displayNumberLabel.text = currentDisplayNumber + currentTitle
+        let inputButtonNumber = sender.currentTitle!
+        let zeroArray = ["0", "00"]
+
+        if displayNumberLabel.text == "0" {
+            guard zeroArray.contains(inputButtonNumber) else {
+                displayNumberLabel.text = inputButtonNumber
+                return
+            }
         } else {
-            displayNumberLabel.text = currentTitle
+            let currentDisplayNumber = displayNumberLabel.text!
+            displayNumberLabel.text = currentDisplayNumber + inputButtonNumber
         }
-        userTyping = true
     }
     
     @IBAction private func operatorButtonTapped(_ sender: UIButton) {
@@ -41,7 +42,7 @@ final class CalculatorViewController: UIViewController {
         let bottomOffset = CGPoint(x: 0, y: cumulativeCalculationScrollView.contentSize.height - cumulativeCalculationScrollView.bounds.size.height)
         cumulativeCalculationScrollView.setContentOffset(bottomOffset, animated: false)
         
-        displayNumberLabel.text = ""
+        displayNumberLabel.text = "0"
         displayOperatorLabel.text = sender.currentTitle!
     }
     
