@@ -51,22 +51,20 @@ final class CalculatorViewController: UIViewController {
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
         guard operandLabel.text?.lowercased() != "nan" else { return }
+        guard let operand = operandLabel.text else { return }
+        guard let inputOperator = sender.titleLabel?.text else { return }
 
         if isCalculated {
             resetHistoryStackView()
             isCalculated = false
         }
 
-        guard let operand = operandLabel.text else { return }
-        guard let inputOperator = sender.titleLabel?.text else { return }
-
         if operand == "0" || operand == "-0" || operand == "0." || operand == "-0."{
             operatorLabel.text = inputOperator
             return
         }
 
-        formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
-
+        updateFormulaString()
         addHistoryLabels()
 
         operatorLabel.text = sender.titleLabel?.text
@@ -86,10 +84,7 @@ final class CalculatorViewController: UIViewController {
 
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
         guard isCalculated == false else { return }
-
-        guard var operand = operandLabel.text else {
-            return
-        }
+        guard var operand = operandLabel.text else { return }
 
         if operand.first == "-" {
             operand.removeFirst()
@@ -102,14 +97,12 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func tappedResultButton(_ sender: UIButton) {
         guard isCalculated == false else { return }
 
-        formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
+        updateFormulaString()
         addHistoryLabels()
-
-        var result = 0.0
 
         var fomula = ExpressionParser.parse(from: formulaString)
         do {
-            result = try fomula.result()
+            let result = try fomula.result()
             operandLabel.text = String(result)
         } catch {
             operandLabel.text = error.localizedDescription
@@ -153,5 +146,9 @@ final class CalculatorViewController: UIViewController {
     private func resetLabels() {
         operandLabel.text = "0"
         operatorLabel.text = ""
+    }
+
+    private func updateFormulaString() {
+        formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
     }
 }
