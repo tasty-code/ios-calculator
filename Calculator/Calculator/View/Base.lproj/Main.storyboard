@@ -364,6 +364,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="historyStackView" destination="XRe-QE-UJf" id="zBp-e9-COn"/>
                         <outlet property="operandLabel" destination="Lwz-OF-XHD" id="DMa-lu-dDX"/>
                         <outlet property="operatorLabel" destination="HPC-iy-qdm" id="5B8-qv-45g"/>
                     </connections>

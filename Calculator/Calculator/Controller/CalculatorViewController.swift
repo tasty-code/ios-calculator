@@ -11,6 +11,9 @@ final class CalculatorViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet private weak var operandLabel: UILabel!
     @IBOutlet private weak var operatorLabel: UILabel!
+    @IBOutlet private weak var historyStackView: UIStackView!
+
+    private var formulaString = ""
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -40,7 +43,30 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
+        formulaString += (operandLabel.text ?? "") + (operatorLabel.text ?? "")
+
+        let stack = UIStackView()
+
+        stack.axis = .horizontal
+        stack.spacing = 8
+
+        let historyOperandLabel = UILabel()
+        historyOperandLabel.text = operandLabel.text
+        historyOperandLabel.font = .preferredFont(forTextStyle: .title3)
+        historyOperandLabel.textColor = .white
+
+        let historyOperatorLabel = UILabel()
+        historyOperatorLabel.text = operatorLabel.text
+        historyOperatorLabel.font = .preferredFont(forTextStyle: .title3)
+        historyOperatorLabel.textColor = .white
+
+        stack.addArrangedSubview(historyOperatorLabel)
+        stack.addArrangedSubview(historyOperandLabel)
+
+        historyStackView.addArrangedSubview(stack)
+
         operatorLabel.text = sender.titleLabel?.text
+        operandLabel.text = "0"
     }
 
     @IBAction private func tappedACButton(_ sender: UIButton) {
