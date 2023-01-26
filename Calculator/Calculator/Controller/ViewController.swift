@@ -14,41 +14,28 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBOutlet weak var operatorLabel: UILabel!
+    @IBOutlet weak var operandLabel: UILabel!
+
+
     @IBAction func addNumber(_ sender: UIButton) {
-        guard let number = sender.currentTitle else {
+        guard let number = sender.currentTitle, let enteredOperand = operandLabel.text else {
             return
         }
-        guard !isOperator() || (number != "0" && number != "00") else {
+        guard enteredOperand != "0" || (number != "0" && number != "00") else {
             return
         }
-        calculationFormula += number
+        if enteredOperand == "0" {
+            operandLabel.text = number
+        } else {
+            operandLabel.text = enteredOperand + number
+        }
     }
 
     @IBAction func addOperator(_ sender: UIButton) {
         guard let `operator` = sender.currentTitle else {
             return
         }
-        guard isNumber() else {
-            return
-        }
-    }
-
-    func isOperator() -> Bool {
-        var result = false
-        for `operator` in Operator.allCases {
-            guard calculationFormula.hasSuffix(String(`operator`.rawValue)) else {
-                continue
-            }
-            result = true
-        }
-        return result
-    }
-
-    func isNumber() -> Bool {
-        guard let lastElement = calculationFormula.last, lastElement.isNumber else {
-            return false
-        }
-        return true
     }
 }
 
