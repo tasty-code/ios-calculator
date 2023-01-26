@@ -13,6 +13,7 @@
 		4FA9BFB02980BF4D005BA61E /* ExpresstionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9BFAF2980BF4D005BA61E /* ExpresstionParser.swift */; };
 		4FA9BFB32980BF92005BA61E /* Formula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9BFB22980BF92005BA61E /* Formula.swift */; };
 		4FA9BFBA298161FE005BA61E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9BFB9298161FE005BA61E /* Error.swift */; };
+		4FA9BFBE298268B7005BA61E /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9BFBD298268B7005BA61E /* CustomStackView.swift */; };
 		C713D9422570E5EB001C3AFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9412570E5EB001C3AFC /* AppDelegate.swift */; };
 		C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9432570E5EB001C3AFC /* SceneDelegate.swift */; };
 		C713D9462570E5EB001C3AFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713D9452570E5EB001C3AFC /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		4FA9BFAF2980BF4D005BA61E /* ExpresstionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpresstionParser.swift; sourceTree = "<group>"; };
 		4FA9BFB22980BF92005BA61E /* Formula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula.swift; sourceTree = "<group>"; };
 		4FA9BFB9298161FE005BA61E /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		4FA9BFBD298268B7005BA61E /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		C713D93E2570E5EB001C3AFC /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C713D9412570E5EB001C3AFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C713D9432570E5EB001C3AFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				4FA9BFB9298161FE005BA61E /* Error.swift */,
 				4FA9BFAE2980B60D005BA61E /* Model */,
 				E7D03EFB2980B3630094C769 /* Extension */,
+				4FA9BFBD298268B7005BA61E /* CustomStackView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FA9BFBE298268B7005BA61E /* CustomStackView.swift in Sources */,
 				E760CF6B29768DDB003990A6 /* LinkedList.swift in Sources */,
 				C713D9462570E5EB001C3AFC /* ViewController.swift in Sources */,
 				E760CF6929768C50003990A6 /* Operator.swift in Sources */,
