@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         operandLabel.text = "0"
         operatorLabel.text = ""
         isDecimal = false
+        calculationFormula = "+"
     }
 
     @IBAction func clearEntry(_ sender: UIButton) {
@@ -93,5 +94,20 @@ class ViewController: UIViewController {
         operandLabel.text = "0"
         isDecimal = false
     }
+
+    @IBAction func calculateResult(_ sender: UIButton) {
+        guard let enteredOperator = operatorLabel.text,
+              var enteredOperand = operandLabel.text else {
+            return
+        }
+        calculationFormula += enteredOperator + enteredOperand
+        operatorLabel.text = ""
+        isDecimal = false
+        var formula = ExpressionParser.parse(from: calculationFormula)
+        operandLabel.text = String(formula.result())
+
+        calculationFormula = "+"
+    }
+
 }
 
