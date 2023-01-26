@@ -43,17 +43,31 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
+        guard let operand = operandLabel.text else { return }
+        guard let inputOperator = sender.titleLabel?.text else { return }
+
+        if operand == "0" || operand == "-0" || operand == "0." || operand == "-0."{
+            operatorLabel.text = inputOperator
+            return
+        }
+
         formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
 
         addHistoryLabels()
 
         operatorLabel.text = sender.titleLabel?.text
         operandLabel.text = "0"
+        print(formulaString)
     }
 
     @IBAction private func tappedACButton(_ sender: UIButton) {
         operandLabel.text = "0"
-        operatorLabel.text = String(Operator.add.rawValue)
+        operatorLabel.text = ""
+
+        historyStackView.arrangedSubviews
+             .forEach { $0.removeFromSuperview() }
+
+        formulaString = ""
 
     }
 
