@@ -28,7 +28,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
-        print("왜 오류?  \(userInput)")
         do {
             try ExpresstionParser.parse(from: userInput)
         } catch {

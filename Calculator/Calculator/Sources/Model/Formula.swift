@@ -31,7 +31,7 @@ struct Formula {
 
             middleResult = try eachOperator.calculate(lhs: middleResult, rhs: rhs)
         }
-        print(middleResult)
+        print("결과는: \(middleResult)")
         return middleResult
     }
 }
