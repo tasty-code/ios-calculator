@@ -8,25 +8,26 @@
 import Foundation
 
 struct Formula {
-    var operands: CalculatorItemQueue<Double>// 숫자
+    var operands: CalculatorItemQueue<Double>
     var operators: CalculatorItemQueue<Operator>
     
     public mutating func result() throws -> Double {
         guard var result = operands.dequeue() else {
-            throw CalculateError.normalError
+            throw CalculateError.unavailableDequeue
         }
-        
+        guard operands.count == operators.count else {
+            throw CalculateError.operandOperatorCountNotMatching
+        }
         for _ in 1...operators.count {
             guard let calculateOperator = operators.dequeue(),
                   let operand = operands.dequeue() else {
-                throw CalculateError.normalError
-                  }
+                throw CalculateError.unavailableDequeue
+            }
             if calculateOperator == .divide && operand == 0 {
-                print("0으로 못나눔")
+                throw CalculateError.zeroDivideError
             }
             result = calculateOperator.caclulate(lhs: result, rhs: operand)
         }
-        
         return result
     }
 }

@@ -8,5 +8,7 @@
 import Foundation
 
 enum CalculateError: Error {
-    case normalError
+    case unavailableDequeue
+    case operandOperatorCountNotMatching
+    case zeroDivideError
 }

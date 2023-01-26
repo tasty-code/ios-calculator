@@ -10,12 +10,10 @@ import Foundation
 struct CalculatorItemQueue<T> {
     var queue: [T] = []
     
-    var isEmpty: Bool {
-        return queue.isEmpty
-    }
-    var count: Int {
-        return queue.count
-    }
+    var isEmpty: Bool { return queue.isEmpty }
+    
+    var count: Int { return queue.count }
+    
     mutating func enqueue(value: T) {
         return queue.append(value)
     }
