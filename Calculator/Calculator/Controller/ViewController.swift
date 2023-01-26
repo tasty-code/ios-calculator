@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBAction func allClear(_ sender: UIButton) {
         operandLabel.text?.removeAll()
         operandLabel.text = "0"
+        operatorLabel.text = ""
         isDecimal = false
     }
 
@@ -78,6 +79,9 @@ class ViewController: UIViewController {
             return
         }
         guard enteredOperand != "0" else {
+            if calculationFormula == "+" {
+                calculationFormula.removeAll()
+            }
             operatorLabel.text = `operator`
             return
         }
