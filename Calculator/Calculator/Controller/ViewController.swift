@@ -38,6 +38,17 @@ class ViewController: UIViewController {
         operandLabel.text = enteredOperand
     }
 
+    @IBAction func changeSign(_ sender: UIButton) {
+        guard let enteredOperand = operandLabel.text, enteredOperand != "0" else {
+            return
+        }
+        if enteredOperand.first == "-" {
+            operandLabel.text?.removeFirst()
+        } else {
+            operandLabel.text = "-" + enteredOperand
+        }
+    }
+
     @IBAction func addDecimalPoint(_ sender: UIButton) {
         guard let enteredOperand = operandLabel.text, isDecimal == false else {
             return
