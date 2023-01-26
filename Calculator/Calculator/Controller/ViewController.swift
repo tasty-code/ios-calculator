@@ -18,6 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var operatorLabel: UILabel!
     @IBOutlet weak var operandLabel: UILabel!
 
+    @IBAction func allClear(_ sender: UIButton) {
+        operandLabel.text?.removeAll()
+        operandLabel.text = "0"
+        isDecimal = false
+    }
+
     @IBAction func clearEntry(_ sender: UIButton) {
         guard var enteredOperand = operandLabel.text, enteredOperand != "0" else {
             return
