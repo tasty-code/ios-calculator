@@ -25,7 +25,7 @@ struct Formula {
             throw CalculatorError.notMatchingCountOfOperatorsAndOperands
         }
 
-        for _ in 1...operators.count {
+        for _ in 0..<operators.count {
             guard let calculateOperator = operators.dequeue(),
                   let operand = operands.dequeue() else {
                 throw CalculatorError.invalidDequeue

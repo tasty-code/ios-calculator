@@ -14,6 +14,7 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet private weak var historyStackView: UIStackView!
 
     private var formulaString = ""
+    private var isCalculated = false
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -22,6 +23,12 @@ final class CalculatorViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction private func tappedOperandButton(_ sender: UIButton) {
+        if isCalculated {
+            resetHistoryStackView()
+            resetLabels()
+            isCalculated = false
+        }
+
         guard var operand = operandLabel.text else { return }
         guard let inputOperand = sender.titleLabel?.text else { return }
 
@@ -43,6 +50,11 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
+        if isCalculated {
+            resetHistoryStackView()
+            isCalculated = false
+        }
+
         guard let operand = operandLabel.text else { return }
         guard let inputOperator = sender.titleLabel?.text else { return }
 
@@ -61,14 +73,10 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedACButton(_ sender: UIButton) {
-        operandLabel.text = "0"
-        operatorLabel.text = ""
-
-        historyStackView.arrangedSubviews
-             .forEach { $0.removeFromSuperview() }
+        resetLabels()
+        resetHistoryStackView()
 
         formulaString = ""
-
     }
 
     @IBAction private func tappedCEButton(_ sender: UIButton) {
@@ -76,6 +84,8 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
+        guard isCalculated == false else { return }
+
         guard var operand = operandLabel.text else {
             return
         }
@@ -89,7 +99,24 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedResultButton(_ sender: UIButton) {
+        formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
+        addHistoryLabels()
 
+        var result = 0.0
+
+        var fomula = ExpressionParser.parse(from: formulaString)
+        do {
+            result = try fomula.result()
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        operandLabel.text = String(result)
+        operatorLabel.text = ""
+
+        formulaString = ""
+
+        isCalculated = true
     }
 
     // MARK: - Helpers
@@ -116,4 +143,13 @@ final class CalculatorViewController: UIViewController {
         historyStackView.addArrangedSubview(stack)
     }
 
+    private func resetHistoryStackView() {
+        historyStackView.arrangedSubviews
+             .forEach { $0.removeFromSuperview() }
+    }
+
+    private func resetLabels() {
+        operandLabel.text = "0"
+        operatorLabel.text = ""
+    }
 }
