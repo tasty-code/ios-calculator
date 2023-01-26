@@ -26,7 +26,7 @@ struct Formula {
             if calculateOperator == .divide && operand == 0 {
                 throw CalculateError.zeroDivideError
             }
-            result = calculateOperator.caclulate(lhs: result, rhs: operand)
+            result = calculateOperator.caclculate(lhs: result, rhs: operand)
         }
         return result
     }
