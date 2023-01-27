@@ -6,4 +6,4 @@
 //
 
 import Foundation
-protocol CalculatorItem {}
+protocol CalculatorItem { }

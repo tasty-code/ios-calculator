@@ -7,27 +7,48 @@
 
 import Foundation
 
-struct LinkedList {
-    private var head: Node?
+struct LinkedList<Element> {
+    private var head: Node<Element>?
     
     func isHeadEmpty() -> Bool {
         return head == nil
     }
     
-    func getHead() -> Node? {
+    func getHead() -> Node<Element>? {
         return head
     }
     
-    mutating func append(data: Node) {
+    mutating func popHead() -> Element? {
+        let headValue = head?.data
+        self.head = head?.next
+        
+        return headValue
+    }
+    
+    mutating func append(data: Element) {
         if head == nil {
-            head = data
+            head = Node(data: data)
             return
-        }else {
+        } else {
             var node = head
             while node?.next != nil {
                 node = node?.next
             }
-            node?.next = data
+            node?.next = Node(data: data)
         }
+    }
+    
+    mutating func removeLast() {
+        // 기존 코드
+        let head = getHead()
+        var node = head
+        var preNode: Node<Element>?
+
+        while node?.next != nil {
+            preNode = node
+            node = node?.next
+        }
+        preNode?.next = nil
+        self.head = nil
     }
 }
