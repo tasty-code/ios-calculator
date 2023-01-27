@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol CalculateItem {
-    
-}
-
 struct CalculateItemQueue<T: CalculateItem> {
-    var queue: Array<T> = []
-    
+    private var queue: Array<T>
+
+    init(queue: Array<T> = []) {
+        self.queue = queue
+    }
+
     mutating func enqueue(_ data: T) {
         queue.append(data)
     }
@@ -28,5 +28,9 @@ struct CalculateItemQueue<T: CalculateItem> {
     
     mutating func allClear() {
         queue.removeAll()
+    }
+
+    func isEmpty() -> Bool {
+        return queue.isEmpty
     }
 }
