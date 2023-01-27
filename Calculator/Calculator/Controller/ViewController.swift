@@ -8,7 +8,8 @@ import UIKit
 
 class ViewController: UIViewController {
     var calculationFormula: String = "+"
-    var isDecimal = false
+    var isDecimal: Bool = false
+    var enteredOperand: String = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,68 +23,67 @@ class ViewController: UIViewController {
 
     @IBAction func allClear(_ sender: UIButton) {
         operandLabel.text?.removeAll()
-        operandLabel.text = "0"
-        operatorLabel.text = ""
         isDecimal = false
+        operatorLabel.text = ""
         calculationFormula = "+"
+        enteredOperand = "0"
+        operandLabel.text = enteredOperand
 
         formulaStackViews.removeAllArrangedSubviews()
     }
 
     @IBAction func clearEntry(_ sender: UIButton) {
-        guard var enteredOperand = operandLabel.text, enteredOperand != "0" else {
-            return
-        }
-        guard enteredOperand != String(Double.nan) else {
+        guard enteredOperand != "0", enteredOperand != String(Double.nan) else {
             return
         }
         if enteredOperand.removeLast() == "." {
             isDecimal = false
         }
-        guard enteredOperand.isEmpty == false else {
-            operandLabel.text = "0"
-            return
+        if enteredOperand.isEmpty {
+            enteredOperand = "0"
         }
         operandLabel.text = enteredOperand
     }
 
     @IBAction func changeSign(_ sender: UIButton) {
-        guard let enteredOperand = operandLabel.text, enteredOperand != "0" else {
+        guard enteredOperand != "0" else {
             return
         }
         if enteredOperand.first == "-" {
-            operandLabel.text?.removeFirst()
+            enteredOperand.removeFirst()
         } else {
-            operandLabel.text = "-" + enteredOperand
+            enteredOperand = "-" + enteredOperand
         }
+        operandLabel.text = enteredOperand
     }
 
     @IBAction func addDecimalPoint(_ sender: UIButton) {
-        guard let enteredOperand = operandLabel.text, isDecimal == false else {
+        guard isDecimal == false else {
             return
         }
-        operandLabel.text = enteredOperand + "."
+        enteredOperand += "."
         isDecimal = true
+        operandLabel.text = enteredOperand
     }
 
     @IBAction func addNumber(_ sender: UIButton) {
-        guard let number = sender.currentTitle, let enteredOperand = operandLabel.text else {
+        guard let number = sender.currentTitle else {
             return
         }
         guard enteredOperand != "0" || (number != "0" && number != "00") else {
             return
         }
         if enteredOperand == "0" {
-            operandLabel.text = number
+            enteredOperand = number
         } else {
-            operandLabel.text = enteredOperand + number
+            enteredOperand += number
         }
+        operandLabel.text = enteredOperand
     }
 
     @IBAction func addOperator(_ sender: UIButton) {
         guard let `operator` = sender.currentTitle,
-              let enteredOperator = operatorLabel.text,
-              var enteredOperand = operandLabel.text else {
+              let enteredOperator = operatorLabel.text else {
             return
         }
         guard enteredOperand != "0" else {
@@ -99,14 +99,14 @@ class ViewController: UIViewController {
         calculationFormula += enteredOperator + enteredOperand
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         operatorLabel.text = `operator`
-        operandLabel.text = "0"
+        enteredOperand = "0"
+        operandLabel.text = enteredOperand
         isDecimal = false
         scrollView.contentOffset.y = scrollView.contentSize.height
     }
 
     @IBAction func calculateResult(_ sender: UIButton) {
-        guard let enteredOperator = operatorLabel.text,
-              let enteredOperand = operandLabel.text else {
+        guard let enteredOperator = operatorLabel.text else {
             return
         }
         calculationFormula += enteredOperator + enteredOperand
@@ -118,7 +118,8 @@ class ViewController: UIViewController {
             resultValue.removeLast()
             resultValue.removeLast()
         }
-        operandLabel.text = resultValue
+        enteredOperand = resultValue
+        operandLabel.text = enteredOperand
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
 
         calculationFormula = "+"
