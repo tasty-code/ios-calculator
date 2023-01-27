@@ -37,6 +37,8 @@ final class CalculatorViewController: UIViewController {
                 displayNumberLabel.text = inputButtonNumber
                 return
             }
+        } else if displayNumberLabel.text == "." {
+            displayNumberLabel.text = "0." + inputButtonNumber
         } else {
             let currentDisplayNumber = displayNumberLabel.text ?? blankSpace
             let displayNumber = currentDisplayNumber + inputButtonNumber
