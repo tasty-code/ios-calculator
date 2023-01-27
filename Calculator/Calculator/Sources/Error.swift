@@ -14,5 +14,17 @@ enum CalculateError: Error {
     case invalidInput
     // 0으로 나눌때
     case zeroDivide
-    
+}
+
+extension CalculateError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .nothingInput:
+            return nil
+        case .invalidInput:
+            return "Error"
+        case .zeroDivide:
+            return "NaN"
+        }
+    }
 }

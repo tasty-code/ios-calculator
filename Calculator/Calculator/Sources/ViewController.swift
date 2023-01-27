@@ -104,11 +104,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
+        guard !userOperandInput.isEmpty, userOperandInput != "0" else { return }
         
-        if !userOperandInput.isEmpty {
-            addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
-            totalInput += (userOperatorInput + userOperandInput)
-        }
+        addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
+        totalInput += (userOperatorInput + userOperandInput)
         
         do {
             print("결과적으로 들어가는 Input: \(totalInput)")
@@ -119,7 +118,8 @@ class ViewController: UIViewController {
             userOperandInput = ""
             operandLabel.text = String(result)
         } catch {
-            print(error)
+            operandLabel.text = error.localizedDescription
+            print(error, error.localizedDescription)
         }
 
         userOperatorInput = ""
