@@ -42,7 +42,6 @@ class ViewController: UIViewController {
     // MARK: - setup
     
     private func addNumberTotalStackView(operatorText: String, operandText: String) {
-        
         let numberStackView: CustomStackView = {
             let sv = CustomStackView(frame: .zero)
             sv.operatorLabel.text = operatorText
@@ -94,9 +93,6 @@ class ViewController: UIViewController {
             addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
             
             totalInput += (userOperatorInput + userOperandInput)
-//            print("operatorsButtonTapped의 userOperandInput: \(userOperandInput)")
-//            print("operatorsButtonTapped의 userOperatorInput: \(userOperatorInput)")
-//            print("operatorsButtonTapped의 totalInput: \(totalInput)")
             // 연산자 누르면 그동안 적었던 userInput이 totalInput으로 올라감. 왜? CE 누르면 userInput 초기화 되어야 하기 때문
             
             // numberStack 올라가면 앞에 적었던 숫자는 초기화 되고, 연산자는 아직 남아있음.
@@ -109,22 +105,23 @@ class ViewController: UIViewController {
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
         
-        do {
+        if !userOperandInput.isEmpty {
+            addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
             totalInput += (userOperatorInput + userOperandInput)
+        }
+        
+        do {
             print("결과적으로 들어가는 Input: \(totalInput)")
-
             guard let result = try ExpresstionParser.parse(from: totalInput)?.result() else { return }
             print("viewController 결과: \(result)")
+            
+            // = 누르고 난 뒤, 다시 = 눌러도 연산 되지 않도록 userOperandInput 초기화
+            userOperandInput = ""
             operandLabel.text = String(result)
         } catch {
             print(error)
         }
-        
-        // = 누르는 순간, 모든 totalStackView 초기화
-//        removeAllTotalStackView()
-        
-        // 연산 결과값 나와야 하지만 일단 초기화 시킴.
-//        userOperandInput = ""
+
         userOperatorInput = ""
     }
     
@@ -139,7 +136,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func plusminusButtonTapped(_ sender: UIButton) {
-        userOperandInput = userOperandInput.contains("-") ? userOperandInput.trimmingCharacters(in: ["-"]) : "-\(userOperandInput)"
+        if userOperandInput != "0" {
+            userOperandInput = userOperandInput.contains("-") ? userOperandInput.trimmingCharacters(in: ["-"]) : "-\(userOperandInput)"
+        }
     }
 }
 
