@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct CalculatorItemQueue: CalculateItem {
-    private(set) var items = [String]()
+struct CalculatorItemQueue<Item: CalculateItem> {
+    private(set) var items: [Item] = []
+    private var reversedItems: [Item] {
+        get { items.reversed() }
+        set { items = newValue.reversed() }
+    }
     
     func isEmpty() -> Bool {
         items.isEmpty
@@ -18,14 +22,14 @@ struct CalculatorItemQueue: CalculateItem {
         items.count
     }
     
-    mutating func enqueue(item: String) {
+    mutating func enqueue(item: Item) {
         items.append(item)
     }
     
-    mutating func dequeue() throws -> String {
+    mutating func dequeue() throws -> Item {
         guard !items.isEmpty else {
             throw CalculatorError.noElementToDelete
         }
-        return items.removeFirst()
+        return items.removeLast()
     }
 }
