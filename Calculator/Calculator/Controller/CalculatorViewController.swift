@@ -15,7 +15,6 @@ final class CalculatorViewController: UIViewController {
 
     private var formulaString = ""
     private var isCalculated = false
-    private var isInitialized = true
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -54,8 +53,6 @@ final class CalculatorViewController: UIViewController {
 
         operatorLabel.text = sender.titleLabel?.text
         operandLabel.text = .zero
-
-        isInitialized = false
     }
 
     @IBAction private func tappedACButton(_ sender: UIButton) {
@@ -157,9 +154,8 @@ final class CalculatorViewController: UIViewController {
     }
 
     private func isValid(operator: String, withOperand operand: String) -> Bool {
-        if (operand == .zero || operand == .zeroDot) && isInitialized == false {
+        if (operand == .zero || operand == .zeroDot) && formulaString.isEmpty == false {
             operatorLabel.text = `operator`
-            isInitialized = false
             return false
         }
 
