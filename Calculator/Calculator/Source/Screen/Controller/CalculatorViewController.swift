@@ -143,7 +143,7 @@ final class CalculatorViewController: UIViewController {
         let value = Double(value)!
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        numberFormatter.maximumSignificantDigits = 10
+        numberFormatter.maximumSignificantDigits = 20
         
         var formattedNumber = "0"
         
