@@ -13,6 +13,17 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet weak private var displayNumberLabel: UILabel!
     @IBOutlet weak private var displayOperatorLabel: UILabel!
 
+    private var displayNumber: String {
+        get {
+            if let currentNumber = displayNumberLabel.text?.replacingOccurrences(of: ",", with: "") {
+                return currentNumber
+            }
+            return ""
+        }
+        set {
+            displayNumberLabel.text = makeNumberToStringWithComma(value: newValue)
+        }
+    }
     private var isCalculated: Bool = false
     private var computation = ""
     private let oneSpace = " "
@@ -29,26 +40,26 @@ final class CalculatorViewController: UIViewController {
         guard isCalculated == false else {
             clearAllTheResult()
             if inputButtonNumber == "." {
-                displayNumberLabel.text = "0."
+                displayNumber = "0."
             } else {
-                displayNumberLabel.text = inputButtonNumber
+                displayNumber = inputButtonNumber
             }
             return isCalculated = false
         }
         
-        if displayNumberLabel.text == zeroArray[0] {
+        if displayNumber == zeroArray[0] {
             guard inputButtonNumber != "." else {
-                return displayNumberLabel.text = "0."
+                return displayNumber = "0."
             }
             guard zeroArray.contains(inputButtonNumber) else {
-                displayNumberLabel.text = inputButtonNumber
+                displayNumber = inputButtonNumber
                 return
             }
         } else {
-            let currentDisplayNumber = displayNumberLabel.text ?? blankSpace
-            let displayNumber = currentDisplayNumber + inputButtonNumber
-            guard checkNumberOfDecimalPoint(of: displayNumber) else { return }
-            displayNumberLabel.text = currentDisplayNumber + inputButtonNumber
+            let currentDisplayNumber = displayNumber
+            let number = currentDisplayNumber + inputButtonNumber
+            guard checkNumberOfDecimalPoint(of: number) else { return }
+            displayNumber = currentDisplayNumber + inputButtonNumber
         }
     }
     
@@ -58,17 +69,17 @@ final class CalculatorViewController: UIViewController {
         addFormulaLabel()
         updateComputation()
         
-        displayNumberLabel.text = zeroArray[0]
+        displayNumber = zeroArray[0]
         displayOperatorLabel.text = sender.currentTitle!
     }
     
     @IBAction private func switchSignButtonTapped(_ sender: UIButton) {
-        guard let displayNumberLabel = Double(displayNumberLabel.text ?? "0.0") else { return }
-        self.displayNumberLabel.text = String(-displayNumberLabel)
+        guard let displayValue = Double(displayNumber) else { return }
+        self.displayNumber = String(-displayValue)
     }
     
     @IBAction private func clearEntryButtonTapped(_ sender: UIButton) {
-        displayNumberLabel.text = zeroArray[0]
+        displayNumber = zeroArray[0]
     }
     
     @IBAction private func allClearButtonTapped(_ sender: UIButton) {
@@ -83,10 +94,10 @@ final class CalculatorViewController: UIViewController {
         let result = formula.result()
         
         if result == Double.infinity {
-            displayNumberLabel.text = "NaN"
+            displayNumber = "NaN"
             displayOperatorLabel.text = blankSpace
         } else {
-            displayNumberLabel.text = String(result)
+            displayNumber = String(result)
             displayOperatorLabel.text = blankSpace
         }
         isCalculated = true
@@ -105,7 +116,7 @@ final class CalculatorViewController: UIViewController {
         let previousCalculationLabel = UILabel()
         previousCalculationLabel.textColor = .white
         previousCalculationLabel.font = UIFont.systemFont(ofSize: 20)
-        previousCalculationLabel.text = displayOperatorLabel.text! + oneSpace + displayNumberLabel.text!
+        previousCalculationLabel.text = displayOperatorLabel.text! + oneSpace + displayNumber
         cumulativeCalculationStackView.addArrangedSubview(previousCalculationLabel)
         cumulativeCalculationScrollView.layoutIfNeeded()
         let bottomOffset = CGPoint(x: 0, y: cumulativeCalculationScrollView.contentSize.height - cumulativeCalculationScrollView.bounds.size.height)
@@ -113,14 +124,31 @@ final class CalculatorViewController: UIViewController {
     }
     
     private func updateComputation() {
-        let pairOfOpeartorAndOperand = oneSpace + (displayOperatorLabel.text ?? blankSpace) + oneSpace + (displayNumberLabel.text ?? "0.0")
+        let pairOfOpeartorAndOperand = oneSpace + (displayOperatorLabel.text ?? blankSpace) + oneSpace + displayNumber
         computation = computation + pairOfOpeartorAndOperand
     }
     
     private func clearAllTheResult() {
-        displayNumberLabel.text = zeroArray[0]
+        displayNumber = zeroArray[0]
         displayOperatorLabel.text = blankSpace
         cumulativeCalculationStackView.subviews.forEach({ $0.removeFromSuperview() })
         computation = blankSpace
+    }
+    
+    func makeNumberToStringWithComma(value: String) -> String {
+        let value = Double(value)!
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumSignificantDigits = 10
+        
+        var formattedNumber = "0"
+        
+        if floor(value) == value {
+            let intValue = Int(value)
+            formattedNumber = numberFormatter.string(from: NSNumber(value: intValue)) ?? "0"
+        } else {
+            formattedNumber = numberFormatter.string(from: NSNumber(value: value)) ?? "0"
+        }
+        return formattedNumber
     }
 }
