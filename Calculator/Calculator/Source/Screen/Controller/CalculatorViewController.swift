@@ -28,17 +28,22 @@ final class CalculatorViewController: UIViewController {
         
         guard isCalculated == false else {
             clearAllTheResult()
-            displayNumberLabel.text = inputButtonNumber
+            if inputButtonNumber == "." {
+                displayNumberLabel.text = "0."
+            } else {
+                displayNumberLabel.text = inputButtonNumber
+            }
             return isCalculated = false
         }
         
         if displayNumberLabel.text == zeroArray[0] {
+            guard inputButtonNumber != "." else {
+                return displayNumberLabel.text = "0."
+            }
             guard zeroArray.contains(inputButtonNumber) else {
                 displayNumberLabel.text = inputButtonNumber
                 return
             }
-        } else if displayNumberLabel.text == "." {
-            displayNumberLabel.text = "0." + inputButtonNumber
         } else {
             let currentDisplayNumber = displayNumberLabel.text ?? blankSpace
             let displayNumber = currentDisplayNumber + inputButtonNumber
