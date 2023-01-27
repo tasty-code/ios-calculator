@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         calculationFormula = "+"
         enteredOperand = "0"
         operandLabel.text = formattingNumber(enteredOperand)
-
         formulaStackViews.removeAllArrangedSubviews()
     }
 
@@ -118,9 +117,8 @@ class ViewController: UIViewController {
         isDecimal = false
         isCalculated = true
         var formula = ExpressionParser.parse(from: calculationFormula)
-        let resultValue = String(formula.result())
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
-        enteredOperand = resultValue
+        enteredOperand = String(formula.result())
         operandLabel.text = formattingNumber(enteredOperand)
         calculationFormula = "+"
         scrollView.contentOffset.y = scrollView.contentSize.height
