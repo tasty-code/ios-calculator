@@ -12,9 +12,11 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet weak private var cumulativeCalculationStackView: UIStackView!
     @IBOutlet weak private var displayNumberLabel: UILabel!
     @IBOutlet weak private var displayOperatorLabel: UILabel!
-    
+
+    var calculatedFinished: Bool = false
     var computation = ""
-    var blankSpace = " "
+    let blankSpace = " "
+    let zeroArray = ["0", "00"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +24,13 @@ final class CalculatorViewController: UIViewController {
     
     @IBAction private func digitButtonTapped(_ sender: UIButton) {
         let inputButtonNumber = sender.currentTitle!
-        let zeroArray = ["0", "00"]
-
+        
+        guard calculatedFinished == false else {
+            clearAllTheResult()
+            displayNumberLabel.text = inputButtonNumber
+            return calculatedFinished = false
+        }
+        
         if displayNumberLabel.text == "0" {
             guard zeroArray.contains(inputButtonNumber) else {
                 displayNumberLabel.text = inputButtonNumber
@@ -38,6 +45,8 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func operatorButtonTapped(_ sender: UIButton) {
+        guard calculatedFinished == false else { return }
+        
         addFormulaLabel()
         updateComputation()
         
@@ -55,21 +64,24 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func allClearButtonTapped(_ sender: UIButton) {
-        displayNumberLabel.text = "0"
-        displayOperatorLabel.text = ""
-        cumulativeCalculationStackView.subviews.forEach({ $0.removeFromSuperview() })
-        computation = ""
+        clearAllTheResult()
     }
     
     @IBAction private func equalButtonTapped(_ sender: UIButton) {
+        guard calculatedFinished == false else { return }
         addFormulaLabel()
         updateComputation()
         var formula = ExpressionParser.parse(from: computation)
         let result = formula.result()
-        displayNumberLabel.text = String(result)
-        displayOperatorLabel.text = ""
-        print(computation)
-        print(result)
+        
+        if result == Double.infinity {
+            displayNumberLabel.text = "NaN"
+            displayOperatorLabel.text = ""
+        } else {
+            displayNumberLabel.text = String(result)
+            displayOperatorLabel.text = ""
+        }
+        calculatedFinished = true
     }
     
     private func checkNumberOfDecimalPoint(of number: String) -> Bool {
@@ -95,6 +107,13 @@ final class CalculatorViewController: UIViewController {
     private func updateComputation() {
         let pairofOperandOperand = blankSpace + (displayOperatorLabel.text ?? "") + blankSpace + (displayNumberLabel.text ?? "0.0")
         computation = computation + pairofOperandOperand
+    }
+    
+    private func clearAllTheResult() {
+        displayNumberLabel.text = "0"
+        displayOperatorLabel.text = ""
+        cumulativeCalculationStackView.subviews.forEach({ $0.removeFromSuperview() })
+        computation = ""
     }
 }
 
