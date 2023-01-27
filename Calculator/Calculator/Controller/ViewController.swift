@@ -9,6 +9,7 @@ import UIKit
 class ViewController: UIViewController {
     var calculationFormula: String = "+"
     var isDecimal: Bool = false
+    var isCalculated: Bool = false
     var enteredOperand: String = "0"
 
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func clearEntry(_ sender: UIButton) {
-        guard enteredOperand != "0", enteredOperand != String(Double.nan) else {
+        guard enteredOperand != "0", enteredOperand != String(Double.nan), isCalculated == false else {
             return
         }
         if enteredOperand.removeLast() == "." {
@@ -72,6 +73,10 @@ class ViewController: UIViewController {
     @IBAction func addNumber(_ sender: UIButton) {
         guard let number = sender.currentTitle else {
             return
+        }
+        if isCalculated {
+            enteredOperand = "0"
+            isCalculated = false
         }
         guard enteredOperand != "0" || (number != "0" && number != "00") else {
             return
@@ -115,12 +120,9 @@ class ViewController: UIViewController {
         calculationFormula += enteredOperator + enteredOperand
         operatorLabel.text = ""
         isDecimal = false
+        isCalculated = true
         var formula = ExpressionParser.parse(from: calculationFormula)
         var resultValue = String(formula.result())
-        if resultValue.hasSuffix(".0") {
-            resultValue.removeLast()
-            resultValue.removeLast()
-        }
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         enteredOperand = resultValue
         operandLabel.text = formattingNumber(enteredOperand)
