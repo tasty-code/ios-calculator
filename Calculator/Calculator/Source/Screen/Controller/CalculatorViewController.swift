@@ -21,11 +21,24 @@ final class CalculatorViewController: UIViewController {
             return ""
         }
         set {
-            if newValue.last! == "." {
-                displayNumberLabel.text = makeNumberToStringWithComma(value: String(newValue.prefix(newValue.count - 1))) + "."
+            var input = newValue
+            if input.count >= 19 {
+                input = String(input.prefix(19))
+            }
+            
+            if input.last! == "." {
+                guard let numWithComma = makeNumberToStringWithComma(value: String(newValue.prefix(newValue.count - 1))) else {
+                    displayNumberLabel.text = "연산 불가"
+                    return
+                }
+                displayNumberLabel.text = numWithComma + "."
                 return
             }
-            displayNumberLabel.text = makeNumberToStringWithComma(value: newValue)
+            guard let numWithComma = makeNumberToStringWithComma(value: input) else {
+                displayNumberLabel.text = "연산 불가"
+                return
+            }
+            displayNumberLabel.text = numWithComma
         }
     }
     private var isCalculated: Bool = false
@@ -139,8 +152,8 @@ final class CalculatorViewController: UIViewController {
         computation = blankSpace
     }
     
-    func makeNumberToStringWithComma(value: String) -> String {
-        let value = Double(value)!
+    func makeNumberToStringWithComma(value: String) -> String? {
+        guard let value = Double(value) else { return nil }
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumSignificantDigits = 20
