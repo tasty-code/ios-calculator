@@ -16,6 +16,7 @@ enum ExpresstionParser {
         }
         
         let parsedInput = componentsByOperators(from: input)
+        print("split 후 \(parsedInput)")
         let operands = CalculatorItemQueue()
         let operators = CalculatorItemQueue()
         
@@ -24,7 +25,6 @@ enum ExpresstionParser {
         }
         
         let result = Formula(operands: operands, operators: operators)
-        _ = try result.result()
         return result
     }
     

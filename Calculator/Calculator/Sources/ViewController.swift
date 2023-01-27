@@ -42,13 +42,25 @@ class ViewController: UIViewController {
     // MARK: - setup
     
     private func addNumberTotalStackView(operatorText: String, operandText: String) {
-        let numberStackView: UIStackView = {
+        
+        let numberStackView: CustomStackView = {
             let sv = CustomStackView(frame: .zero)
             sv.operatorLabel.text = operatorText
             sv.operandLabel.text = operandText
             return sv
         }()
         numberTotalStackView.addArrangedSubview(numberStackView)
+        moveToPoint(labelHeight: numberStackView.operandLabel.intrinsicContentSize.height)
+    }
+    
+    private func moveToPoint(labelHeight: CGFloat) {
+        // textLabel 생성시 scrollView 화면이동 기능
+        var bottomOffset = CGPoint(x: 0, y: 0)
+        
+        if scrollView.contentSize.height > scrollView.visibleSize.height {
+            bottomOffset.y = scrollView.contentSize.height - scrollView.visibleSize.height + labelHeight
+        }
+        scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     private func removeAllTotalStackView() {
@@ -57,11 +69,8 @@ class ViewController: UIViewController {
         }
         
         totalInput = ""
-        userOperandInput = ""
+        userOperandInput = "0"
         userOperatorInput = ""
-//        print("모든 totalStackView 초기화. totalInput: \(totalInput)")
-//        print("모든 totalStackView 초기화. userOperandInput: \(userOperandInput)")
-//        print("모든 totalStackView 초기화. userOperatorInput: \(userOperatorInput)")
     }
     
     // MARK: - Action
@@ -103,28 +112,34 @@ class ViewController: UIViewController {
         do {
             totalInput += (userOperatorInput + userOperandInput)
             print("결과적으로 들어가는 Input: \(totalInput)")
-            try ExpresstionParser.parse(from: totalInput)
+
+            guard let result = try ExpresstionParser.parse(from: totalInput)?.result() else { return }
+            print("viewController 결과: \(result)")
+            operandLabel.text = String(result)
         } catch {
             print(error)
         }
         
         // = 누르는 순간, 모든 totalStackView 초기화
-        removeAllTotalStackView()
+//        removeAllTotalStackView()
         
         // 연산 결과값 나와야 하지만 일단 초기화 시킴.
-        userOperandInput = ""
+//        userOperandInput = ""
         userOperatorInput = ""
     }
     
     @IBAction func ACButtonTapped(_ sender: UIButton) {
+        // numberStack 모두 제거
         removeAllTotalStackView()
     }
     
     @IBAction func CEButtonTapped(_ sender: UIButton) {
+        // 현재 입력되고 있는 숫자 0으로 초기화
         userOperandInput = "0"
     }
     
     @IBAction func plusminusButtonTapped(_ sender: UIButton) {
+        userOperandInput = userOperandInput.contains("-") ? userOperandInput.trimmingCharacters(in: ["-"]) : "-\(userOperandInput)"
     }
 }
 

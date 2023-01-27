@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomStackView: UIStackView {
+final class CustomStackView: UIStackView {
     
     let operatorLabel: UILabel = {
         let label = UILabel()
