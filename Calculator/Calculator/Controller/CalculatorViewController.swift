@@ -68,7 +68,7 @@ final class CalculatorViewController: UIViewController {
 
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
         guard var operand = operandLabel.text,
-              operand.allSatisfy ({ $0 == .dot || $0 == .zero }) == false else { return }
+              operand.isZero == false else { return }
 
         if operand.first == .dash {
             operand.removeFirst()
@@ -156,7 +156,7 @@ final class CalculatorViewController: UIViewController {
     }
 
     private func isValid(operator: String, withOperand operand: String) -> Bool {
-        if (operand == .zero || operand == .zeroDot) && formulaString.isEmpty == false {
+        if operand.isZero && formulaString.isEmpty == false {
             operatorLabel.text = `operator`
             return false
         }
