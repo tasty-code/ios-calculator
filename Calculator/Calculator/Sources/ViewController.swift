@@ -34,9 +34,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // 초기에는 operatorLabel 아예 없음
-        operatorLabel.text = ""
-        operandLabel.text = "0"
-        
+//        operatorLabel.text = ""
+//        operandLabel.text = "0"
     }
     
     // MARK: - setup
@@ -68,7 +67,8 @@ class ViewController: UIViewController {
         }
         
         totalInput = ""
-        userOperandInput = "0"
+        userOperandInput = ""
+        operandLabel.text = "0"
         userOperatorInput = ""
     }
     
@@ -88,6 +88,14 @@ class ViewController: UIViewController {
     @IBAction func operatorsButtonTapped(_ sender: UIButton) {
         guard let operators = sender.currentTitle else { return }
         
+        print("\(userOperandInput)")
+        
+        if userOperandInput.isEmpty {
+            print("herererer")
+            userOperandInput = "0"
+            totalInput += (userOperatorInput + userOperandInput)
+        }
+        
         // 숫자가 존재하고 연산자 눌렀을 경우, stack 올라감
         if userOperandInput != "0" {
             addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
@@ -104,7 +112,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
-        guard !userOperandInput.isEmpty, userOperandInput != "0" else { return }
+        guard !userOperandInput.isEmpty else { return }
         
         addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
         totalInput += (userOperatorInput + userOperandInput)
