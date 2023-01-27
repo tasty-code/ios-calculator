@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         operandLabel.text = formattingNumber(enteredOperand) + "."
     }
 
-    @IBAction func addNumber(_ sender: UIButton) {
+    @IBAction func addOperand(_ sender: UIButton) {
         guard let number = sender.currentTitle else {
             return
         }
