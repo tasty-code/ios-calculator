@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum ExpresstionParser {
-    func parse(from input: String) -> Formula {
+enum ExpressionParser {
+    static func parse(from input: String) -> Formula {
         let parsedInput = componentsByOperators(from: input)
         let operands = CalculatorItemQueue()
         let operators = CalculatorItemQueue()
@@ -18,10 +18,11 @@ enum ExpresstionParser {
         }
         
         let result = Formula(operands: operands, operators: operators)
+        _ = result.result()
         return result
     }
     
-    private func componentsByOperators(from input: String) -> [String] {
+    static private func componentsByOperators(from input: String) -> [String] {
         var result: [String] = [input]
         
         Operator.allCases.forEach { operatorCase in
