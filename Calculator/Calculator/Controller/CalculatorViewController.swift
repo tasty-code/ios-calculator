@@ -13,8 +13,9 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet private weak var operatorLabel: UILabel!
     @IBOutlet private weak var historyStackView: UIStackView!
 
-    private var formulaString = "0"
+    private var formulaString = ""
     private var isCalculated = false
+    private var isInitialized = true
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,11 +37,11 @@ final class CalculatorViewController: UIViewController {
             return
         }
 
-        if (operand == "0" || operand == "-0") && (inputOperand == "0" || inputOperand == "00") {
+        if operand == "0" && (inputOperand == "0" || inputOperand == "00") {
             return
         }
 
-        if (operand == "0" || operand == "-0") && 1...9 ~= (Int(inputOperand) ?? 0) {
+        if operand == "0" && 1...9 ~= (Int(inputOperand) ?? 0) {
             operand.remove(at: operand.firstIndex(of: "0") ?? operand.startIndex)
             operandLabel.text = operand + inputOperand
             return
@@ -59,8 +60,9 @@ final class CalculatorViewController: UIViewController {
             isCalculated = false
         }
 
-        if operand == "0" || operand == "-0" || operand == "0." || operand == "-0."{
+        if (operand == "0" || operand == "0.") && isInitialized == false {
             operatorLabel.text = inputOperator
+            isInitialized = false
             return
         }
 
@@ -69,13 +71,15 @@ final class CalculatorViewController: UIViewController {
 
         operatorLabel.text = sender.titleLabel?.text
         operandLabel.text = "0"
+
+        isInitialized = false
     }
 
     @IBAction private func tappedACButton(_ sender: UIButton) {
         resetLabels()
         resetHistoryStackView()
 
-        formulaString = "0"
+        formulaString = ""
     }
 
     @IBAction private func tappedCEButton(_ sender: UIButton) {
@@ -85,6 +89,7 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
         guard isCalculated == false else { return }
         guard var operand = operandLabel.text else { return }
+        guard (operand.allSatisfy { $0 == "." || $0 == "0" } == false) else { return }
 
         if operand.first == "-" {
             operand.removeFirst()
@@ -109,7 +114,7 @@ final class CalculatorViewController: UIViewController {
         }
 
         operatorLabel.text = ""
-        formulaString = "0"
+        formulaString = ""
 
         isCalculated = true
     }
