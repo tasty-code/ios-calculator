@@ -17,6 +17,8 @@ final class CalculatorViewController: UIViewController {
     private var formulaString = ""
     private var isCalculated = false
 
+    private let formatter = NumberFormatter()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,7 +173,6 @@ final class CalculatorViewController: UIViewController {
     }
 
     private func format(number: Double) -> String? {
-        let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 20
 
