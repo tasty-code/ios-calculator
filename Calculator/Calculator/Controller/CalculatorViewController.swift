@@ -67,8 +67,7 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
-        guard isCalculated == false,
-              var operand = operandLabel.text,
+        guard var operand = operandLabel.text,
               operand.allSatisfy ({ $0 == .dot || $0 == .zero }) == false else { return }
 
         if operand.first == .dash {
@@ -88,7 +87,7 @@ final class CalculatorViewController: UIViewController {
         var formula = ExpressionParser.parse(from: formulaString)
         do {
             let result = try formula.result()
-            operandLabel.text = String(result)
+            operandLabel.text = format(number: result)
         } catch {
             operandLabel.text = error.localizedDescription
         }
@@ -111,7 +110,9 @@ final class CalculatorViewController: UIViewController {
 
         let historyOperandLabel: UILabel = {
             let label = UILabel()
-            label.text = operandLabel.text
+            let trimmedOperand = operandLabel.text?.filter { $0 != "," }
+            let operand = Double(trimmedOperand ?? "")
+            label.text = format(number: operand ?? 0.0)
             label.font = .preferredFont(forTextStyle: .title3)
             label.textColor = .white
             return label
@@ -134,7 +135,8 @@ final class CalculatorViewController: UIViewController {
     }
 
     private func updateFormulaString() {
-        formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
+        let trimmedOperandText = operandLabel.text?.filter { $0 != "," } ?? ""
+        formulaString += (operatorLabel.text ?? "") + trimmedOperandText
     }
 
     private func isValid(operand: inout String, withInputOperand inputOperand: String) -> Bool {
@@ -160,5 +162,13 @@ final class CalculatorViewController: UIViewController {
         }
 
         return true
+    }
+
+    private func format(number: Double) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 20
+
+        return formatter.string(for: number)
     }
 }
