@@ -9,14 +9,11 @@ import Foundation
 
 enum ExpresstionParser {
     static func parse(from input: String) throws -> Formula? {
-        
-        // 아무런 숫자를 누르지 않고 = 을 입력할 경우,
         guard !input.isEmpty else {
             throw CalculateError.nothingInput
         }
         
         let parsedInput = componentsByOperators(from: input)
-        print("split 후 \(parsedInput)")
         let operands = CalculatorItemQueue()
         let operators = CalculatorItemQueue()
         

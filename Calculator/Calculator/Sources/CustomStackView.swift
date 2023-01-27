@@ -39,10 +39,6 @@ final class CustomStackView: UIStackView {
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
-        
-        // 아래 코드를 여기 넣엇더니 안되는 거였음. 욕나오네..?
-//        setupStackView()
-//        setupLabel()
     }
     
     private func setupStackView() {

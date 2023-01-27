@@ -20,7 +20,6 @@ enum Operator: Character, CalculateItem, CaseIterable {
         case .substract:
             return substract(lhs: lhs, rhs: rhs)
         case .divide:
-            // 계산기 해보면, 0 / 5 = 0. 하지만 5 / 0 = 오류
             if rhs == 0 {
                 throw CalculateError.zeroDivide
             } else {
