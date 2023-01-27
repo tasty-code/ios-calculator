@@ -13,9 +13,10 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet weak private var displayNumberLabel: UILabel!
     @IBOutlet weak private var displayOperatorLabel: UILabel!
 
-    var calculatedFinished: Bool = false
+    var isCalculated: Bool = false
     var computation = ""
-    let blankSpace = " "
+    let oneSpace = " "
+    let blankSpace = ""
     let zeroArray = ["0", "00"]
     
     override func viewDidLoad() {
@@ -25,19 +26,19 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func digitButtonTapped(_ sender: UIButton) {
         let inputButtonNumber = sender.currentTitle!
         
-        guard calculatedFinished == false else {
+        guard isCalculated == false else {
             clearAllTheResult()
             displayNumberLabel.text = inputButtonNumber
-            return calculatedFinished = false
+            return isCalculated = false
         }
         
-        if displayNumberLabel.text == "0" {
+        if displayNumberLabel.text == zeroArray[0] {
             guard zeroArray.contains(inputButtonNumber) else {
                 displayNumberLabel.text = inputButtonNumber
                 return
             }
         } else {
-            let currentDisplayNumber = displayNumberLabel.text ?? ""
+            let currentDisplayNumber = displayNumberLabel.text ?? blankSpace
             let displayNumber = currentDisplayNumber + inputButtonNumber
             guard checkNumberOfDecimalPoint(of: displayNumber) else { return }
             displayNumberLabel.text = currentDisplayNumber + inputButtonNumber
@@ -45,12 +46,12 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func operatorButtonTapped(_ sender: UIButton) {
-        guard calculatedFinished == false else { return }
+        guard isCalculated == false else { return }
         
         addFormulaLabel()
         updateComputation()
         
-        displayNumberLabel.text = "0"
+        displayNumberLabel.text = zeroArray[0]
         displayOperatorLabel.text = sender.currentTitle!
     }
     
@@ -60,7 +61,7 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func clearEntryButtonTapped(_ sender: UIButton) {
-        displayNumberLabel.text = "0"
+        displayNumberLabel.text = zeroArray[0]
     }
     
     @IBAction private func allClearButtonTapped(_ sender: UIButton) {
@@ -68,7 +69,7 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func equalButtonTapped(_ sender: UIButton) {
-        guard calculatedFinished == false else { return }
+        guard isCalculated == false else { return }
         addFormulaLabel()
         updateComputation()
         var formula = ExpressionParser.parse(from: computation)
@@ -76,12 +77,12 @@ final class CalculatorViewController: UIViewController {
         
         if result == Double.infinity {
             displayNumberLabel.text = "NaN"
-            displayOperatorLabel.text = ""
+            displayOperatorLabel.text = blankSpace
         } else {
             displayNumberLabel.text = String(result)
-            displayOperatorLabel.text = ""
+            displayOperatorLabel.text = blankSpace
         }
-        calculatedFinished = true
+        isCalculated = true
     }
     
     private func checkNumberOfDecimalPoint(of number: String) -> Bool {
@@ -97,7 +98,7 @@ final class CalculatorViewController: UIViewController {
         let previousCalculationLabel = UILabel()
         previousCalculationLabel.textColor = .white
         previousCalculationLabel.font = UIFont.systemFont(ofSize: 20)
-        previousCalculationLabel.text = displayOperatorLabel.text! + " " + displayNumberLabel.text!
+        previousCalculationLabel.text = displayOperatorLabel.text! + oneSpace + displayNumberLabel.text!
         cumulativeCalculationStackView.addArrangedSubview(previousCalculationLabel)
         cumulativeCalculationScrollView.layoutIfNeeded()
         let bottomOffset = CGPoint(x: 0, y: cumulativeCalculationScrollView.contentSize.height - cumulativeCalculationScrollView.bounds.size.height)
@@ -105,13 +106,13 @@ final class CalculatorViewController: UIViewController {
     }
     
     private func updateComputation() {
-        let pairofOperandOperand = blankSpace + (displayOperatorLabel.text ?? "") + blankSpace + (displayNumberLabel.text ?? "0.0")
+        let pairofOperandOperand = oneSpace + (displayOperatorLabel.text ?? blankSpace) + oneSpace + (displayNumberLabel.text ?? "0.0")
         computation = computation + pairofOperandOperand
     }
     
     private func clearAllTheResult() {
-        displayNumberLabel.text = "0"
-        displayOperatorLabel.text = ""
+        displayNumberLabel.text = zeroArray[0]
+        displayOperatorLabel.text = blankSpace
         cumulativeCalculationStackView.subviews.forEach({ $0.removeFromSuperview() })
         computation = ""
     }
