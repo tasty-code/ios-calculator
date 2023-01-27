@@ -12,6 +12,7 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet private weak var operandLabel: UILabel!
     @IBOutlet private weak var operatorLabel: UILabel!
     @IBOutlet private weak var historyStackView: UIStackView!
+    @IBOutlet private weak var historyScrollView: UIScrollView!
 
     private var formulaString = ""
     private var isCalculated = false
@@ -122,6 +123,11 @@ final class CalculatorViewController: UIViewController {
         stack.axis = .horizontal
         stack.spacing = 8
         historyStackView.addArrangedSubview(stack)
+
+        historyScrollView.layoutIfNeeded()
+
+        let bottomOffset = CGPoint(x: 0, y: self.historyScrollView.contentSize.height - self.historyScrollView.frame.size.height)
+        self.historyScrollView.setContentOffset(bottomOffset, animated: true)
     }
 
     private func resetHistoryStackView() {
