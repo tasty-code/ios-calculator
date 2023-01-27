@@ -23,6 +23,14 @@ class ViewController: UIViewController {
     
     var totalInput = ""
     
+    let numberFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.roundingMode = .halfUp
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumSignificantDigits = 20
+        return numberFormatter
+    }()
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var numberTotalStackView: UIStackView!
     @IBOutlet weak var numberInnerStackView: CustomStackView!
@@ -113,7 +121,8 @@ class ViewController: UIViewController {
         
         do {
             guard let result = try ExpresstionParser.parse(from: totalInput)?.result() else { return }
-            operandLabel.text = String(result)
+            guard let resultFormatted = numberFormatter.string(for: result) else { return }
+            operandLabel.text = resultFormatted
         } catch {
             operandLabel.text = error.localizedDescription
         }
