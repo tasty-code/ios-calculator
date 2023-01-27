@@ -108,8 +108,8 @@ final class CalculatorViewController: UIViewController {
     }
     
     private func updateComputation() {
-        let pairofOperandOperand = oneSpace + (displayOperatorLabel.text ?? blankSpace) + oneSpace + (displayNumberLabel.text ?? "0.0")
-        computation = computation + pairofOperandOperand
+        let pairOfOperandOperand = oneSpace + (displayOperatorLabel.text ?? blankSpace) + oneSpace + (displayNumberLabel.text ?? "0.0")
+        computation = computation + pairOfOperandOperand
     }
     
     private func clearAllTheResult() {
