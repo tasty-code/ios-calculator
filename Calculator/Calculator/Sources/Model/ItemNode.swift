@@ -7,17 +7,16 @@
 
 import Foundation
 
-final class ItemNode {
-    let data: Value
+protocol CalculateItem {
+}
+
+final class ItemNode: CalculateItem {
+    let data: String
     var next: ItemNode?
     
-    init(data: Value, next: ItemNode? = nil) {
+    init(data: String, next: ItemNode? = nil) {
         self.data = data
         self.next = next
     }
 }
 
-struct Value {
-    let operators: Operator?
-    let number: Double
-}
