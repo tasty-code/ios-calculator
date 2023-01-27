@@ -8,7 +8,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var userOperandInput = "" {
+    var userOperandInput = "0" {
         willSet {
             operandLabel.text = newValue
             print("operandLabel 변경: \(newValue)")
@@ -32,10 +32,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 초기에는 operatorLabel 아예 없음
-//        operatorLabel.text = ""
-//        operandLabel.text = "0"
     }
     
     // MARK: - setup
@@ -67,8 +63,7 @@ class ViewController: UIViewController {
         }
         
         totalInput = ""
-        userOperandInput = ""
-        operandLabel.text = "0"
+        userOperandInput = "0"
         userOperatorInput = ""
     }
     
@@ -90,12 +85,6 @@ class ViewController: UIViewController {
         
         print("\(userOperandInput)")
         
-        if userOperandInput.isEmpty {
-            print("herererer")
-            userOperandInput = "0"
-            totalInput += (userOperatorInput + userOperandInput)
-        }
-        
         // 숫자가 존재하고 연산자 눌렀을 경우, stack 올라감
         if userOperandInput != "0" {
             addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
@@ -112,24 +101,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
-        guard !userOperandInput.isEmpty else { return }
+        guard userOperandInput != "0" else {
+            userOperatorInput = ""
+            return
+        }
         
         addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
         totalInput += (userOperatorInput + userOperandInput)
+        // = 누르고 난 뒤, 다시 = 눌러도 연산 되지 않도록 userOperandInput 초기화
+        userOperandInput = "0"
         
         do {
-            print("결과적으로 들어가는 Input: \(totalInput)")
             guard let result = try ExpresstionParser.parse(from: totalInput)?.result() else { return }
-            print("viewController 결과: \(result)")
-            
-            // = 누르고 난 뒤, 다시 = 눌러도 연산 되지 않도록 userOperandInput 초기화
-            userOperandInput = ""
             operandLabel.text = String(result)
         } catch {
             operandLabel.text = error.localizedDescription
-            print(error, error.localizedDescription)
         }
-
         userOperatorInput = ""
     }
     
