@@ -40,7 +40,7 @@ final class CalculatorViewController: UIViewController {
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
         guard let operand = operandLabel.text,
               let inputOperator = sender.titleLabel?.text,
-              operand != "NaN" else { return }
+              operand != .NaN else { return }
 
         if isCalculated {
             resetHistoryStackView()
@@ -53,7 +53,7 @@ final class CalculatorViewController: UIViewController {
         addHistoryLabels()
 
         operatorLabel.text = sender.titleLabel?.text
-        operandLabel.text = "0"
+        operandLabel.text = .zero
 
         isInitialized = false
     }
@@ -66,19 +66,19 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedCEButton(_ sender: UIButton) {
-        operandLabel.text = "0"
+        operandLabel.text = .zero
     }
 
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
         guard isCalculated == false,
               var operand = operandLabel.text,
-              operand.allSatisfy ({ $0 == "." || $0 == "0" }) == false else { return }
+              operand.allSatisfy ({ $0 == .dot || $0 == .zero }) == false else { return }
 
-        if operand.first == "-" {
+        if operand.first == .dash {
             operand.removeFirst()
             operandLabel.text = String(operand)
         } else {
-            operandLabel.text = "-\(operand)"
+            operandLabel.text = .dash + operand
         }
     }
 
@@ -132,7 +132,7 @@ final class CalculatorViewController: UIViewController {
     }
 
     private func resetLabels() {
-        operandLabel.text = "0"
+        operandLabel.text = .zero
         operatorLabel.text = ""
     }
 
@@ -141,23 +141,23 @@ final class CalculatorViewController: UIViewController {
     }
 
     private func isValid(operand: inout String, withInputOperand inputOperand: String) -> Bool {
-        if operand.contains(".") && inputOperand == "." {
+        if operand.contains(.dot) && inputOperand == .dot {
             return false
         }
 
-        if operand == "0" && (inputOperand == "0" || inputOperand == "00") {
+        if operand == .zero && (inputOperand == .zero || inputOperand == .doubleZero) {
             return false
         }
 
-        if operand == "0" && 1...9 ~= (Int(inputOperand) ?? 0) {
-            operand.remove(at: operand.firstIndex(of: "0") ?? operand.startIndex)
+        if operand == .zero && 1...9 ~= (Int(inputOperand) ?? 0) {
+            operand.remove(at: operand.firstIndex(of: .zero) ?? operand.startIndex)
         }
 
         return true
     }
 
     private func isValid(operator: String, withOperand operand: String) -> Bool {
-        if (operand == "0" || operand == "0.") && isInitialized == false {
+        if (operand == .zero || operand == .zeroDot) && isInitialized == false {
             operatorLabel.text = `operator`
             isInitialized = false
             return false

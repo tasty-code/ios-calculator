@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B403F01D298394F50016BC6D /* Character+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403F01C298394F50016BC6D /* Character+Extensions.swift */; };
 		B41A64E3297635C9007AC373 /* CalculatorItemQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4570268297631B0005D1B9D /* CalculatorItemQueue.swift */; };
 		B41A64EA29767127007AC373 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41A64E929767127007AC373 /* Double+Extensions.swift */; };
 		B41A64EC29768AFD007AC373 /* Formula.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41A64EB29768AFD007AC373 /* Formula.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B403F01C298394F50016BC6D /* Character+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extensions.swift"; sourceTree = "<group>"; };
 		B41A64E929767127007AC373 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		B41A64EB29768AFD007AC373 /* Formula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula.swift; sourceTree = "<group>"; };
 		B41A64ED29768B7F007AC373 /* ExpressionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionParser.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				B41A64E929767127007AC373 /* Double+Extensions.swift */,
 				F06D80AB2977803D00648570 /* String+Extensions.swift */,
+				B403F01C298394F50016BC6D /* Character+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				B4DF7EAC29751B0C003C6CB3 /* LinkedList.swift in Sources */,
 				F0922F5D297A24170091541A /* CalculatorError.swift in Sources */,
 				F0FA614829768C8D00397884 /* Operator.swift in Sources */,
+				B403F01D298394F50016BC6D /* Character+Extensions.swift in Sources */,
 				B41A64EC29768AFD007AC373 /* Formula.swift in Sources */,
 				C713D9442570E5EB001C3AFC /* SceneDelegate.swift in Sources */,
 			);

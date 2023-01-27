@@ -11,4 +11,11 @@ extension String {
     func split(with target: Character) -> [String] {
         return components(separatedBy: String(target))
     }
+
+    static let zero = "0"
+    static let dot = "."
+    static let NaN = "NaN"
+    static let dash = "-"
+    static let doubleZero = "00"
+    static let zeroDot = "0."
 }
