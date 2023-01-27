@@ -100,8 +100,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
-        guard !userOperandInput.isEmpty else { return }
-        guard !userOperatorInput.isEmpty else { return }
+        guard !userOperandInput.isEmpty, !userOperatorInput.isEmpty else { return }
         
         addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
         totalInput += (userOperatorInput + userOperandInput)
