@@ -7,7 +7,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     var userOperandInput = "" {
         willSet {
             operandLabel.text = newValue
@@ -75,6 +74,10 @@ class ViewController: UIViewController {
     // MARK: - Action
     
     @IBAction func operandsButtonTapped(_ sender: UIButton) {
+        if !totalInput.isEmpty && userOperatorInput.isEmpty == true {
+            removeAllTotalStackView()
+        }
+        
         guard let operands = sender.currentTitle else { return }
         
         if userOperandInput == "0" {
@@ -92,12 +95,13 @@ class ViewController: UIViewController {
             totalInput += (userOperatorInput + userOperandInput)
             userOperandInput = "0"
         }
-        
+        operandLabel.text = "0"
         userOperatorInput = operators
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
         guard !userOperandInput.isEmpty else { return }
+        guard !userOperatorInput.isEmpty else { return }
         
         addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
         totalInput += (userOperatorInput + userOperandInput)
