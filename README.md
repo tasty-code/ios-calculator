@@ -1,8 +1,12 @@
-# iOS_calculator README 작성 (Joo & Lust3r)
+# iOS_calculator README (Joo & Lust3r)
 ----
-
+## 🧮 계산기 동작
+<img width="45%" src="https://user-images.githubusercontent.com/79438622/215037745-d677bb79-b64b-47f4-9226-e5c1bad003c8.gif">
+<span>  </span>
+<img width="45%" src="https://user-images.githubusercontent.com/79438622/215037774-a71cc81e-dcdb-4c76-b11c-a6f16c949a7b.gif">
 ## 🗂️ 프로젝트 파일 구조
 ![188132535-8bc81913-7863-4877-88f9-0f8e811a52bd](https://user-images.githubusercontent.com/45708630/213386825-29d5bd14-4f73-49e0-9862-4d5939af10cb.jpeg)
+
 ---
 ## 🕵🏻 역할 분배
 |enum|역할|
@@ -23,6 +27,20 @@
 |:---|:---|
 |Operator|연산자를 열거형으로 정의. calculate 메서드에서 private 타입의 add, substract, divide, multiply 메서드를 사용할 수 있도록 구현. 은닉화된 연산 메서드들은 이름과 동일한 계산해서 Double값으로 반환|
 |Double|`CalculateItemQueue`의 요소로 사용되도록 `CalculateItem`을 채택|
+
+|function|역할|
+|:---|:---|
+|allClear|입력받았던 내용들을 초기화|
+|clearEntry|입력받은 숫자 혹은 소수점을 제거</br>(단, 결과값은 삭제 불가)|
+|changeSign|입력받은 숫자의 부호를 변경, 음수라면 양수로 변환을 하고 양수라면 음수로 변환|
+|addDecimalPoint|입력받은 숫자의 소수점을 부여</br>(단, 이미 입력받았다면 입력 불가)|
+|addOperand|계산하고자 하는 숫자를 입력|
+|addOperator|계산하고자 하는 연산자를 입력, 숫자를 입력받은 상태가 아니라면 기존의 연산자를 변경|
+|calculateResult|계산을 하고자 추가한 식들을 계산하여 반환|
+|addFormulaStackView|입력된 `operand`와 `operator`로 `UILabel`을 생성하고, Stack에 `addArrangedSubView`를 통해 담은 후 `ScrollView`에서 볼 수 있도록 추가 |
+|formattingNumber|`NumberFormatter()`를 사용하기 위한 함수로, formatter 설정을 통해 소수점 자리수 20, `numberStyle = .decimal`을 통해 천단위 구분 표시를 할 수 있도록 함|
+|convertOperand|정수부를 천단위 구분 표시 하면서 소수부가 '0'이나 '00'이어도 같이 화면에 보일 수 있도록 operand를 정수부와 소수부로 나누어 정수부는 Formatting 진행, 소수부는 그 결과에 덧붙이는 식으로 operand를 convert|
+|isInitialOperand|enteredOperand가 초기값인 '0'인지 확인|
 
 ---
 
@@ -46,12 +64,14 @@
 
 ---
    
-## 🧨 트러블 슈팅
-1. **[Step 1]** 유닛테스트 시 `XCTAssertEqual`을 사용할 때 오류가 발생하여 queue에 들어가는 Item에 `Equatable` 프로토콜을 채택하여 해결하였습니다
-2. **[Step 1]** Unit Test를 진행하면서 dequeue를 사용하면 `isEmpty`가 false인 상황에서는 문제가 되지 않지만 true일 때는 warning이 발생하여 @discardableResult를 사용하여 해결하였습니다.
-3. **[Step 2]** UML에서 요구한 split에서는 Character를 target으로 하기에는 원하는 결과가 나오지 않아 `components(separatedBy: CharacterSet)`를 사용하여 구분자에 맞춰 문자열로 반환하였습니다.
-   
+## Step3 - 계산기 UI 연동
+[PR 대기 | Step3 ]()
+
+### 구현 내용
+- 사용자의 터치 이벤트를 수신하여 그 이벤트로 발생하는 숫자와 연산자의 연산 결과를 내기 위해 각 버튼을 연결하고, 터치 이벤트 수신시 실행할 기능을 작성하였습니다.</br>입력된 내용은 결과값 위쪽 공간에 스크롤이 가능하도록 stack처리하였고, 그 내역이 상단 공간을 넘어 이어지는 경우에는 스크롤이 하단으로 자동으로 이동하여 최근 내역을 볼 수 있도록 하였습니다.
+
 ---
+
    
 ## 📓 학습내용 요점
 ### 1. generic function
@@ -95,34 +115,49 @@ let doubleArray= splittedStringArray.compactMap { Double($0) }
 검색 작업에 사용할 유니코드 문자 값 세트. 본 프로젝트에서는 String 내에서 Operator Character를 CharacterSet으로 만들어 검색작업을 진행했습니다.
 ```swift
 static func componentsByOperators(from input: String) -> [String] {
-        let operators: String = String(Operator.allCases.map { $0.rawValue })
-        let operatorSet: CharacterSet = CharacterSet(charactersIn: operators)
-        return input.components(separatedBy: operatorSet)
-    }
+    let operators: String = String(Operator.allCases.map { $0.rawValue })
+    let operatorSet: CharacterSet = CharacterSet(charactersIn: operators)
+    return input.components(separatedBy: operatorSet)
+}
 ```
 > 참고 : [공식 문서](https://developer.apple.com/documentation/foundation/characterset)
 
+### 5. UIScrollView / UIStackView
+스크롤 뷰 구조를 보니 연산내역이 담긴 스택들을 담은 스택이 있는 구조여서
+(ScrollView > StackView > StackView/StackView)
+그 구조에 맞게 연산자와 숫자를 담을 Label을 생성한 후, StackView에 담아 연산내역이 담긴 스택들을 담은 스택에 추가하는 방식을 사용했습니다.
+```Swift
+private func addFormulaStackView(`operator`: String, operand: String) {
+    let formulaStackView = UIStackView()
+    let enteredOperatorLabel = UILabel()
+    let enteredOperandLabel = UILabel()
+    //...
+    formulaStackView.addArrangedSubview(enteredOperatorLabel)
+    formulaStackView.addArrangedSubview(enteredOperandLabel)
+
+    formulaStackViews.addArrangedSubview(formulaStackView)
+}
+```
+> 참고 1 : [공식 문서](https://developer.apple.com/documentation/uikit/uiscrollview)
+> 참고 2 : [공식 문서](https://developer.apple.com/documentation/uikit/uistackview)
+
+### 6. NumberFormatter
+소수점 아래 20자리 표시, 정수부 천단위 표시를 위해 `NumberFormatter`를 이용하였습니다.
+`numberStyle = .decimal`을 통해 천단위 표시를 할 수 있었고, `maximumFractionDigits = 20`을 통해 최대 소수점 자리를 20으로 설정할 수 있었습니다.
+``` Swift
+private func formattingNumber(_ number: String) -> String {
+    let formatter = NumberFormatter()
+    formatter.maximumFractionDigits = 20
+    formatter.numberStyle = .decimal
+    return formatter.string(for: Double(number)) ?? number
+}
+```
+> 참고 : [공식 문서](https://developer.apple.com/documentation/foundation/numberformatter)
+
 ---
 
-## 🔖 프로젝트 계획
-### STEP3 에서 적용해야 하는 부분
-
-- 계산의 처음 숫자의 연산자는 default는 `.add` 이다
-(macOS 기본 계산기에서도 숫자 버튼 누르기 전에 연산자를 변경 가능)
-- 계산기의 순서는 아래와 같다
-    1. 연사자를 입력 (첫 숫자 입력의 연산자는 `.add`)
-    2. 숫자를 입력
-    3. 1 ~ 2번의 행동을 반복하게 된다
-- `+ / -`는 String으로 입력받는 형태(`sign`)에서 기호로 받는다
-    
-    ```swift
-    // ➕, ➖: 이모지로 positive와 negative를 판단하도록 분리
-    "+15➕*10➕-17➖"
-    ```
-- parse 부분에서 `sign`을 구분짓고 새로운 Queue를 만들어야 한다
-- `.`의 입력을 받았다면 1번만 받도록 enum으로?? 관리한다
-- `sign`과 `.` 을 계산기의 순서에서 새로운 연산자를 받을 때마다 초기화를 한다
-(`.`은 unused, used로 구분 / `sign`은  positive, negative로 구분)
-- 그 외에 예외 사항은 STEP3에서 입력받을 때 처리를 해야한다 판단한다
-
----
+## 🧨 트러블 슈팅
+1. **[Step 1]** 유닛테스트 시 `XCTAssertEqual`을 사용할 때 오류가 발생하여 queue에 들어가는 Item에 `Equatable` 프로토콜을 채택하여 해결하였습니다
+2. **[Step 1]** Unit Test를 진행하면서 dequeue를 사용하면 `isEmpty`가 false인 상황에서는 문제가 되지 않지만 true일 때는 warning이 발생하여 @discardableResult를 사용하여 해결하였습니다.
+3. **[Step 2]** UML에서 요구한 split에서는 Character를 target으로 하기에는 원하는 결과가 나오지 않아 `components(separatedBy: CharacterSet)`를 사용하여 구분자에 맞춰 문자열로 반환하였습니다.
+4. **[Step 3]** AC의 버튼의 경우, scrollView내에 존재하는 subViews의 객체들을 삭제하기 위해서 `removeArrangedSubview`을 사용하였으나 삭제되지 않았습니다. 해결하기 위해서 `removeFromSuperview`도 사용을 하여서 내부에 존재하는 subViews를 삭제하였습니다.
