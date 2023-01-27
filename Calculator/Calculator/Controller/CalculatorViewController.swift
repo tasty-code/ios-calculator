@@ -30,22 +30,9 @@ final class CalculatorViewController: UIViewController {
             isCalculated = false
         }
 
-        guard var operand = operandLabel.text,
-              let inputOperand = sender.titleLabel?.text else { return }
-
-        if operand.contains(".") && inputOperand == "." {
-            return
-        }
-
-        if operand == "0" && (inputOperand == "0" || inputOperand == "00") {
-            return
-        }
-
-        if operand == "0" && 1...9 ~= (Int(inputOperand) ?? 0) {
-            operand.remove(at: operand.firstIndex(of: "0") ?? operand.startIndex)
-            operandLabel.text = operand + inputOperand
-            return
-        }
+        guard let operand = operandLabel.text,
+              let inputOperand = sender.titleLabel?.text,
+              isValid(operand: operand, withInputOperand: inputOperand) else { return }
 
         operandLabel.text = operand + inputOperand
     }
@@ -105,9 +92,9 @@ final class CalculatorViewController: UIViewController {
         updateFormulaString()
         addHistoryLabels()
 
-        var fomula = ExpressionParser.parse(from: formulaString)
+        var formula = ExpressionParser.parse(from: formulaString)
         do {
-            let result = try fomula.result()
+            let result = try formula.result()
             operandLabel.text = String(result)
         } catch {
             operandLabel.text = error.localizedDescription
@@ -156,4 +143,27 @@ final class CalculatorViewController: UIViewController {
     private func updateFormulaString() {
         formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
     }
+
+    private func isValid(operand: String, withInputOperand inputOperand: String) -> Bool {
+        if operand.contains(".") && inputOperand == "." {
+            return false
+        }
+
+        if operand == "0" && (inputOperand == "0" || inputOperand == "00") {
+            return false
+        }
+
+        if operand == "0" && 1...9 ~= (Int(inputOperand) ?? 0) {
+            var trimmedOperand = operand
+            trimmedOperand.remove(at: operand.firstIndex(of: "0") ?? operand.startIndex)
+            operandLabel.text = trimmedOperand + inputOperand
+            return false
+        }
+
+        return true
+    }
+
+//    private func isValidOperatorInput() -> Bool {
+//
+//    }
 }
