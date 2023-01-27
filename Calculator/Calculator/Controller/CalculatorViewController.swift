@@ -47,11 +47,7 @@ final class CalculatorViewController: UIViewController {
             isCalculated = false
         }
 
-        if (operand == "0" || operand == "0.") && isInitialized == false {
-            operatorLabel.text = inputOperator
-            isInitialized = false
-            return
-        }
+        guard isValid(operator: inputOperator, withOperand: operand) else { return }
 
         updateFormulaString()
         addHistoryLabels()
@@ -163,7 +159,13 @@ final class CalculatorViewController: UIViewController {
         return true
     }
 
-//    private func isValidOperatorInput() -> Bool {
-//
-//    }
+    private func isValid(operator: String, withOperand operand: String) -> Bool {
+        if (operand == "0" || operand == "0.") && isInitialized == false {
+            operatorLabel.text = `operator`
+            isInitialized = false
+            return false
+        }
+
+        return true
+    }
 }
