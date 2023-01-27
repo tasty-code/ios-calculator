@@ -7,7 +7,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var userOperandInput = "" {
+    var userOperandInput = "0" {
         willSet {
             operandLabel.text = newValue
         }
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         
         addNumberTotalStackView(operatorText: userOperatorInput, operandText: userOperandInput)
         totalInput += (userOperatorInput + userOperandInput)
-        userOperandInput = ""
+        userOperandInput = "0"
         
         do {
             guard let result = try ExpresstionParser.parse(from: totalInput)?.result() else { return }
