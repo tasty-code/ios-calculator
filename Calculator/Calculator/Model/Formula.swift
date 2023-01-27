@@ -7,7 +7,28 @@
 
 import Foundation
 
-struct Formula<T> {
-    var operands: CalculatorItemQueue<Double> = CalculatorItemQueue()
-    var operators: CalculatorItemQueue<Operator> = CalculatorItemQueue()
+
+struct Formula {
+    var operands: CalculatorItemQueue<Double>
+    var operators: CalculatorItemQueue<Operator>
+    
+    public mutating func result() throws -> Double {
+        guard var result = operands.dequeue() else {
+            throw CalculateError.unavailableDequeue
+        }
+        guard operands.count == operators.count else {
+            throw CalculateError.operandOperatorCountNotMatching
+        }
+        for _ in 1...operators.count {
+            guard let calculateOperator = operators.dequeue(),
+                  let operand = operands.dequeue() else {
+                throw CalculateError.unavailableDequeue
+            }
+            if calculateOperator == .divide && operand == 0 {
+                throw CalculateError.zeroDivideError
+            }
+            result = calculateOperator.caclculate(lhs: result, rhs: operand)
+        }
+        return result
+    }
 }
