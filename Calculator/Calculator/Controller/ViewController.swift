@@ -61,8 +61,6 @@ class ViewController: UIViewController {
         guard isDecimal == false else {
             return
         }
-        // 테스트 1
-        print(enteredOperand)
         enteredOperand += "."
         isDecimal = true
         guard let formattedNumber = formattingNumber(enteredOperand) else {
@@ -83,7 +81,7 @@ class ViewController: UIViewController {
         } else {
             enteredOperand += number
         }
-        operandLabel.text = formattingNumber(enteredOperand)
+        operandLabel.text = convertOperand(enteredOperand)
     }
 
     @IBAction func addOperator(_ sender: UIButton) {
@@ -152,6 +150,27 @@ class ViewController: UIViewController {
         formatter.maximumFractionDigits = 20
         formatter.numberStyle = .decimal
         return formatter.string(for: Double(number))
+    }
+
+    private func convertOperand(_ operand: String) -> String {
+        if let indexOfPoint = operand.firstIndex(of: ".") {
+            let integerOfOperand = String(operand[operand.startIndex..<indexOfPoint])
+            var decimalOfOperand: String
+            guard let formattedIntegerOfOperand = formattingNumber(integerOfOperand) else {
+                return String()
+            }
+            if operand.distance(from: indexOfPoint, to: operand.endIndex) > 20 {
+                let twentyIndex = operand.index(indexOfPoint, offsetBy: 20)
+                decimalOfOperand = String(operand[indexOfPoint...twentyIndex])
+            } else {
+                decimalOfOperand = String(operand[indexOfPoint..<operand.endIndex])
+            }
+            return String(formattedIntegerOfOperand) + decimalOfOperand
+        }
+        guard let formattedIntegerOfOperand = formattingNumber(operand) else {
+            return String()
+        }
+        return formattedIntegerOfOperand
     }
 }
 
