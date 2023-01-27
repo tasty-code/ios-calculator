@@ -92,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4BC78E2983586800C21130 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B67C40A297A2E4C00ABCD97 /* Double+.swift */,
+				76D425F1297A301000D29578 /* String+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		3B7C02A62974E1A900A06BFF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +128,7 @@
 				3B7C02AB2974E22C00A06BFF /* CalculatorItemQueue.swift */,
 				766CFECD297508F800C1EBFF /* CalculatorError.swift */,
 				76D425ED297A2C7100D29578 /* TemporaryInput.swift */,
-				3B67C40A297A2E4C00ABCD97 /* Double+.swift */,
 				3B67C40C297A2EA500ABCD97 /* Operator.swift */,
-				76D425F1297A301000D29578 /* String+.swift */,
 				76D425F3297A311400D29578 /* ExperssionParser.swift */,
 				3B67C40E297A329000ABCD97 /* Formula.swift */,
 			);
@@ -161,6 +168,7 @@
 		C713D9402570E5EB001C3AFC /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				3B4BC78E2983586800C21130 /* Extension */,
 				3B7C02A62974E1A900A06BFF /* Controller */,
 				3B7C02A82974E1B400A06BFF /* Model */,
 				3B7C02A72974E1B000A06BFF /* View */,

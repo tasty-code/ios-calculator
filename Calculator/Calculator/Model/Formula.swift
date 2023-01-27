@@ -16,7 +16,7 @@ struct Formula {
             let anOperand = (try? operands.dequeue()) ?? 0.0
             let anOperator = (try? operators.dequeue()) ?? .add
             guard (anOperator, anOperand) != (.divide, 0.0) else {
-                throw CalculatorError.cannotDivideByZero
+                throw CalculatorError.divideByZero
             }
             
             return anOperator.calculate(lhs: initialResult, rhs: anOperand)
