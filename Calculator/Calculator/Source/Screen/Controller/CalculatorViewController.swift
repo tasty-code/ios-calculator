@@ -21,6 +21,10 @@ final class CalculatorViewController: UIViewController {
             return ""
         }
         set {
+            if newValue.last! == "." {
+                displayNumberLabel.text = makeNumberToStringWithComma(value: String(newValue.prefix(newValue.count - 1))) + "."
+                return
+            }
             displayNumberLabel.text = makeNumberToStringWithComma(value: newValue)
         }
     }
@@ -116,7 +120,7 @@ final class CalculatorViewController: UIViewController {
         let previousCalculationLabel = UILabel()
         previousCalculationLabel.textColor = .white
         previousCalculationLabel.font = UIFont.systemFont(ofSize: 20)
-        previousCalculationLabel.text = displayOperatorLabel.text! + oneSpace + displayNumber
+        previousCalculationLabel.text = displayOperatorLabel.text! + oneSpace + (displayNumberLabel.text ?? "")
         cumulativeCalculationStackView.addArrangedSubview(previousCalculationLabel)
         cumulativeCalculationScrollView.layoutIfNeeded()
         let bottomOffset = CGPoint(x: 0, y: cumulativeCalculationScrollView.contentSize.height - cumulativeCalculationScrollView.bounds.size.height)
