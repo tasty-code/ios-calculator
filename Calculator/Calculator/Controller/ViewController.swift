@@ -118,10 +118,9 @@ class ViewController: UIViewController {
             resultValue.removeLast()
             resultValue.removeLast()
         }
+        addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         enteredOperand = resultValue
         operandLabel.text = enteredOperand
-        addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
-
         calculationFormula = "+"
         scrollView.contentOffset.y = scrollView.contentSize.height
     }
