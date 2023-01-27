@@ -59,15 +59,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func addDecimalPoint(_ sender: UIButton) {
-        guard isDecimal == false else {
+        guard isDecimal == false, isCalculated == false else {
             return
         }
         enteredOperand += "."
         isDecimal = true
-        guard let formattedNumber = formattingNumber(enteredOperand) else {
-            return
-        }
-        operandLabel.text = formattedNumber + "."
+        operandLabel.text = formattingNumber(enteredOperand) + "."
     }
 
     @IBAction func addNumber(_ sender: UIButton) {
@@ -147,32 +144,26 @@ class ViewController: UIViewController {
         formulaStackViews.addArrangedSubview(formulaStackView)
     }
 
-    private func formattingNumber(_ number: String) -> String? {
+    private func formattingNumber(_ number: String) -> String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 20
         formatter.numberStyle = .decimal
-        return formatter.string(for: Double(number))
+        return formatter.string(for: Double(number)) ?? number
     }
 
     private func convertOperand(_ operand: String) -> String {
         if let indexOfPoint = operand.firstIndex(of: ".") {
             let integerOfOperand = String(operand[operand.startIndex..<indexOfPoint])
             var decimalOfOperand: String
-            guard let formattedIntegerOfOperand = formattingNumber(integerOfOperand) else {
-                return String()
-            }
             if operand.distance(from: indexOfPoint, to: operand.endIndex) > 20 {
                 let twentyIndex = operand.index(indexOfPoint, offsetBy: 20)
                 decimalOfOperand = String(operand[indexOfPoint...twentyIndex])
             } else {
                 decimalOfOperand = String(operand[indexOfPoint..<operand.endIndex])
             }
-            return String(formattedIntegerOfOperand) + decimalOfOperand
+            return formattingNumber(integerOfOperand) + decimalOfOperand
         }
-        guard let formattedIntegerOfOperand = formattingNumber(operand) else {
-            return String()
-        }
-        return formattedIntegerOfOperand
+        return formattingNumber(operand)
     }
 }
 
