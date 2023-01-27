@@ -7,6 +7,38 @@
 |:---:|:---:|
 |[💙 Blue 💙](https://github.com/bomyuniverse)|[🌏 Mason 🌏](https://github.com/qwerty3345)|
 
+### ✅ 그라운드 Rule
+
+- 코드 컨벤션
+    - 기준: [https://github.com/kodecocodes/swift-style-guide](https://github.com/kodecocodes/swift-style-guide)
+- 커밋 컨벤션, 깃 플로우
+    - 커밋 단위는 최대한 작은 기능단위로!
+    - 소문자로 (feat: 내용)
+    - ✨ **Git Commit Convention**
+        - Prefix 전체 소문자, **`prefix:`**
+        - `feat` = 주로 사용자에게 새로운 기능이 추가되는 경우
+        - `fix` = 사용자가 사용하는 부분에서 bug가 수정되는 경우
+        - `docs` = 문서에 변경 사항이 있는 경우
+        - `style` = 세미콜론을 까먹어서 추가하는 것 같이 형식적인 부분을 다루는 경우 (코드의 변화가 생산적인 것이 아닌 경우)
+        - `refactor` = production code를 수정하는 경우 (변수의 네이밍을 수정하는 경우)
+        - `test` = 테스트 코드를 수정하거나, 추가하는 경우 (코드의 변화가 생산적인 것이 아닌 경우)
+        - `chore` = 별로 중요하지 않은 일을 수정하는 경우 (코드의 변화가 생산적인 것이 아닌 경우)
+        - +) `design` = UI 디자인을 변경했을 때
+    - step1, step2, step3
+        - step1 작업 → main 머지 → PR → step1 리뷰 → step1-fix
+            - 코드리뷰가 1일 내로 안올 시, 다음 스텝 미리 진행 (conflict 천국)
+        - step2 작업 → main 머지 → PR → step2 리뷰 → step2-fix
+        - step3 작업 → main 머지 → PR → step3 리뷰 → step3-fix
+- 모닝 스크럼 방식
+    - 아침 컨디션 체크
+    - 전날 뭐했는지 간단히라도 공유 (자기의 wow 포인트가 있으면 공유…)
+    - 프로젝트 진행상황, 진행방향
+        - 그날 작업할 것, 설계… 등등
+- 프로젝트 진행 방식
+    - 설계 우선 → 구현 진행
+    - 50분 프로젝트 / 10분 휴식
+
+
 # 💬 UML
 ![](https://user-images.githubusercontent.com/70311145/188132535-8bc81913-7863-4877-88f9-0f8e811a52bd.jpeg)
 
@@ -22,73 +54,7 @@
 | LinkedList | struct | 노드간의 연결로 구현한 링크드리스트 자료구조 |
 | Node | class | 링크드리스트 내부의 노드 |
 | CalculatorError | enum | 계산기에서 발생할 수 있는 오류 정의 및 Description 메세지 정의 |
-
-# ✏️ 주간 학습 키워드 및 요점정리
-
-- 고차함수
-    - map
-        
-        ```swift
-        func map<T>(_ transform: (Self.Element) throws -> T) rethrows -> [T]
-        ```
-        
-        - 요소 하나하나를 매핑하여 새로운 배열을 return한다.
-    - compactMap
-        
-        ```swift
-        func compactMap<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> [ElementOfResult]
-        ```
-        
-        - 요소를 하나씩 매핑하여 옵셔널 바인딩을 수행, nil의 경우 제거하고 배열로 return한다.
-    - flatMap
-        
-        ```swift
-        func flatMap<SegmentOfResult>(_ transform: (Self.Element) throws -> SegmentOfResult) rethrows -> [SegmentOfResult.Element] where SegmentOfResult : Sequence
-        ```
-        
-        - 중첩된 배열을 새롭게 매핑하여 중첩을 제거하고 단일 배열로 return한다.
-    - reduce
-        
-        ```swift
-        func reduce<Result>(
-            _ initialResult: Result,
-            _ nextPartialResult: (Result, Self.Element) throws -> Result
-        ) rethrows -> Result
-        ```
-        
-        - 초기값을 지정할 수 있고, 요소를 하나씩 꺼내어 내부 로직을 수행한 후 부분 결과값에 저장한 후 해당 결과값과 함께 다음 로직을 수행한다.
-        모두 수행한 최종 결과를 return한다.
-    - 😋 in our project
-        
-        ```swift
-        // ExpressionParser.swift
-        
-        // compactMap
-        let operandElements = componentsByOperaters(from: input).compactMap { Double($0) }
-        
-        // reduce and flatMap
-        return Operator.allCases.reduce([input]) { partialResult, calculatorOperator in
-            partialResult.flatMap {
-                $0.split(with: calculatorOperator.rawValue)
-            }
-        }
-        ```
-        
-- 제네릭, Protocol
-    - 포괄적으로 여러 타입을 받을 수 있게 함으로서 코드의 중복을 줄일 수 있음
-    - Queue 내부에 받을 수 있는 요소의 타입을 프로토콜로만 제약을 주는 경우
-        - 해당 프로토콜을 채택한 여러 다른 타입의 요소들을 모두 받을 수 있기에 꺼내와서 사용 시 타입 캐스팅이 필요함
-    - Queue 내부에 받을 수 있는 요소의 타입을 제네릭으로 구현하고 해당 제네릭의 제약 조건으로 프로토콜을 주는 경우
-        - 해당 프로토콜을 채택한 “특정 타입” 의 요소만 받을 수 있기에, 내부에 공통된 하나의 타입만 받을 수 있게 제약이 생김 → 타입 캐스팅이 불필요
-- UML
-    - 각 화살표의 의미: 실체화 - 프로토콜 채택, 직접연관 - 내부 프로퍼티
-    - +, - 의 의미: +는 외부에서 접근가능, -는 private 으로 외부에서 접근 불가능
-    - 밑줄의 의미: static 키워드에 해당 _ UML에서는 static func 만 존재하기에 enum의 네임스페이스로 묶었다고 판단
-- TDD, Unit Test
-    - TDD의 핵심 개념은 모든 테스트를 설계하고 프로젝트를 진행하는 것이 아니라,
-    하나의 “실패하는” 테스트를 작성하고, 해당 테스트를 통과하도록 리팩터링 하는 과정을 반복하는 것
-    - Unit Test 는 Code Coverage 개념이 존재하고, 각 테스트 케이스가 얼마나 많은 부분의 테스트를 다루는지를 체크해볼 수 있음
-        - 높을 수록 테스트를 잘 짠 것
+| CalculatorViewController | class | UI 와 연결되어, 사용자 입력을 체크하고 연산을 수행하는 뷰컨트롤러 |
 
 # STEP 1
 
@@ -113,7 +79,18 @@
 - 피연산자와 연산자의 개수가 잘못된 경우
 - 연산할 요소가 큐에 존재하지 않는 경우
 
-# 고민과 해결
+
+# STEP 3
+
+## 구현 내용
+
+- 사용자의 터치 이벤트를 수신하여 실제로 연산을 수행할 수 있도록 구현
+- 숫자를 입력하고 계산하는 기능을 구현
+- 스택 뷰와 레이블을 활용하여 계산 내역을 표시
+- 계산내역이 길어지면 위아래로 스크롤 가능
+- 계산내역이 상단 공간을 넘어 이어지는 경우, 사용자에게 제대로 보일 수 있도록 새로 추가될 때 최하단으로 자동 스크롤 되도록 구현
+
+# ⁉️ 고민과 해결
 
 ## Queue 구현 시 Array vs Linked List
 
@@ -180,8 +157,6 @@ func test_여러요소를_append했을때_마지막으로_넣은_요소가_tail�
 
 🌟 리뷰어 의견: 정석적인 TDD 방식이라면 한가지에 대한 테스트 코드를 작성하고 테스트를 진행하고 수정하는 방식입니다!
 
-# **⁉️ 고민과 해결**
-
 ## 에러 케이스의 네이밍
 
 0으로 나누는 경우의 오류 처리를 위해 Error 타입을 정의한 후 필요하다고 생각되는 에러 케이스들을 추가하였습니다.
@@ -226,7 +201,7 @@ enum CalculatorError: LocalizedError {
 >     - 있는 경우: `divideByZero` error return
 >     - 없는 경우: 연산 수행
 
-🤔❓ 저희의 에러 케이스 네이밍에 대한 라자냐의 의견은 어떠신가요? 다른 테스트 케이스와 동일하게 간단하게 작성하는 것이 좋을까요?
+🌟 리뷰어 의견: 에러 네이밍이 명확한거 좋습니다~
 
 ## split 로직
 
@@ -278,17 +253,64 @@ private static func componentsByOperaters(from input: String) -> [String] {
 }
 ```
 
-❓🤔 이런 문제에 대한 라자냐의 의견은 어떠신지 궁금합니다. 
+🌟 리뷰어 의견: 저라면 명세서를 따랐을거 같습니다. 실제로 프로젝트를 진행하면서 명세서를 작성할때에는 다른 개발자들과 합의 하에 작성 혹은 유지되기 때문에 다른 방식으로 구현하고 싶다면 사전에 논의를 거쳐야할거 같습니다.
 
-# 🔎 다음주 프로젝트 계획
 
-- STEP 3 확인
-- 스토리보드와 모델 코드 연결
-- 뷰컨트롤러에서 사용자 이상 입력에 대한 로직 처리
-    - ex) 연산자 버튼을 계속 입력한다…
-- 버튼이 작동하도록 수정
-    - +/- 버튼의 경우 양수/음수가 전환되도록 처리
-        - 현재 입력된 숫자에 -1을 곱하도록
-    - (학습 후 구현 예정) 여러 버튼 구현 시, 프로토콜을 채택한 커스텀 버튼 클래스를 구현하여 타입캐스팅 후 처리하도록 구현 예정
-- STEP 3에 맞게 에러 케이스 추가
-- 유닛 테스트 높은 커버리지를 목표로 테스트 케이스 작성
+## ScrollView의 위치를 설정 해 줄 때의 문제 (Drawing Cycle)
+
+계산내역이 상단 공간을 넘어 이어지는 경우, 사용자에게 제대로 보일 수 있도록 새로 추가될 때 최하단으로 자동 스크롤 되도록 구현해기 위해  stack이 추가된 후 스크롤 뷰의 bottomOffset를 재설정하였습니다.
+
+- 리팩토링 전의 코드는 가장 최신에 추가된 stack이 아닌 이전 stack 을 하단으로 자동 스크롤 되었습니다. (이미지 참고)
+    
+    ```swift
+    // CalculatorViewController.swift - 131~132
+    let bottomOffset = CGPoint(x: 0, y: self.historyScrollView.contentSize.height - self.historyScrollView.frame.size.height)
+    self.historyScrollView.setContentOffset(bottomOffset, animated: true)
+    ```
+    
+    ```markdown
+    ![](https://user-images.githubusercontent.com/71758542/215037969-0b1589f2-0446-4286-81e4-e523045c707b.gif)
+    ```
+    
+- 뷰가 업데이트 되기 전 height로 offset이 설정되는 것으로 확인하였고, 해당 문제를 해결하기 위해 `layoutIfNeeded()`를 사용하였습니다.
+    
+    ```swift
+    // CalculatorViewController.swift
+    historyScrollView.layoutIfNeeded()
+    
+    let bottomOffset = CGPoint(x: 0, y: self.historyScrollView.contentSize.height - self.historyScrollView.frame.size.height)
+    self.historyScrollView.setContentOffset(bottomOffset, animated: true)
+    ```
+    
+- `layoutIfNeeded()`를 사용한 이유?
+    - UI를 업데이트 하는 큐의  뒤에 삽입하는 것이 아니라, 맨 앞쪽으로 배치하여 곧바로 UI가 변하도록 하는 메서드이기 때문입니다.
+    - 해당 메소드가 호출되면 1/60초에 한 번씩 실행되는 Update Cycle을 바로 실행하여 레이아웃이 즉각적으로 적용됩니다.
+    - `layoutIfNeeded()`를 stack이 추가된 코드와 offset을 설정하는 코드 사이에 실행되도록 하여, stack이 추가된 scrollView의 height값을 사용할 수 있도록 하였습니다.
+
+## NumberFormatter
+
+- 입력한 숫자와, 계산완료 결과 숫자를 1,000 단위로 쉼표를 붙여주기 위해 사용하였습니다.
+    
+    > `.numberStyle` 을 `decimal` 로 설정하였습니다.
+    > 
+- 동작 로직 : 사용자가 숫자를 입력 → 연산자를 누름 → 입력된 숫자를 `formatter`로 변경 → 변경된 숫자를 StackView로 삽입
+- 트러블 슈팅: “=” 을 눌러 계산을 할 때 사용자 입력창 부분에 결과값을 formatted 된 형태로 보여줍니다.
+    - 원래 `format` 하는 로직은 double 값을 formatter 로 변경하는 로직이고,
+    이미 formatted 된 계산된 값을 Double로 변환하려 하니 “,” 쉼표가 들어가 있기에 타입 캐스팅에 실패하였습니다.
+    - 이에, “,” 쉼표를 제거하고 해당 연산을 수행하도록 처리였습니다. 
+    (다만 쉼표를 붙여줬다 떼는 로직이기에 비효율적인 부분은 존재할 것이라 판단했습니다.)
+    - 차후 필요 시, 계산된 값임을 알리는 flag 를 두고 해당 flag 로 체크 한 뒤 처리해도 될 듯 합니다.
+- cf) 메모리 효율을 위해, 메서드 내부에서 `formatter` 를 매번 생성하는 것이 아닌, 뷰컨트롤러의 프로퍼티로 생성한 뒤 `format` 메서드에서 해당 프로퍼티를 호출해서 사용하도록 처리하였습니다.
+    
+    ```swift
+    // ViewController
+    private let formatter = NumberFormatter()
+    
+    private func format(number: Double) -> String? {
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 20
+    
+        return formatter.string(for: number)
+    }
+    ```
+
