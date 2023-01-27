@@ -24,23 +24,19 @@ struct Formula {
             throw CalculateError.invalidInput
         }
         
-        try (0..<operands.count()).forEach { count in
-            guard var nextNode = operands.dequeue() else {
-                throw CalculateError.invalidInput
-            }
+        while var nextNode = operands.dequeue() {
             
             if nextNode.contains("*") {
                 nextNode = nextNode.replacingOccurrences(of: "*", with: "-")
             }
-
-            guard let rhs = Double(nextNode) else { throw CalculateError.invalidInput }
             
+            guard let rhs = Double(nextNode) else { throw CalculateError.invalidInput }
             guard let stringOperator = operators.dequeue(), let eachOperator = Operator(rawValue: stringOperator[stringOperator.startIndex]) else {
                 throw CalculateError.invalidInput
             }
 
             middleResult = try eachOperator.calculate(lhs: middleResult, rhs: rhs)
-        }
+       }
         return middleResult
     }
 }

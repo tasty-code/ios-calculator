@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var totalInput = ""
+    var totalInput = "0"
     
     let numberFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             subview.removeFromSuperview()
         }
         
-        totalInput = ""
+        totalInput = "0"
         userOperandInput = "0"
         userOperatorInput = ""
     }
