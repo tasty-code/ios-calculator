@@ -7,17 +7,20 @@
 
 import Foundation
 
-protocol CalculateItem {
-}
-
-struct CalculatorItemQueue: CalculateItem {
+struct CalculatorItemQueue {
     private let queue: LinkedList = LinkedList()
     
-    func enqueue(data: Value) {
+    func enqueue(data: String) {
         queue.append(data: data)
     }
     
-    func dequeue() {
-        queue.remove()
+    func dequeue() -> String? {
+        return queue.remove()
+    }
+    
+    func count() -> Int {
+        return queue.count()
     }
 }
+
+
