@@ -7,12 +7,6 @@
 
 import XCTest
 
-extension Formula: Equatable {
-    static func == (lhs: Formula, rhs: Formula) -> Bool {
-        lhs.operands.items == rhs.operands.items && lhs.operators.items == rhs.operators.items
-    }
-}
-
 final class ExpressionParserTests: XCTestCase {
     var sut: ExpressionParser!
 
@@ -25,14 +19,25 @@ final class ExpressionParserTests: XCTestCase {
         sut = nil
     }
 
-    func test_완성된_계산식이_연산자와_피연산자로_올바르게_분리되는지_확인한다() {
-        let input = "0+5−6÷7×8"
-        let operandsInput = CalculatorItemQueue(items: [0, 5, 6, 7, 8])
-        let operatorsInput = CalculatorItemQueue(items: Operator.allCases)
-        let expectation = Formula(operands: operandsInput, operators: operatorsInput)
+    func test_완성된_계산식에서_연산자들이_올바르게_분리되는지_확인한다() {
+            let input = "0+5−6÷7×8"
+            let operandsInput = CalculatorItemQueue(items: [0, 5, 6, 7, 8])
+            let operatorsInput = CalculatorItemQueue(items: Operator.allCases)
+            let expectation = Formula(operands: operandsInput, operators: operatorsInput).operands.items
 
-        let result = ExpressionParser.parse(from: input)
+            let result = ExpressionParser.parse(from: input).operands.items
 
-        XCTAssertEqual(result, expectation)
-    }
+            XCTAssertEqual(result, expectation)
+        }
+
+        func test_완성된_계산식에서_피연산자들이_올바르게_분리되는지_확인한다() {
+            let input = "0+5−6÷7×8"
+            let operandsInput = CalculatorItemQueue(items: [0, 5, 6, 7, 8])
+            let operatorsInput = CalculatorItemQueue(items: Operator.allCases)
+            let expectation = Formula(operands: operandsInput, operators: operatorsInput).operators.items
+
+            let result = ExpressionParser.parse(from: input).operators.items
+
+            XCTAssertEqual(result, expectation)
+        }
 }
