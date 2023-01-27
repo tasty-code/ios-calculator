@@ -30,8 +30,8 @@ final class CalculatorViewController: UIViewController {
             isCalculated = false
         }
 
-        guard var operand = operandLabel.text else { return }
-        guard let inputOperand = sender.titleLabel?.text else { return }
+        guard var operand = operandLabel.text,
+              let inputOperand = sender.titleLabel?.text else { return }
 
         if operand.contains(".") && inputOperand == "." {
             return
@@ -51,9 +51,9 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedOperatorButton(_ sender: UIButton) {
-        guard operandLabel.text?.lowercased() != "nan" else { return }
-        guard let operand = operandLabel.text else { return }
-        guard let inputOperator = sender.titleLabel?.text else { return }
+        guard let operand = operandLabel.text,
+              let inputOperator = sender.titleLabel?.text,
+              operand != "NaN" else { return }
 
         if isCalculated {
             resetHistoryStackView()
@@ -87,9 +87,9 @@ final class CalculatorViewController: UIViewController {
     }
 
     @IBAction private func tappedSignChangeButton(_ sender: UIButton) {
-        guard isCalculated == false else { return }
-        guard var operand = operandLabel.text else { return }
-        guard (operand.allSatisfy { $0 == "." || $0 == "0" } == false) else { return }
+        guard isCalculated == false,
+              var operand = operandLabel.text,
+              operand.allSatisfy ({ $0 == "." || $0 == "0" }) == false else { return }
 
         if operand.first == "-" {
             operand.removeFirst()
