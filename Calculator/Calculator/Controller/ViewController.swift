@@ -14,7 +14,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -34,7 +33,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func clearEntry(_ sender: UIButton) {
-        guard enteredOperand != "0", enteredOperand != String(Double.nan), isCalculated == false else {
+        guard isInitialOperand() == false, enteredOperand != String(Double.nan), isCalculated == false else {
             return
         }
         if enteredOperand.removeLast() == "." {
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func changeSign(_ sender: UIButton) {
-        guard enteredOperand != "0" else {
+        guard isInitialOperand() == false else {
             return
         }
         if enteredOperand.first == "-" {
@@ -75,10 +74,10 @@ class ViewController: UIViewController {
             enteredOperand = "0"
             isCalculated = false
         }
-        guard enteredOperand != "0" || (number != "0" && number != "00") else {
+        guard isInitialOperand() == false || (number != "0" && number != "00") else {
             return
         }
-        if enteredOperand == "0" {
+        if isInitialOperand() {
             enteredOperand = number
         } else {
             enteredOperand += number
@@ -91,7 +90,7 @@ class ViewController: UIViewController {
               let enteredOperator = operatorLabel.text else {
             return
         }
-        guard enteredOperand != "0" else {
+        guard isInitialOperand() == false else {
             if calculationFormula == "+" {
                 calculationFormula.removeAll()
             }
@@ -119,7 +118,7 @@ class ViewController: UIViewController {
         isDecimal = false
         isCalculated = true
         var formula = ExpressionParser.parse(from: calculationFormula)
-        var resultValue = String(formula.result())
+        let resultValue = String(formula.result())
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         enteredOperand = resultValue
         operandLabel.text = formattingNumber(enteredOperand)
@@ -164,6 +163,10 @@ class ViewController: UIViewController {
             return formattingNumber(integerOfOperand) + decimalOfOperand
         }
         return formattingNumber(operand)
+    }
+
+    private func isInitialOperand() -> Bool {
+        return enteredOperand == "0"
     }
 }
 
