@@ -30,9 +30,9 @@ final class CalculatorViewController: UIViewController {
             isCalculated = false
         }
 
-        guard let operand = operandLabel.text,
+        guard var operand = operandLabel.text,
               let inputOperand = sender.titleLabel?.text,
-              isValid(operand: operand, withInputOperand: inputOperand) else { return }
+              isValid(operand: &operand, withInputOperand: inputOperand) else { return }
 
         operandLabel.text = operand + inputOperand
     }
@@ -140,7 +140,7 @@ final class CalculatorViewController: UIViewController {
         formulaString += (operatorLabel.text ?? "") + (operandLabel.text ?? "")
     }
 
-    private func isValid(operand: String, withInputOperand inputOperand: String) -> Bool {
+    private func isValid(operand: inout String, withInputOperand inputOperand: String) -> Bool {
         if operand.contains(".") && inputOperand == "." {
             return false
         }
@@ -150,10 +150,7 @@ final class CalculatorViewController: UIViewController {
         }
 
         if operand == "0" && 1...9 ~= (Int(inputOperand) ?? 0) {
-            var trimmedOperand = operand
-            trimmedOperand.remove(at: operand.firstIndex(of: "0") ?? operand.startIndex)
-            operandLabel.text = trimmedOperand + inputOperand
-            return false
+            operand.remove(at: operand.firstIndex(of: "0") ?? operand.startIndex)
         }
 
         return true
