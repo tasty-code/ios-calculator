@@ -11,23 +11,19 @@ final class CustomStackView: UIStackView {
     
     let operatorLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .right
         label.contentMode = .left
-        label.minimumScaleFactor = 0.5
         return label
     }()
     
     let operandLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .right
         label.contentMode = .left
-        label.minimumScaleFactor = 0.5
         return label
     }()
     
