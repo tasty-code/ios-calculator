@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         operatorLabel.text = ""
         calculationFormula = "+"
         enteredOperand = "0"
-        operandLabel.text = enteredOperand
+        operandLabel.text = formattingNumber(enteredOperand)
 
         formulaStackViews.removeAllArrangedSubviews()
     }
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         if enteredOperand.isEmpty {
             enteredOperand = "0"
         }
-        operandLabel.text = enteredOperand
+        operandLabel.text = formattingNumber(enteredOperand)
     }
 
     @IBAction func changeSign(_ sender: UIButton) {
@@ -54,16 +54,21 @@ class ViewController: UIViewController {
         } else {
             enteredOperand = "-" + enteredOperand
         }
-        operandLabel.text = enteredOperand
+        operandLabel.text = formattingNumber(enteredOperand)
     }
 
     @IBAction func addDecimalPoint(_ sender: UIButton) {
         guard isDecimal == false else {
             return
         }
+        // 테스트 1
+        print(enteredOperand)
         enteredOperand += "."
         isDecimal = true
-        operandLabel.text = enteredOperand
+        guard let formattedNumber = formattingNumber(enteredOperand) else {
+            return
+        }
+        operandLabel.text = formattedNumber + "."
     }
 
     @IBAction func addNumber(_ sender: UIButton) {
@@ -78,7 +83,7 @@ class ViewController: UIViewController {
         } else {
             enteredOperand += number
         }
-        operandLabel.text = enteredOperand
+        operandLabel.text = formattingNumber(enteredOperand)
     }
 
     @IBAction func addOperator(_ sender: UIButton) {
@@ -100,13 +105,13 @@ class ViewController: UIViewController {
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         operatorLabel.text = `operator`
         enteredOperand = "0"
-        operandLabel.text = enteredOperand
+        operandLabel.text = formattingNumber(enteredOperand)
         isDecimal = false
         scrollView.contentOffset.y = scrollView.contentSize.height
     }
 
     @IBAction func calculateResult(_ sender: UIButton) {
-        guard let enteredOperator = operatorLabel.text else {
+        guard let enteredOperator = operatorLabel.text, calculationFormula != "+" else {
             return
         }
         calculationFormula += enteredOperator + enteredOperand
@@ -120,7 +125,7 @@ class ViewController: UIViewController {
         }
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         enteredOperand = resultValue
-        operandLabel.text = enteredOperand
+        operandLabel.text = formattingNumber(enteredOperand)
         calculationFormula = "+"
         scrollView.contentOffset.y = scrollView.contentSize.height
     }
@@ -130,7 +135,7 @@ class ViewController: UIViewController {
         let enteredOperatorLabel = UILabel()
         let enteredOperandLabel = UILabel()
 
-        enteredOperandLabel.text = operand
+        enteredOperandLabel.text = formattingNumber(operand)
         enteredOperatorLabel.text = `operator`
         enteredOperandLabel.textColor = .white
         enteredOperatorLabel.textColor = .white
@@ -140,6 +145,13 @@ class ViewController: UIViewController {
         formulaStackView.addArrangedSubview(enteredOperandLabel)
 
         formulaStackViews.addArrangedSubview(formulaStackView)
+    }
+
+    private func formattingNumber(_ number: String) -> String? {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 20
+        formatter.numberStyle = .decimal
+        return formatter.string(for: Double(number))
     }
 }
 
