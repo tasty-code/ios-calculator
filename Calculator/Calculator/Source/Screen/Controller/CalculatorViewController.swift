@@ -13,11 +13,11 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet weak private var displayNumberLabel: UILabel!
     @IBOutlet weak private var displayOperatorLabel: UILabel!
 
-    var isCalculated: Bool = false
-    var computation = ""
-    let oneSpace = " "
-    let blankSpace = ""
-    let zeroArray = ["0", "00"]
+    private var isCalculated: Bool = false
+    private var computation = ""
+    private let oneSpace = " "
+    private let blankSpace = ""
+    private let zeroArray = ["0", "00"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +116,6 @@ final class CalculatorViewController: UIViewController {
         displayNumberLabel.text = zeroArray[0]
         displayOperatorLabel.text = blankSpace
         cumulativeCalculationStackView.subviews.forEach({ $0.removeFromSuperview() })
-        computation = ""
+        computation = blankSpace
     }
 }
-
