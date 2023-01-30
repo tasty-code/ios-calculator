@@ -9,15 +9,16 @@ import Foundation
 
 struct CalculatorItemQueue<T> {
     var queue: [T] = []
-    var isEmpty: Bool {
-        return queue.isEmpty
-    }
+    
+    var isEmpty: Bool { return queue.isEmpty }
+    
+    var count: Int { return queue.count }
     
     mutating func enqueue(value: T) {
         return queue.append(value)
     }
     
     mutating func dequeue() -> T? {
-        isEmpty ? nil : queue.removeFirst()
+        return isEmpty ? nil : queue.removeFirst()
     }
 }
