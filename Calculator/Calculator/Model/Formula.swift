@@ -10,31 +10,40 @@ import Foundation
 enum FormulaError: Error {
     case dividedByZero
     case wrongFormula
+
+    var description: String {
+        switch self {
+        case .dividedByZero:
+            return "NaN"
+        case .wrongFormula:
+            return "올바르지 않은 식"
+        }
+    }
 }
 
 struct Formula {
-    var operands: CalculatorItemQueue<Double>
-    var operators: CalculatorItemQueue<Operator>
+    private var operands: CalculatorItemQueue<Double>
+    private var operators: CalculatorItemQueue<Operator>
 
     init(operands: [Double] = [], operators: [Operator] = []) {
         self.operands = CalculatorItemQueue(items: operands)
         self.operators = CalculatorItemQueue(items: operators)
     }
 
-    func result() throws -> Double {
+    func result() -> Result<Double, FormulaError> {
         guard operands.count == operators.count + 1 else {
-            throw FormulaError.wrongFormula
+            return .failure(.wrongFormula)
         }
 
         let pairs = zip(operands.values.dropFirst(), operators.values)
         guard false == pairs.contains(where: { pair in (0.0, Operator.divide) == pair }) else {
-            throw FormulaError.dividedByZero
+            return .failure(.dividedByZero)
         }
 
         let result = pairs.reduce(operands.values[0]) { (partialResult, pair) in
-            let (currentOperand, currentOperator) = pair
-            return currentOperator.calculate(lhs: partialResult, rhs: currentOperand)
+            let (operand, `operator`) = pair
+            return `operator`.calculate(lhs: partialResult, rhs: operand)
         }
-        return result
+        return .success(result)
     }
 }
