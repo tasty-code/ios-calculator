@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     private var isDecimal: Bool = false
     private var isCalculated: Bool = false
     private var enteredOperand: String = "0"
+    private let point = "."
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class ViewController: UIViewController {
         guard isInitialOperand() == false, enteredOperand != String(Double.nan), isCalculated == false else {
             return
         }
-        if enteredOperand.removeLast() == "." {
+        if enteredOperand.removeLast() == Character(point) {
             isDecimal = false
         }
         if enteredOperand.isEmpty {
@@ -60,9 +61,9 @@ class ViewController: UIViewController {
         guard isDecimal == false, isCalculated == false else {
             return
         }
-        enteredOperand += "."
+        enteredOperand += point
         isDecimal = true
-        operandLabel.text = formattingNumber(enteredOperand) + "."
+        operandLabel.text = formattingNumber(enteredOperand) + point
     }
 
     @IBAction func addOperand(_ sender: UIButton) {
@@ -96,7 +97,7 @@ class ViewController: UIViewController {
             operatorLabel.text = `operator`
             return
         }
-        if enteredOperand.hasSuffix(".") {
+        if enteredOperand.hasSuffix(point) {
             enteredOperand += "0"
         }
         calculationFormula += enteredOperator + enteredOperand
@@ -149,7 +150,7 @@ class ViewController: UIViewController {
     }
 
     private func convertOperand(_ operand: String) -> String {
-        if let indexOfPoint = operand.firstIndex(of: ".") {
+        if let indexOfPoint = operand.firstIndex(of: Character(point)) {
             let integerOfOperand = String(operand[operand.startIndex..<indexOfPoint])
             var decimalOfOperand: String
             if operand.distance(from: indexOfPoint, to: operand.endIndex) > 20 {
@@ -165,14 +166,5 @@ class ViewController: UIViewController {
 
     private func isInitialOperand() -> Bool {
         return enteredOperand == "0"
-    }
-}
-
-extension UIStackView {
-    func removeAllArrangedSubviews() {
-        arrangedSubviews.forEach {
-            self.removeArrangedSubview($0)
-            $0.removeFromSuperview()
-        }
     }
 }
