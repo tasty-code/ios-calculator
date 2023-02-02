@@ -7,10 +7,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var calculationFormula: String = "+"
-    var isDecimal: Bool = false
-    var isCalculated: Bool = false
-    var enteredOperand: String = "0"
+    private var calculationFormula: String = "+"
+    private var isDecimal: Bool = false
+    private var isCalculated: Bool = false
+    private var enteredOperand: String = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
