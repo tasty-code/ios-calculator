@@ -7,11 +7,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let zero: String = "0"
+    private let point: String = "."
     private var calculationFormula: String = "+"
     private var isDecimal: Bool = false
     private var isCalculated: Bool = false
     private var enteredOperand: String = "0"
-    private let point = "."
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,7 @@ class ViewController: UIViewController {
         isDecimal = false
         operatorLabel.text = ""
         calculationFormula = "+"
-        enteredOperand = "0"
-        operandLabel.text = formattingNumber(enteredOperand)
+        initializeOperand()
         formulaStackViews.removeAllArrangedSubviews()
     }
 
@@ -39,8 +39,9 @@ class ViewController: UIViewController {
         if enteredOperand.removeLast() == Character(point) {
             isDecimal = false
         }
-        if enteredOperand.isEmpty {
-            enteredOperand = "0"
+        guard enteredOperand.isEmpty == false else {
+            initializeOperand()
+            return
         }
         operandLabel.text = formattingNumber(enteredOperand)
     }
@@ -71,10 +72,10 @@ class ViewController: UIViewController {
             return
         }
         if isCalculated {
-            enteredOperand = "0"
+            enteredOperand = zero
             isCalculated = false
         }
-        guard isInitialOperand() == false || isZero(number) else {
+        guard isInitialOperand() == false || isZero(number) == false else {
             return
         }
         if isInitialOperand() {
@@ -98,13 +99,12 @@ class ViewController: UIViewController {
             return
         }
         if enteredOperand.hasSuffix(point) {
-            enteredOperand += "0"
+            enteredOperand += zero
         }
         calculationFormula += enteredOperator + enteredOperand
         addFormulaStackView(operator: enteredOperator, operand: enteredOperand)
         operatorLabel.text = `operator`
-        enteredOperand = "0"
-        operandLabel.text = formattingNumber(enteredOperand)
+        initializeOperand()
         isDecimal = false
         scrollView.contentOffset.y = scrollView.contentSize.height
     }
@@ -165,10 +165,15 @@ class ViewController: UIViewController {
     }
 
     private func isInitialOperand() -> Bool {
-        return enteredOperand == "0"
+        return enteredOperand == zero
     }
 
     private func isZero(_ value: String) -> Bool {
-        return value == "0" || value == "00"
+        return value == zero || value == "00"
+    }
+
+    private func initializeOperand() {
+        enteredOperand = zero
+        operandLabel.text = zero
     }
 }
