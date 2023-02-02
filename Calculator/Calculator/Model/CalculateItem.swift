@@ -13,9 +13,9 @@ protocol CalculateItem {
 
 enum Operator: Character, CalculateItem, CaseIterable {
     case add = "+"
-    case subtract = "-"
-    case divide = "/"
-    case multiply = "*"
+    case subtract = "−"
+    case divide = "÷"
+    case multiply = "×"
 
     func calculate(lhs: Double, rhs: Double) -> Double {
         switch self {
