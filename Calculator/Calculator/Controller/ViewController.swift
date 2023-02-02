@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             enteredOperand = "0"
             isCalculated = false
         }
-        guard isInitialOperand() == false || (number != "0" && number != "00") else {
+        guard isInitialOperand() == false || isZero(number) else {
             return
         }
         if isInitialOperand() {
@@ -166,5 +166,9 @@ class ViewController: UIViewController {
 
     private func isInitialOperand() -> Bool {
         return enteredOperand == "0"
+    }
+
+    private func isZero(_ value: String) -> Bool {
+        return value == "0" || value == "00"
     }
 }
